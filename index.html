@@ -1,0 +1,2424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andrea Aglietti — Launch & Project Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&family=Courier+Prime&display=swap" rel="stylesheet">
+
+<style>
+/* ─── TOKENS ─── */
+:root {
+  --navy:       #0B1F3A;
+  --navy-mid:   #122847;
+  --navy-light: #1A3558;
+  --gold:       #C49A3C;
+  --gold-pale:  #F4EDD8;
+  --gold-dim:   rgba(196,154,60,0.18);
+  --white:      #FAFBFC;
+  --off:        #F2F4F7;
+  --slate:      #8A96A8;
+  --text:       #0B1F3A;
+  --muted:      #4A5568;
+  --border:     rgba(11,31,58,0.10);
+  --border-w:   rgba(255,255,255,0.12);
+
+  --serif:  'Cormorant Garamond', Georgia, serif;
+  --sans:   'Outfit', sans-serif;
+  --mono:   'Courier Prime', monospace;
+
+  --r: 0px; /* no border-radius — sharp, executive */
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* ─── TYPOGRAPHY ─── */
+h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(3rem, 7vw, 5.5rem); line-height: 1.05; letter-spacing: -0.01em; }
+h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.8rem, 3.5vw, 2.8rem); line-height: 1.15; }
+h3 { font-family: var(--serif); font-weight: 400; font-size: 1.35rem; line-height: 1.25; }
+h4 { font-family: var(--sans); font-weight: 500; font-size: 0.92rem; letter-spacing: 0.02em; }
+p  { color: var(--muted); line-height: 1.75; }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ─── LAYOUT ─── */
+.wrap  { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
+.wrap-sm { max-width: 720px; margin: 0 auto; padding: 0 2rem; }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(11,31,58,0.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-w);
+  height: 58px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem;
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--white);
+  letter-spacing: 0.03em;
+}
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links a {
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  background: var(--gold);
+  color: var(--navy) !important;
+  padding: 0.4rem 1rem;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+  transition: opacity 0.2s !important;
+}
+.nav-cta:hover { opacity: 0.85; }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; }
+.nav-toggle span { display: block; width: 20px; height: 1px; background: #fff; margin: 5px 0; transition: all 0.3s; }
+.mob-menu { display: none; position: fixed; top: 58px; left: 0; right: 0; background: var(--navy); z-index: 199; padding: 1.5rem 2rem; }
+.mob-menu a { display: block; color: rgba(255,255,255,0.7); padding: 0.7rem 0; border-bottom: 1px solid var(--border-w); font-size: 0.9rem; }
+.mob-menu.open { display: block; }
+
+/* ─── HERO ─── */
+#home {
+  background: var(--navy);
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding-top: 58px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle grid texture */
+#home::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(196,154,60,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196,154,60,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 4rem;
+  align-items: center;
+  padding: 6rem 2rem 4rem;
+  max-width: 1080px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-left {}
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 1.8rem;
+}
+.hero-eyebrow::after {
+  content: '';
+  display: block; height: 1px; width: 60px; background: var(--gold); opacity: 0.6;
+}
+
+.hero-name { color: var(--white); margin-bottom: 0.6rem; }
+.hero-name em { font-style: italic; color: var(--gold); }
+
+.hero-role {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.hero-tagline {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,0.75);
+  max-width: 500px;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  border-left: 2px solid var(--gold);
+  padding-left: 1.2rem;
+}
+
+.hero-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
+.pill {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  border: 1px solid rgba(196,154,60,0.35);
+  color: rgba(255,255,255,0.5);
+  padding: 0.3rem 0.75rem;
+  text-transform: uppercase;
+}
+
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.6rem;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all 0.22s;
+}
+.btn-gold { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+.btn-gold:hover { background: transparent; color: var(--gold); }
+.btn-ghost { background: transparent; color: rgba(255,255,255,0.65); border-color: rgba(255,255,255,0.2); }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+/* hero card */
+.hero-right {}
+.hero-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 2.2rem;
+  position: relative;
+}
+.hero-card::before {
+  content: '';
+  position: absolute;
+  top: 6px; right: -6px;
+  bottom: -6px; left: 6px;
+  border: 1px solid rgba(196,154,60,0.2);
+  z-index: -1;
+}
+
+.kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+.kpi { border-bottom: 1px solid rgba(255,255,255,0.07); padding-bottom: 1rem; }
+.kpi-val {
+  font-family: var(--serif);
+  font-size: 2.4rem;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.kpi-lbl { font-size: 0.72rem; color: rgba(255,255,255,0.4); letter-spacing: 0.05em; }
+
+.hero-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.6;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 1.2rem;
+}
+.hero-quote cite {
+  display: block;
+  font-style: normal;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+}
+
+/* hero bottom bar */
+.hero-bar {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 1.2rem 2rem;
+  max-width: 1080px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.hero-bar-item {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.38);
+  letter-spacing: 0.04em;
+}
+.hero-bar-item strong { color: rgba(255,255,255,0.65); font-weight: 400; }
+.hero-bar-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.1); }
+
+/* ─── SECTION SHELL ─── */
+section { padding: 6rem 0; }
+.section-alt { background: var(--off); }
+.section-dark { background: var(--navy); }
+
+.section-head { margin-bottom: 3.5rem; }
+.section-head .eyebrow { margin-bottom: 0.6rem; display: block; }
+.section-head h2 { margin-bottom: 0; }
+.rule { width: 2.5rem; height: 2px; background: var(--gold); margin-top: 1rem; }
+
+/* ─── ABOUT (short) ─── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.about-lead {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--text);
+  margin-bottom: 1.2rem;
+}
+.about-body { font-size: 0.95rem; }
+.about-body p { margin-bottom: 1rem; }
+
+.chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.5rem; }
+.chip {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--gold-dim);
+  color: var(--gold);
+  border: 1px solid rgba(196,154,60,0.25);
+  padding: 0.25rem 0.7rem;
+}
+
+.about-aside {}
+.aside-block {
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+.aside-block h4 { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--slate); margin-bottom: 1rem; }
+.aside-row { display: flex; justify-content: space-between; align-items: baseline; padding: 0.45rem 0; border-bottom: 1px solid var(--off); font-size: 0.88rem; }
+.aside-row:last-child { border: none; }
+.aside-row .name { font-weight: 500; color: var(--text); }
+.aside-row .val { font-size: 0.75rem; color: var(--slate); }
+.cert-line { display: flex; gap: 0.75rem; align-items: flex-start; padding: 0.5rem 0; border-bottom: 1px solid var(--off); font-size: 0.85rem; color: var(--muted); }
+.cert-line:last-child { border: none; }
+.cert-line::before { content: '◆'; color: var(--gold); font-size: 0.55rem; margin-top: 0.35rem; flex-shrink: 0; }
+
+/* ─── EXPERIENCE ─── */
+.exp-list { display: flex; flex-direction: column; gap: 0; }
+
+.exp-item {
+  border-top: 1px solid var(--border);
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.exp-item:last-child { border-bottom: 1px solid var(--border); }
+.exp-item.open { border-color: var(--gold); }
+.exp-item.open + .exp-item { border-top-color: var(--gold); }
+
+.exp-header {
+  display: grid;
+  grid-template-columns: 160px 1fr 32px;
+  gap: 2rem;
+  align-items: start;
+  padding: 2rem 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.exp-header:hover { background: rgba(196,154,60,0.03); }
+
+.exp-period {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--slate);
+  padding-top: 0.2rem;
+  line-height: 1.5;
+}
+.exp-period strong { display: block; color: var(--navy); font-size: 0.8rem; font-weight: 500; margin-bottom: 0.1rem; }
+
+.exp-main {}
+.exp-role { font-family: var(--serif); font-size: 1.4rem; font-weight: 400; color: var(--text); margin-bottom: 0.3rem; }
+.exp-company { font-size: 0.82rem; font-weight: 500; color: var(--gold); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 0.5rem; }
+.exp-summary { font-size: 0.9rem; color: var(--muted); line-height: 1.6; max-width: 600px; }
+
+.exp-toggle {
+  width: 28px; height: 28px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem;
+  color: var(--slate);
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  transition: all 0.3s;
+  background: none;
+  cursor: pointer;
+}
+.exp-item.open .exp-toggle { background: var(--gold); color: var(--navy); border-color: var(--gold); transform: rotate(45deg); }
+
+/* expandable detail */
+.exp-detail {
+  display: none;
+  padding: 0 0 2.5rem 11.5rem; /* align with content col */
+}
+.exp-item.open .exp-detail { display: block; }
+
+.exp-bullets { list-style: none; margin-bottom: 1.5rem; }
+.exp-bullets li {
+  font-size: 0.9rem;
+  color: var(--muted);
+  padding: 0.4rem 0;
+  padding-left: 1.3rem;
+  position: relative;
+  line-height: 1.6;
+  border-bottom: 1px dashed rgba(11,31,58,0.07);
+}
+.exp-bullets li:last-child { border: none; }
+.exp-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-size: 0.75rem; margin-top: 0.1rem; }
+
+.exp-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.5rem; }
+.exp-tag {
+  font-size: 0.67rem;
+  font-family: var(--mono);
+  letter-spacing: 0.08em;
+  background: var(--navy);
+  color: rgba(255,255,255,0.6);
+  padding: 0.25rem 0.65rem;
+}
+
+/* MEDIA inside experience */
+.exp-media { margin-top: 1.5rem; }
+.exp-media-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.exp-media-head h4 { font-size: 0.72rem; color: var(--slate); font-family: var(--mono); letter-spacing: 0.15em; text-transform: uppercase; }
+
+.media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.75rem; }
+
+.media-item {
+  position: relative;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.media-item:hover { border-color: var(--gold); }
+
+.media-item img {
+  width: 100%; aspect-ratio: 16/9; object-fit: cover;
+  display: block;
+  background: var(--off);
+}
+.media-item .media-placeholder {
+  width: 100%; aspect-ratio: 16/9;
+  background: var(--off);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--slate); font-size: 1.5rem;
+}
+.media-caption {
+  padding: 0.5rem 0.7rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+  background: var(--white);
+}
+.media-type {
+  position: absolute; top: 0.4rem; left: 0.4rem;
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em;
+  background: var(--navy); color: var(--gold);
+  padding: 0.15rem 0.4rem;
+}
+
+/* admin upload button inside exp */
+.exp-upload-btn {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--slate); border: 1px dashed var(--border);
+  padding: 0.5rem 1rem; cursor: pointer; background: none;
+  transition: all 0.2s;
+}
+.exp-upload-btn:hover { border-color: var(--gold); color: var(--gold); }
+.exp-upload-btn.admin-only { display: none; }
+body.admin-active .exp-upload-btn.admin-only { display: flex; }
+
+/* linked articles inside exp */
+.exp-articles { margin-top: 1.2rem; }
+.exp-article-item {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+.exp-article-item:last-child { border: none; }
+.exp-article-item .art-icon { color: var(--gold); font-size: 0.75rem; flex-shrink: 0; }
+.exp-article-item .art-title { color: var(--text); font-weight: 400; cursor: pointer; }
+.exp-article-item .art-title:hover { color: var(--gold); }
+.exp-article-item .art-date { font-family: var(--mono); font-size: 0.65rem; color: var(--slate); margin-left: auto; }
+
+/* ─── PROJECTS ─── */
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: var(--border);
+}
+.proj-card {
+  background: var(--white);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.25s;
+}
+.proj-card:hover { background: var(--gold-pale); }
+.proj-card:hover .proj-num { color: var(--gold); }
+
+.proj-num {
+  font-family: var(--serif);
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: rgba(11,31,58,0.06);
+  line-height: 1;
+  margin-bottom: 1rem;
+  transition: color 0.25s;
+}
+.proj-title { font-family: var(--serif); font-size: 1.1rem; color: var(--text); margin-bottom: 0.6rem; }
+.proj-desc { font-size: 0.83rem; line-height: 1.7; margin-bottom: 1rem; }
+.proj-foot {
+  font-family: var(--mono);
+  font-size: 0.63rem;
+  letter-spacing: 0.08em;
+  color: var(--slate);
+  text-transform: uppercase;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ─── BLOG ─── */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.post-card {
+  border: 1px solid var(--border);
+  background: var(--white);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.post-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(11,31,58,0.08); }
+.post-card-top {
+  background: var(--navy);
+  height: 4px;
+  background: linear-gradient(90deg, var(--navy) 60%, var(--gold) 100%);
+}
+.post-card-body { padding: 1.5rem; }
+.post-date { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; color: var(--slate); margin-bottom: 0.6rem; }
+.post-title { font-family: var(--serif); font-size: 1.05rem; color: var(--text); margin-bottom: 0.6rem; line-height: 1.35; }
+.post-excerpt { font-size: 0.82rem; line-height: 1.7; }
+.post-cat {
+  display: inline-block;
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--gold-dim);
+  color: var(--gold);
+  padding: 0.2rem 0.55rem;
+  margin-top: 0.9rem;
+  border: 1px solid rgba(196,154,60,0.2);
+}
+
+/* post modal */
+.modal-bg {
+  display: none; position: fixed; inset: 0; z-index: 400;
+  background: rgba(11,31,58,0.75); backdrop-filter: blur(6px);
+  align-items: center; justify-content: center; padding: 2rem;
+}
+.modal-bg.open { display: flex; }
+.modal-box {
+  background: var(--white);
+  width: 100%; max-width: 680px; max-height: 88vh;
+  overflow-y: auto; position: relative;
+}
+.modal-header {
+  background: var(--navy);
+  padding: 2rem 2.5rem;
+}
+.modal-header .eyebrow { margin-bottom: 0.5rem; display: block; }
+.modal-title { color: var(--white); font-family: var(--serif); font-size: 1.8rem; font-weight: 400; }
+.modal-meta { font-family: var(--mono); font-size: 0.68rem; color: rgba(255,255,255,0.4); margin-top: 0.5rem; }
+.modal-body { padding: 2.5rem; }
+.modal-body p { color: var(--muted); margin-bottom: 1.2rem; line-height: 1.8; font-size: 0.95rem; }
+.modal-body h3 { font-family: var(--serif); color: var(--text); margin: 1.5rem 0 0.5rem; }
+.modal-close {
+  position: absolute; top: 1.2rem; right: 1.5rem;
+  background: rgba(255,255,255,0.1); border: none;
+  color: #fff; width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 1rem;
+}
+.modal-close:hover { background: var(--gold); color: var(--navy); }
+
+/* ─── CONTACT ─── */
+#contact { background: var(--navy); }
+#contact .section-head h2 { color: var(--white); }
+#contact .section-head .eyebrow { color: var(--gold); }
+#contact p { color: rgba(255,255,255,0.5); }
+
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.c-link {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-w);
+  color: rgba(255,255,255,0.65);
+  font-size: 0.88rem;
+  transition: color 0.2s;
+}
+.c-link:hover { color: var(--gold); }
+.c-icon {
+  width: 34px; height: 34px;
+  border: 1px solid var(--border-w);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; flex-shrink: 0;
+  font-family: var(--mono);
+  color: var(--gold);
+}
+.c-form label {
+  display: block;
+  font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--gold);
+  margin: 1rem 0 0.35rem;
+}
+.c-form input, .c-form textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border-w);
+  padding: 0.7rem 0.9rem;
+  color: var(--white);
+  font-family: var(--sans); font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.c-form input:focus, .c-form textarea:focus { border-color: var(--gold); }
+.c-form textarea { resize: vertical; min-height: 100px; }
+.c-submit {
+  width: 100%; margin-top: 1.2rem;
+  background: var(--gold); color: var(--navy);
+  border: none; padding: 0.85rem;
+  font-family: var(--sans); font-size: 0.82rem;
+  font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  cursor: pointer; transition: opacity 0.2s;
+}
+.c-submit:hover { opacity: 0.85; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: #060E1A;
+  padding: 1.5rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+footer p { font-size: 0.72rem; color: rgba(255,255,255,0.22); font-family: var(--mono); letter-spacing: 0.06em; }
+.foot-links { display: flex; gap: 1.5rem; }
+.foot-links a { font-size: 0.72rem; color: rgba(255,255,255,0.25); font-family: var(--mono); letter-spacing: 0.06em; transition: color 0.2s; }
+.foot-links a:hover { color: var(--gold); }
+
+/* ─── ADMIN ─── */
+.adm-fab {
+  position: fixed; bottom: 2rem; right: 2rem;
+  width: 42px; height: 42px;
+  background: var(--navy);
+  border: 1px solid var(--border-w);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.35); font-size: 0.9rem;
+  cursor: pointer; z-index: 300; transition: all 0.2s;
+}
+.adm-fab:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+
+.adm-panel {
+  position: fixed; inset: 0; z-index: 500;
+  display: none; align-items: stretch; justify-content: flex-end;
+}
+.adm-panel.open { display: flex; }
+.adm-backdrop { position: absolute; inset: 0; background: rgba(11,31,58,0.6); backdrop-filter: blur(4px); }
+.adm-drawer {
+  position: relative; z-index: 1;
+  width: 400px; background: var(--white);
+  display: flex; flex-direction: column;
+  box-shadow: -8px 0 40px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+.adm-head {
+  background: var(--navy);
+  padding: 1.3rem 1.8rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.adm-head h3 { color: var(--white); font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; }
+.adm-head button { background: none; border: none; color: rgba(255,255,255,0.4); font-size: 1.1rem; cursor: pointer; }
+.adm-head button:hover { color: #fff; }
+
+.adm-login { padding: 2rem 1.8rem; }
+.adm-login h4 { font-family: var(--serif); font-size: 1.5rem; margin-bottom: 0.4rem; }
+.adm-login p { font-size: 0.83rem; margin-bottom: 1.5rem; }
+.adm-inp {
+  width: 100%; padding: 0.7rem 0.9rem;
+  border: 1px solid var(--border);
+  background: var(--off);
+  font-family: var(--sans); font-size: 0.88rem;
+  outline: none; margin-bottom: 0.7rem;
+  transition: border-color 0.2s;
+}
+.adm-inp:focus { border-color: var(--navy); }
+.adm-submit {
+  width: 100%; padding: 0.8rem;
+  background: var(--navy); color: #fff; border: none;
+  font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.08em;
+  text-transform: uppercase; cursor: pointer; transition: background 0.2s;
+}
+.adm-submit:hover { background: var(--gold); color: var(--navy); }
+.adm-err { color: #c0392b; font-size: 0.78rem; margin-top: 0.4rem; display: none; }
+.adm-hint { font-size: 0.72rem; color: var(--slate); margin-top: 0.8rem; }
+
+.adm-content { display: none; flex-direction: column; flex: 1; overflow: hidden; }
+.adm-content.vis { display: flex; }
+
+.adm-tabs { display: flex; background: var(--off); border-bottom: 1px solid var(--border); }
+.adm-tab {
+  flex: 1; padding: 0.75rem 0.5rem;
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em;
+  text-transform: uppercase; background: none; border: none;
+  color: var(--slate); border-bottom: 2px solid transparent;
+  cursor: pointer; transition: all 0.2s;
+}
+.adm-tab.act { color: var(--navy); border-bottom-color: var(--gold); background: var(--white); }
+
+.adm-body { padding: 1.5rem 1.8rem; overflow-y: auto; flex: 1; }
+
+.fg { margin-bottom: 1rem; }
+.fg label { display: block; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--slate); margin-bottom: 0.35rem; }
+.fg input, .fg textarea, .fg select {
+  width: 100%; padding: 0.6rem 0.85rem;
+  border: 1px solid var(--border); background: var(--off);
+  font-family: var(--sans); font-size: 0.86rem;
+  outline: none; transition: border-color 0.2s;
+}
+.fg input:focus, .fg textarea:focus { border-color: var(--navy); }
+.fg textarea { resize: vertical; min-height: 90px; }
+.fg select { cursor: pointer; }
+
+.f-submit {
+  background: var(--navy); color: #fff; border: none;
+  padding: 0.7rem 1.4rem; cursor: pointer;
+  font-family: var(--sans); font-size: 0.78rem;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  transition: background 0.2s;
+}
+.f-submit:hover { background: var(--gold); color: var(--navy); }
+
+.ok-msg {
+  background: #E8F5E9; color: #2e7d32; border-left: 3px solid #2e7d32;
+  padding: 0.6rem 0.9rem; font-size: 0.8rem;
+  margin-top: 0.75rem; display: none;
+}
+
+/* post list in admin */
+.adm-plist { margin-top: 1.5rem; }
+.adm-pi {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 0.82rem;
+}
+.adm-pi-t { font-weight: 500; color: var(--text); }
+.adm-pi-d { font-family: var(--mono); font-size: 0.65rem; color: var(--slate); }
+.adm-del { background: none; border: none; color: #c0392b; cursor: pointer; font-size: 0.75rem; padding: 0.2rem 0.4rem; }
+.adm-del:hover { background: #fdf0ef; }
+
+/* exp link form inside admin */
+.exp-sel { font-size: 0.82rem; }
+
+/* image upload area */
+.upload-zone {
+  border: 2px dashed var(--border);
+  padding: 1.5rem; text-align: center;
+  cursor: pointer; transition: border-color 0.2s;
+  margin-bottom: 0.75rem;
+}
+.upload-zone:hover { border-color: var(--gold); }
+.upload-zone input[type=file] { display: none; }
+.upload-zone p { font-size: 0.8rem; color: var(--slate); }
+.upload-zone .uz-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 860px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .hero-right { display: none; }
+  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .proj-grid { grid-template-columns: 1fr; gap: 1.5px; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .exp-header { grid-template-columns: 1fr 32px; gap: 1rem; }
+  .exp-period { display: none; }
+  .exp-detail { padding-left: 0; }
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; flex-direction: column; }
+  .adm-drawer { width: 100%; }
+  .hero-bar { flex-wrap: wrap; gap: 1rem; }
+  section { padding: 4rem 0; }
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform:translateY(0); } }
+.au { opacity:0; animation: fadeUp 0.65s ease forwards; }
+.au:nth-child(1){animation-delay:0.1s}
+.au:nth-child(2){animation-delay:0.22s}
+.au:nth-child(3){animation-delay:0.34s}
+.au:nth-child(4){animation-delay:0.46s}
+.au:nth-child(5){animation-delay:0.58s}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#home">Andrea <span>Aglietti</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#career-arc">Growth</a></li>
+    <li><a href="#worldmap">Map</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#blog">Notes</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://www.linkedin.com/in/andrea-aglietti/" target="_blank" class="nav-cta">LinkedIn ↗</a></li>
+  </ul>
+  <button class="nav-toggle" onclick="toggleMob()" aria-label="menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="#experience" onclick="closeMob()">Experience</a>
+  <a href="#projects" onclick="closeMob()">Projects</a>
+  <a href="#blog" onclick="closeMob()">Notes</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
+  <a href="https://www.linkedin.com/in/andrea-aglietti/" target="_blank">LinkedIn ↗</a>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow au">
+        <span class="eyebrow">Launch & Project Manager</span>
+      </div>
+      <h1 class="hero-name au">Andrea<br><em>Aglietti.</em></h1>
+      <p class="hero-role au">Automotive · Manufacturing · Strategy · Global</p>
+      <blockquote class="hero-tagline au">
+        Managing complexity at scale — plant launches, CAPEX portfolios, and digital transformation across 68 facilities worldwide.
+      </blockquote>
+      <div class="hero-pills au">
+        <span class="pill">Launch Mgmt</span>
+        <span class="pill">CAPEX Portfolio</span>
+        <span class="pill">PMO</span>
+        <span class="pill">Stakeholders</span>
+        <span class="pill">Automotive</span>
+        <span class="pill">CAPM · ITIL 4</span>
+        <span class="pill">Politecnico Milano</span>
+      </div>
+      <div class="hero-btns au">
+        <a href="#experience" class="btn btn-gold">View Experience</a>
+        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+        <a href="#" onclick="dlCV(event)" class="btn btn-ghost">↓ CV</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="kpi-grid">
+          <div class="kpi"><div class="kpi-val" id="k1">68</div><div class="kpi-lbl">Plants network</div></div>
+          <div class="kpi"><div class="kpi-val" id="k2">3M€</div><div class="kpi-lbl">CAPEX portfolio</div></div>
+          <div class="kpi"><div class="kpi-val" id="k3">5+</div><div class="kpi-lbl">Years in PM</div></div>
+          <div class="kpi"><div class="kpi-val" id="k4">4</div><div class="kpi-lbl">Countries</div></div>
+        </div>
+        <p class="hero-quote">
+          "Ever tried. Ever failed. No matter. Try Again. Fail again. Fail better."
+          <cite>— Samuel Beckett</cite>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="hero-bar wrap">
+    <div class="hero-bar-item"><span>📍</span><strong>Hagen, Germany</strong></div>
+    <div class="hero-bar-sep"></div>
+    <div class="hero-bar-item"><span>🏢</span><strong>Adler Pelzer Group</strong></div>
+    <div class="hero-bar-sep"></div>
+    <div class="hero-bar-item"><span>🎓</span><strong>Politecnico di Milano</strong></div>
+    <div class="hero-bar-sep"></div>
+    <div class="hero-bar-item"><span>🌐</span><strong>IT · EN · ES · DE</strong></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Profile</span>
+      <h2>Structured. Credible.<br>Internationally grounded.</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p class="about-lead">Management Engineering graduate from Politecnico di Milano, with a career at the crossroads of industrial execution, corporate strategy, and digital transformation.</p>
+        <div class="about-body">
+          <p>I thrive where complexity is highest — coordinating plant launches across continents, governing CAPEX portfolios from feasibility to benefit tracking, and aligning stakeholders from factory floor to boardroom.</p>
+          <p>Before the corporate world, I co-founded a tech startup and led it as CEO for three years. I also refereed 200+ football matches — which proved to be an unplanned but intense school of real-time decision-making and stakeholder management.</p>
+          <p>Member of <strong>NOVA</strong> top talent community and <strong>Global Shapers</strong> (World Economic Forum), contributing to sustainability projects in NRW.</p>
+        </div>
+        <div class="chip-row">
+          <span class="chip">Project Management</span>
+          <span class="chip">PMO</span>
+          <span class="chip">Business Analysis</span>
+          <span class="chip">Process Improvement</span>
+          <span class="chip">Automation Feasibility</span>
+          <span class="chip">Data Analysis</span>
+          <span class="chip">Stakeholder Mgmt</span>
+          <span class="chip">Leadership</span>
+        </div>
+      </div>
+      <div class="about-aside">
+        <div class="aside-block">
+          <h4>Languages</h4>
+          <div class="aside-row"><span class="name">Italian</span><span class="val">Native</span></div>
+          <div class="aside-row"><span class="name">English</span><span class="val">C1 · Fluent</span></div>
+          <div class="aside-row"><span class="name">Spanish</span><span class="val">C1 · Fluent</span></div>
+          <div class="aside-row"><span class="name">German</span><span class="val">A2 · Learning</span></div>
+        </div>
+        <div class="aside-block">
+          <h4>Certifications</h4>
+          <div class="cert-line">PMI — Certified Associate in Project Management (CAPM) · 2024</div>
+          <div class="cert-line">ITIL 4 Foundation · 2024</div>
+        </div>
+        <div class="aside-block">
+          <h4>Education</h4>
+          <div class="cert-line">MSc Management Engineering — Politecnico di Milano · 2021–2023</div>
+          <div class="cert-line">Exchange — Instituto Tecnológico de Buenos Aires · 2022–2023</div>
+          <div class="cert-line">Visiting Scholar — Mines ParisTech · 2023</div>
+        </div>
+        <div class="aside-block">
+          <h4>Communities</h4>
+          <div class="cert-line">NOVA Top Talent · 2024–Present</div>
+          <div class="cert-line">Global Shapers — WEF · 2025–Present</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER ARC -->
+<section id="career-arc" style="padding:5rem 0; background:var(--white);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Traiettoria</span>
+      <h2>Da studente a<br><em style="font-style:italic;color:var(--gold);">Program Manager strategico</em></h2>
+      <div class="rule"></div>
+      <p style="margin-top:1rem;font-size:0.9rem;max-width:480px;">Clicca su ogni punto dell'arco per i dettagli · 2018 → oggi</p>
+    </div>
+
+    <!-- ARC SVG -->
+    <div style="width:100%;position:relative;margin-bottom:2rem;">
+      <svg id="arcSvg" width="100%" viewBox="0 0 680 280" role="img" aria-label="Arco di carriera di Andrea Aglietti">
+        <title>Career arc di Andrea Aglietti</title>
+        <defs>
+          <marker id="arcArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </marker>
+          <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%"   stop-color="#0B1F3A" stop-opacity="0.5"/>
+            <stop offset="50%"  stop-color="#1A3558" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="#C49A3C" stop-opacity="1"/>
+          </linearGradient>
+          <linearGradient id="fillGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%"   stop-color="#0B1F3A" stop-opacity="0.03"/>
+            <stop offset="100%" stop-color="#C49A3C" stop-opacity="0.07"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Grid verticals -->
+        <line x1="60"  y1="36" x2="60"  y2="238" stroke="#0B1F3A" stroke-width="0.4" stroke-opacity="0.12" stroke-dasharray="3 5"/>
+        <line x1="180" y1="36" x2="180" y2="238" stroke="#0B1F3A" stroke-width="0.4" stroke-opacity="0.12" stroke-dasharray="3 5"/>
+        <line x1="300" y1="36" x2="300" y2="238" stroke="#0B1F3A" stroke-width="0.4" stroke-opacity="0.12" stroke-dasharray="3 5"/>
+        <line x1="420" y1="36" x2="420" y2="238" stroke="#0B1F3A" stroke-width="0.4" stroke-opacity="0.12" stroke-dasharray="3 5"/>
+        <line x1="540" y1="36" x2="540" y2="238" stroke="#0B1F3A" stroke-width="0.4" stroke-opacity="0.12" stroke-dasharray="3 5"/>
+        <line x1="640" y1="36" x2="640" y2="238" stroke="#0B1F3A" stroke-width="0.4" stroke-opacity="0.12" stroke-dasharray="3 5"/>
+
+        <!-- Level labels (left) -->
+        <text x="26" y="48"  font-size="8" fill="#8A96A8" text-anchor="middle" font-family="'Courier Prime',monospace" letter-spacing="0.06em">SENIOR</text>
+        <text x="26" y="113" font-size="8" fill="#8A96A8" text-anchor="middle" font-family="'Courier Prime',monospace" letter-spacing="0.06em">MID</text>
+        <text x="26" y="178" font-size="8" fill="#8A96A8" text-anchor="middle" font-family="'Courier Prime',monospace" letter-spacing="0.06em">JUNIOR</text>
+        <text x="26" y="235" font-size="8" fill="#8A96A8" text-anchor="middle" font-family="'Courier Prime',monospace" letter-spacing="0.06em">EDU</text>
+
+        <!-- Horizontal reference lines -->
+        <line x1="44" y1="44"  x2="660" y2="44"  stroke="#0B1F3A" stroke-width="0.4" stroke-opacity="0.1"/>
+        <line x1="44" y1="109" x2="660" y2="109" stroke="#0B1F3A" stroke-width="0.4" stroke-opacity="0.1"/>
+        <line x1="44" y1="174" x2="660" y2="174" stroke="#0B1F3A" stroke-width="0.4" stroke-opacity="0.1"/>
+        <line x1="44" y1="232" x2="660" y2="232" stroke="#0B1F3A" stroke-width="0.4" stroke-opacity="0.1"/>
+
+        <!-- Year labels -->
+        <text x="60"  y="255" font-size="8.5" fill="#8A96A8" text-anchor="middle" font-family="'Courier Prime',monospace">2018</text>
+        <text x="180" y="255" font-size="8.5" fill="#8A96A8" text-anchor="middle" font-family="'Courier Prime',monospace">2020</text>
+        <text x="300" y="255" font-size="8.5" fill="#8A96A8" text-anchor="middle" font-family="'Courier Prime',monospace">2021</text>
+        <text x="420" y="255" font-size="8.5" fill="#8A96A8" text-anchor="middle" font-family="'Courier Prime',monospace">2023</text>
+        <text x="540" y="255" font-size="8.5" fill="#8A96A8" text-anchor="middle" font-family="'Courier Prime',monospace">2024</text>
+        <text x="640" y="255" font-size="8.5" fill="#C49A3C" text-anchor="middle" font-family="'Courier Prime',monospace" font-weight="600">OGGI</text>
+
+        <!-- Fill under arc -->
+        <path id="caFill"
+          d="M60,232 C100,222 140,208 180,198 C230,184 265,170 300,155 C340,138 375,120 420,98 C460,78 495,63 540,52 C580,43 610,40 640,38 L640,232 Z"
+          fill="url(#fillGrad)" opacity="0" style="transition:opacity 1.5s ease;"/>
+
+        <!-- Main arc -->
+        <path id="caArc"
+          d="M60,232 C100,222 140,208 180,198 C230,184 265,170 300,155 C340,138 375,120 420,98 C460,78 495,63 540,52 C580,43 610,40 640,38"
+          fill="none" stroke="url(#arcGrad)" stroke-width="2.5" stroke-linecap="round"
+          stroke-dasharray="1100" stroke-dashoffset="1100"
+          marker-end="url(#arcArrow)"/>
+
+        <!-- Milestone dots -->
+        <g id="caDot0" style="cursor:pointer;opacity:0;" onclick="arcSelect(0)">
+          <circle cx="60"  cy="232" r="6"  fill="var(--navy,#0B1F3A)" stroke="#C49A3C" stroke-width="1.5"/>
+          <circle cx="60"  cy="232" r="14" fill="transparent"/>
+        </g>
+        <g id="caDot1" style="cursor:pointer;opacity:0;" onclick="arcSelect(1)">
+          <circle cx="180" cy="198" r="6"  fill="var(--navy,#0B1F3A)" stroke="#C49A3C" stroke-width="1.5"/>
+          <circle cx="180" cy="198" r="14" fill="transparent"/>
+        </g>
+        <g id="caDot2" style="cursor:pointer;opacity:0;" onclick="arcSelect(2)">
+          <circle cx="300" cy="155" r="6"  fill="var(--navy,#0B1F3A)" stroke="#C49A3C" stroke-width="1.5"/>
+          <circle cx="300" cy="155" r="14" fill="transparent"/>
+        </g>
+        <g id="caDot3" style="cursor:pointer;opacity:0;" onclick="arcSelect(3)">
+          <circle cx="420" cy="98"  r="7"  fill="#122847" stroke="#C49A3C" stroke-width="2"/>
+          <circle cx="420" cy="98"  r="14" fill="transparent"/>
+        </g>
+        <g id="caDot4" style="cursor:pointer;opacity:0;" onclick="arcSelect(4)">
+          <circle cx="540" cy="52"  r="7"  fill="#1A3558" stroke="#C49A3C" stroke-width="2"/>
+          <circle cx="540" cy="52"  r="14" fill="transparent"/>
+        </g>
+        <g id="caDot5" style="cursor:pointer;opacity:0;" onclick="arcSelect(5)">
+          <circle cx="640" cy="38"  r="9"  fill="#C49A3C" stroke="#C49A3C" stroke-width="2"/>
+          <circle id="caPulse" cx="640" cy="38" r="9" fill="none" stroke="#C49A3C" stroke-width="1.5" opacity="0.5"/>
+          <circle cx="640" cy="38"  r="18" fill="transparent"/>
+        </g>
+
+        <!-- Dot labels -->
+        <text id="caLbl0" x="60"  y="248" font-size="8.5" fill="#8A96A8" text-anchor="middle" font-family="'Outfit',sans-serif" opacity="0">Università</text>
+        <text id="caLbl1" x="180" y="213" font-size="8.5" fill="#8A96A8" text-anchor="middle" font-family="'Outfit',sans-serif" opacity="0">Internship</text>
+        <text id="caLbl2" x="300" y="144" font-size="8.5" fill="#8A96A8" text-anchor="middle" font-family="'Outfit',sans-serif" opacity="0">CEO Startup</text>
+        <text id="caLbl3" x="420" y="115" font-size="8.5" fill="#8A96A8" text-anchor="middle" font-family="'Outfit',sans-serif" opacity="0">Deloitte BA</text>
+        <text id="caLbl4" x="540" y="68"  font-size="8.5" fill="#8A96A8" text-anchor="middle" font-family="'Outfit',sans-serif" opacity="0">Adler Pelzer</text>
+        <text id="caLbl5" x="640" y="24"  font-size="8.5" fill="#C49A3C" text-anchor="middle" font-family="'Courier Prime',monospace" font-weight="700" letter-spacing="0.12em" opacity="0">NOW</text>
+      </svg>
+    </div>
+
+    <!-- Milestone detail panel -->
+    <div id="arcDetail" style="display:none;border-left:3px solid var(--gold);padding:1.2rem 1.5rem;background:var(--off);margin-bottom:2rem;position:relative;animation:arcFade 0.3s ease;">
+      <button onclick="document.getElementById('arcDetail').style.display='none'" style="position:absolute;top:0.8rem;right:1rem;background:none;border:none;color:var(--slate);cursor:pointer;font-size:1.1rem;">✕</button>
+      <div style="font-family:var(--serif);font-size:1.25rem;color:var(--text);margin-bottom:0.2rem;" id="arcRole"></div>
+      <div style="font-size:0.75rem;font-weight:600;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.7rem;" id="arcCompany"></div>
+      <p style="font-size:0.88rem;line-height:1.7;" id="arcBody"></p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.8rem;" id="arcTags"></div>
+    </div>
+
+    <!-- KPI row -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-bottom:2.5rem;">
+      <div class="arc-kpi" style="background:var(--white);padding:1.5rem;text-align:center;">
+        <div style="font-family:var(--serif);font-size:2.2rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:0.3rem;">5+</div>
+        <div style="font-size:0.72rem;color:var(--slate);letter-spacing:0.05em;">Anni esperienza</div>
+      </div>
+      <div class="arc-kpi" style="background:var(--white);padding:1.5rem;text-align:center;">
+        <div style="font-family:var(--serif);font-size:2.2rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:0.3rem;">3M€</div>
+        <div style="font-size:0.72rem;color:var(--slate);letter-spacing:0.05em;">CAPEX portfolio</div>
+      </div>
+      <div class="arc-kpi" style="background:var(--white);padding:1.5rem;text-align:center;">
+        <div style="font-family:var(--serif);font-size:2.2rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:0.3rem;">68</div>
+        <div style="font-size:0.72rem;color:var(--slate);letter-spacing:0.05em;">Plant network</div>
+      </div>
+      <div class="arc-kpi" style="background:var(--white);padding:1.5rem;text-align:center;">
+        <div style="font-family:var(--serif);font-size:2.2rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:0.3rem;">4</div>
+        <div style="font-size:0.72rem;color:var(--slate);letter-spacing:0.05em;">Paesi</div>
+      </div>
+    </div>
+
+    <!-- Responsibility bars -->
+    <div style="margin-bottom:0.5rem;font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--slate);">Crescita delle responsabilità</div>
+    <div style="display:flex;flex-direction:column;gap:0.6rem;" id="arcBars">
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div style="font-size:0.8rem;color:var(--muted);width:150px;flex-shrink:0;text-align:right;">Budget ownership</div>
+        <div style="flex:1;height:5px;background:var(--border);overflow:hidden;">
+          <div class="arc-bar" data-w="90" style="height:100%;background:linear-gradient(90deg,var(--navy),var(--gold));width:0%;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);"></div>
+        </div>
+        <div style="font-size:0.72rem;color:var(--gold);width:30px;text-align:right;font-family:var(--mono);">90%</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div style="font-size:0.8rem;color:var(--muted);width:150px;flex-shrink:0;text-align:right;">Stakeholder scope</div>
+        <div style="flex:1;height:5px;background:var(--border);overflow:hidden;">
+          <div class="arc-bar" data-w="85" style="height:100%;background:linear-gradient(90deg,var(--navy),var(--gold));width:0%;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);"></div>
+        </div>
+        <div style="font-size:0.72rem;color:var(--gold);width:30px;text-align:right;font-family:var(--mono);">85%</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div style="font-size:0.8rem;color:var(--muted);width:150px;flex-shrink:0;text-align:right;">Team leadership</div>
+        <div style="flex:1;height:5px;background:var(--border);overflow:hidden;">
+          <div class="arc-bar" data-w="80" style="height:100%;background:linear-gradient(90deg,var(--navy),var(--gold));width:0%;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);"></div>
+        </div>
+        <div style="font-size:0.72rem;color:var(--gold);width:30px;text-align:right;font-family:var(--mono);">80%</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div style="font-size:0.8rem;color:var(--muted);width:150px;flex-shrink:0;text-align:right;">International scope</div>
+        <div style="flex:1;height:5px;background:var(--border);overflow:hidden;">
+          <div class="arc-bar" data-w="95" style="height:100%;background:linear-gradient(90deg,var(--navy),var(--gold));width:0%;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);"></div>
+        </div>
+        <div style="font-size:0.72rem;color:var(--gold);width:30px;text-align:right;font-family:var(--mono);">95%</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div style="font-size:0.8rem;color:var(--muted);width:150px;flex-shrink:0;text-align:right;">Strategic complexity</div>
+        <div style="flex:1;height:5px;background:var(--border);overflow:hidden;">
+          <div class="arc-bar" data-w="88" style="height:100%;background:linear-gradient(90deg,var(--navy),var(--gold));width:0%;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);"></div>
+        </div>
+        <div style="font-size:0.72rem;color:var(--gold);width:30px;text-align:right;font-family:var(--mono);">88%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+@keyframes arcFade { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+</style>
+
+<script>
+var arcMilestones = [
+  { role:"Laurea Ingegneria Gestionale", company:"Univ. Modena & Reggio · Politecnico di Milano", body:"Percorso accademico in ingegneria gestionale con MSc a Milano specializzato in Complex Project Business. Exchange semester ITBA Buenos Aires, Visiting Scholar Mines ParisTech.", tags:["Project Management","Engineering","Buenos Aires","Mines ParisTech"] },
+  { role:"ML & Data Internship", company:"Coopservice · Reggio Emilia · 2021", body:"Prima esperienza professionale: design di algoritmi ML e KPI per l'ottimizzazione delle risorse umane e cost management. Strumenti: Python, MySQL, Power BI, Tableau.", tags:["Python","MySQL","Power BI","Tableau","Machine Learning"] },
+  { role:"CEO & Co-Founder", company:"Vaia Innovations · Firenze · 2021–2024", body:"Co-fondazione e gestione della startup per 3 anni. Lancio di due prodotti: Breakily (SaaS mense scolastiche) e Scripta (social media blockchain). Gestione team, fundraising, relazioni clienti.", tags:["Startup","Product Strategy","Leadership","Blockchain","SaaS"] },
+  { role:"Business Analyst — PMO", company:"Deloitte · Milano · 2023–2024", body:"PMO oversight per cloud transformation enterprise. Gestione autonoma di 3 progetti in parallelo con rendicontazione a Board of Directors e senior leadership. Consulting e PMO operations.", tags:["PMO","Cloud Transformation","Board Reporting","Consulting","Agile"] },
+  { role:"Corporate Launches & Projects Manager", company:"Adler Pelzer Group · Hagen · 2024–Oggi", body:"Global Graduate Program automotive. Lancio nuovi impianti su rete da 68 plant, portfolio CAPEX 3M€ per automazione, co-lead plant Marocco, programma digitalizzazione cloud.", tags:["Launch Management","CAPEX Portfolio","Automotive","Morocco","Digitalization"] },
+  { role:"Launch Engineer — Strategic PM", company:"Adler Pelzer Group · Hagen · Oggi", body:"Ruolo attuale: gestione di progetti strategici di portata globale dalla fattibilità all'esecuzione. Coordinamento con stakeholder governativi, industriali e corporate in 4 paesi.", tags:["Strategic PM","Global Network","Stakeholders","Industrial Launch","CAPM · ITIL 4"] }
+];
+
+function arcSelect(idx) {
+  var m = arcMilestones[idx];
+  document.getElementById('arcRole').textContent = m.role;
+  document.getElementById('arcCompany').textContent = m.company;
+  document.getElementById('arcBody').textContent = m.body;
+  document.getElementById('arcTags').innerHTML = m.tags.map(function(t){ return '<span style="font-size:0.68rem;font-family:var(--mono);letter-spacing:0.08em;background:var(--navy);color:rgba(255,255,255,0.65);padding:0.2rem 0.6rem;">'+ t +'</span>'; }).join('');
+  var d = document.getElementById('arcDetail');
+  d.style.display = 'block';
+  d.style.animation = 'none';
+  setTimeout(function(){ d.style.animation = 'arcFade 0.3s ease'; }, 10);
+}
+
+(function initCareerArc(){
+  var path = document.getElementById('caArc');
+  var fill = document.getElementById('caFill');
+  if (!path) return;
+
+  var observer = new IntersectionObserver(function(entries){
+    if (entries[0].isIntersecting) {
+      observer.disconnect();
+      runArcAnimation();
+    }
+  }, { threshold: 0.3 });
+  observer.observe(path);
+
+  function runArcAnimation() {
+    var start = null;
+    var dur = 1800;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var e = 1 - Math.pow(1 - p, 3);
+      path.style.strokeDashoffset = 1100 * (1 - e);
+      fill.style.opacity = e * 0.7;
+      if (p < 1) { requestAnimationFrame(step); }
+      else { showDots(); }
+    }
+    requestAnimationFrame(step);
+  }
+
+  function showDots() {
+    for (var i = 0; i < 6; i++) {
+      (function(idx){
+        setTimeout(function(){
+          var d = document.getElementById('caDot' + idx);
+          var l = document.getElementById('caLbl' + idx);
+          if (d) d.style.opacity = '1';
+          if (l) l.style.opacity = '1';
+          if (idx === 5) startPulse();
+        }, idx * 150);
+      })(i);
+    }
+    setTimeout(function(){
+      document.querySelectorAll('.arc-bar').forEach(function(b){
+        b.style.width = b.getAttribute('data-w') + '%';
+      });
+    }, 500);
+  }
+
+  function startPulse() {
+    var p = document.getElementById('caPulse');
+    if (!p) return;
+    var r = 9, growing = true;
+    setInterval(function(){
+      if (growing) { r += 0.25; if (r >= 16) growing = false; }
+      else { r -= 0.25; if (r <= 9) growing = true; }
+      p.setAttribute('r', r.toFixed(1));
+      p.setAttribute('opacity', ((1-(r-9)/7)*0.45).toFixed(2));
+    }, 30);
+  }
+})();
+</script>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Career</span>
+      <h2>Experience</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="exp-list" id="expList">
+
+      <!-- EXP 1 -->
+      <div class="exp-item" data-id="exp1">
+        <div class="exp-header" onclick="toggleExp('exp1')">
+          <div class="exp-period">
+            <strong>Adler Pelzer Group</strong>
+            Oct 2024 — Present<br>Hagen, Germany
+          </div>
+          <div class="exp-main">
+            <div class="exp-role">Corporate Launches & Projects Manager</div>
+            <div class="exp-company">Adler Pelzer Group · Global Graduate Program</div>
+            <p class="exp-summary">Leading corporate launch management for new plants across a 68-plant global automotive network, and managing a 3M€ CAPEX automation portfolio.</p>
+          </div>
+          <button class="exp-toggle">+</button>
+        </div>
+        <div class="exp-detail">
+          <ul class="exp-bullets">
+            <li>Lead full launch lifecycle for new manufacturing plants — from start-up and ramp-up to handover to steady-state operations.</li>
+            <li>Manage a 3M€ CAPEX portfolio to automate key production processes, from feasibility and business case to implementation and benefit tracking.</li>
+            <li>Co-lead the launch of a new plant in Morocco, managing relationships with local, governmental and industrial stakeholders.</li>
+            <li>Contribute to internal digitalization program: migration from legacy databases to cloud-based solutions.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">Launch Management</span>
+            <span class="exp-tag">CAPEX Portfolio</span>
+            <span class="exp-tag">Stakeholders</span>
+            <span class="exp-tag">Automotive</span>
+            <span class="exp-tag">Digitalization</span>
+            <span class="exp-tag">Morocco</span>
+          </div>
+          <div class="exp-media" id="media-exp1">
+            <div class="exp-media-head">
+              <h4>📎 Media & Articles</h4>
+              <button class="exp-upload-btn admin-only" onclick="openMediaUpload('exp1')">+ Add</button>
+            </div>
+            <div class="media-grid" id="mediagrid-exp1"></div>
+            <div class="exp-articles" id="articles-exp1"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXP 2 -->
+      <div class="exp-item" data-id="exp2">
+        <div class="exp-header" onclick="toggleExp('exp2')">
+          <div class="exp-period">
+            <strong>Deloitte</strong>
+            Jan 2024 — Nov 2024<br>Milan, Italy
+          </div>
+          <div class="exp-main">
+            <div class="exp-role">Business Analyst — PMO & Digital Transformation</div>
+            <div class="exp-company">Deloitte · Strategy & Consulting</div>
+            <p class="exp-summary">PMO oversight for complex cloud transformation programs. Managed three concurrent strategic projects for enterprise clients with board-level reporting.</p>
+          </div>
+          <button class="exp-toggle">+</button>
+        </div>
+        <div class="exp-detail">
+          <ul class="exp-bullets">
+            <li>PMO oversight for strategic cloud transformation IT initiatives at enterprise scale.</li>
+            <li>Autonomously managed three concurrent projects: planning, deliverable execution, and client engagement.</li>
+            <li>Produced analyses and documentation for Board of Directors and senior leadership committees.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">PMO</span>
+            <span class="exp-tag">Cloud Transformation</span>
+            <span class="exp-tag">Consulting</span>
+            <span class="exp-tag">Board Reporting</span>
+            <span class="exp-tag">Agile</span>
+          </div>
+          <div class="exp-media" id="media-exp2">
+            <div class="exp-media-head">
+              <h4>📎 Media & Articles</h4>
+              <button class="exp-upload-btn admin-only" onclick="openMediaUpload('exp2')">+ Add</button>
+            </div>
+            <div class="media-grid" id="mediagrid-exp2"></div>
+            <div class="exp-articles" id="articles-exp2"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXP 3 -->
+      <div class="exp-item" data-id="exp3">
+        <div class="exp-header" onclick="toggleExp('exp3')">
+          <div class="exp-period">
+            <strong>Deloitte</strong>
+            Sep 2023 — Jan 2024<br>Milan, Italy
+          </div>
+          <div class="exp-main">
+            <div class="exp-role">Junior Project Manager</div>
+            <div class="exp-company">Deloitte · Strategy & Consulting</div>
+            <p class="exp-summary">Supporting complex transformation programs at enterprise clients, gaining initial consulting and PMO experience.</p>
+          </div>
+          <button class="exp-toggle">+</button>
+        </div>
+        <div class="exp-detail">
+          <ul class="exp-bullets">
+            <li>Supported project planning and deliverable execution for enterprise transformation clients.</li>
+            <li>Contributed to PMO operations and consulting deliverables for senior client stakeholders.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">Project Management</span>
+            <span class="exp-tag">Consulting</span>
+          </div>
+          <div class="exp-media" id="media-exp3">
+            <div class="exp-media-head">
+              <h4>📎 Media & Articles</h4>
+              <button class="exp-upload-btn admin-only" onclick="openMediaUpload('exp3')">+ Add</button>
+            </div>
+            <div class="media-grid" id="mediagrid-exp3"></div>
+            <div class="exp-articles" id="articles-exp3"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXP 4 -->
+      <div class="exp-item" data-id="exp4">
+        <div class="exp-header" onclick="toggleExp('exp4')">
+          <div class="exp-period">
+            <strong>Vaia Innovations</strong>
+            Jan 2021 — Sep 2024<br>Florence, Italy
+          </div>
+          <div class="exp-main">
+            <div class="exp-role">CEO & Co-Founder</div>
+            <div class="exp-company">Vaia Innovations · Startup</div>
+            <p class="exp-summary">Co-founded and led a digital transformation startup from zero to product launch — two live products, 3+ years of leadership, and a full entrepreneurial cycle.</p>
+          </div>
+          <button class="exp-toggle">+</button>
+        </div>
+        <div class="exp-detail">
+          <ul class="exp-bullets">
+            <li>Built Breakily — a SaaS application for school food sales management.</li>
+            <li>Built Scripta — a blockchain-based social media platform.</li>
+            <li>Led product strategy, team building, fundraising, and customer relations across 3+ years.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">Entrepreneurship</span>
+            <span class="exp-tag">Product Strategy</span>
+            <span class="exp-tag">Team Leadership</span>
+            <span class="exp-tag">Blockchain</span>
+            <span class="exp-tag">SaaS</span>
+          </div>
+          <div class="exp-media" id="media-exp4">
+            <div class="exp-media-head">
+              <h4>📎 Media & Articles</h4>
+              <button class="exp-upload-btn admin-only" onclick="openMediaUpload('exp4')">+ Add</button>
+            </div>
+            <div class="media-grid" id="mediagrid-exp4"></div>
+            <div class="exp-articles" id="articles-exp4"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXP 5 -->
+      <div class="exp-item" data-id="exp5">
+        <div class="exp-header" onclick="toggleExp('exp5')">
+          <div class="exp-period">
+            <strong>Coopservice</strong>
+            Jan 2021 — Jun 2021<br>Reggio Emilia, Italy
+          </div>
+          <div class="exp-main">
+            <div class="exp-role">ML & Data Internship</div>
+            <div class="exp-company">Coopservice</div>
+            <p class="exp-summary">Designed machine learning algorithms and KPIs for HR management and cost optimization using Python, MySQL, Power BI and Tableau.</p>
+          </div>
+          <button class="exp-toggle">+</button>
+        </div>
+        <div class="exp-detail">
+          <ul class="exp-bullets">
+            <li>Designed ML algorithms for optimization of human resources and cost items.</li>
+            <li>Built KPI dashboards in Power BI and Tableau for management reporting.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">Python</span>
+            <span class="exp-tag">MySQL</span>
+            <span class="exp-tag">Power BI</span>
+            <span class="exp-tag">Tableau</span>
+            <span class="exp-tag">Machine Learning</span>
+          </div>
+          <div class="exp-media" id="media-exp5">
+            <div class="exp-media-head">
+              <h4>📎 Media & Articles</h4>
+              <button class="exp-upload-btn admin-only" onclick="openMediaUpload('exp5')">+ Add</button>
+            </div>
+            <div class="media-grid" id="mediagrid-exp5"></div>
+            <div class="exp-articles" id="articles-exp5"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Selected Work</span>
+      <h2>Projects</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="proj-grid" id="projGrid">
+      <div class="proj-card">
+        <div class="proj-num">01</div>
+        <div class="proj-title">Greenfield Plant Launch — Morocco</div>
+        <p class="proj-desc">Full launch lifecycle co-lead: governmental stakeholder alignment, ramp-up coordination, and steady-state handover.</p>
+        <div class="proj-foot">APG · 2024–2025 · Automotive</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">02</div>
+        <div class="proj-title">3M€ CAPEX Automation Portfolio</div>
+        <p class="proj-desc">Feasibility to benefit tracking — end-to-end management of an industrial automation investment portfolio.</p>
+        <div class="proj-foot">APG · 2024–Present · Automation</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">03</div>
+        <div class="proj-title">Cloud Transformation PMO</div>
+        <p class="proj-desc">Governed a multi-workstream cloud transformation with three concurrent projects and board-level reporting.</p>
+        <div class="proj-foot">Deloitte · 2024 · Digital</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">04</div>
+        <div class="proj-title">Legacy → Cloud Migration</div>
+        <p class="proj-desc">Internal digitalization program driving APG's migration from legacy data infrastructure to modern cloud platforms.</p>
+        <div class="proj-foot">APG · 2024–Present · IT</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">05</div>
+        <div class="proj-title">Vaia — 0→1 Startup Build</div>
+        <p class="proj-desc">Built two live products from zero: Breakily (SaaS) and Scripta (blockchain social media) across 3+ years as CEO.</p>
+        <div class="proj-foot">Vaia Innovations · 2021–2024 · Startup</div>
+      </div>
+      <!-- extra projects from admin injected here -->
+    </div>
+  </div>
+</section>
+
+<!-- WORLD MAP -->
+<section id="worldmap" style="padding:5rem 0;background:var(--navy);position:relative;overflow:hidden;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" style="color:var(--gold);">Presenza globale</span>
+      <h2 style="color:var(--white);">Field experience <em style="color:var(--gold);">nel mondo</em></h2>
+      <div class="rule"></div>
+      <p style="color:rgba(255,255,255,0.45);margin-top:0.75rem;font-size:0.88rem;">Clicca su ogni pin per i dettagli &middot; <span id="mapAdminHint" style="display:none;color:var(--gold);">Admin: seleziona un pin per modificare foto e note</span></p>
+    </div>
+    <div style="position:relative;width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);overflow:hidden;" id="mapWrap">
+      <svg id="worldSvg" width="100%" viewBox="0 0 1000 520" style="display:block;" role="img" aria-label="Mappa esperienze globali Andrea Aglietti">
+        <title>Mappa esperienze globali</title>
+        <g fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.13)" stroke-width="0.6">
+          <path d="M460,138 L472,124 L492,120 L514,124 L528,116 L540,122 L546,134 L548,146 L538,156 L526,164 L510,168 L494,172 L478,166 L462,160 L454,148 Z"/>
+          <path d="M446,132 L454,120 L462,126 L458,138 L448,142 Z"/>
+          <path d="M466,104 L478,92 L494,90 L504,98 L498,112 L482,118 L468,114 Z"/>
+          <path d="M490,160 L500,154 L508,162 L506,174 L498,180 L490,174 L486,166 Z"/>
+          <path d="M488,188 L510,184 L538,194 L556,230 L552,282 L532,324 L506,344 L480,334 L460,302 L454,262 L458,220 Z"/>
+          <path d="M96,102 L202,90 L262,100 L282,132 L272,172 L242,202 L202,212 L160,202 L120,182 L88,152 L84,122 Z"/>
+          <path d="M198,218 L232,212 L242,228 L226,244 L204,238 Z"/>
+          <path d="M218,254 L272,236 L304,256 L308,302 L296,362 L270,404 L240,414 L214,392 L200,352 L206,302 Z"/>
+          <path d="M510,82 L604,70 L704,76 L784,86 L824,102 L802,122 L752,126 L682,122 L622,118 L560,116 L520,108 Z"/>
+          <path d="M682,132 L744,120 L794,126 L814,146 L802,168 L772,176 L732,172 L700,162 L678,150 Z"/>
+          <path d="M812,130 L824,124 L832,132 L824,144 L812,148 Z"/>
+          <path d="M622,162 L662,156 L682,172 L676,202 L656,216 L630,210 L614,196 L612,176 Z"/>
+          <path d="M722,182 L762,176 L778,196 L762,216 L736,222 L718,206 Z"/>
+          <path d="M752,312 L824,300 L864,320 L868,362 L846,392 L806,402 L768,388 L748,356 L742,326 Z"/>
+          <path d="M560,162 L602,156 L616,166 L612,186 L592,194 L564,186 L554,172 Z"/>
+          <path d="M454,178 L482,172 L492,186 L482,202 L460,200 L448,186 Z"/>
+          <path d="M118,196 L176,190 L196,206 L186,226 L160,236 L128,228 L110,216 Z"/>
+          <path d="M308,62 L362,52 L392,62 L388,88 L356,96 L318,86 Z"/>
+          <path d="M494,138 L508,132 L514,140 L510,150 L496,152 L488,144 Z"/>
+        </g>
+        <g stroke="rgba(255,255,255,0.04)" stroke-width="0.5" fill="none">
+          <line x1="0" y1="130" x2="1000" y2="130"/>
+          <line x1="0" y1="260" x2="1000" y2="260"/>
+          <line x1="0" y1="390" x2="1000" y2="390"/>
+          <line x1="250" y1="0" x2="250" y2="520"/>
+          <line x1="500" y1="0" x2="500" y2="520"/>
+          <line x1="750" y1="0" x2="750" y2="520"/>
+        </g>
+        <g id="pinLayer"></g>
+      </svg>
+      <div id="mapTooltip" style="display:none;position:absolute;z-index:10;background:#0d2440;border:1px solid #C49A3C;max-width:270px;min-width:210px;pointer-events:none;">
+        <div id="ttImgWrap" style="display:none;width:100%;height:130px;overflow:hidden;">
+          <img id="ttImg" style="width:100%;height:130px;object-fit:cover;" src="" alt="">
+        </div>
+        <div style="padding:1rem 1.1rem 1.1rem;">
+          <div id="ttEye" style="font-family:'Courier Prime',monospace;font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:#C49A3C;margin-bottom:0.25rem;"></div>
+          <div id="ttTitle" style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:#fff;margin-bottom:0.35rem;line-height:1.2;"></div>
+          <div id="ttBody" style="font-size:0.75rem;color:rgba(255,255,255,0.52);line-height:1.6;"></div>
+          <div id="ttAdminZone" style="display:none;margin-top:0.8rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:0.7rem;"></div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:2rem;margin-top:1.2rem;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.72rem;color:rgba(255,255,255,0.38);">
+        <svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="5" fill="#C49A3C"/></svg>Esperienza / Progetto
+      </div>
+      <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.72rem;color:rgba(255,255,255,0.38);">
+        <svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="4.5" fill="none" stroke="#C49A3C" stroke-width="1.5"/></svg>Cliente / Visita
+      </div>
+      <span id="pinCount" style="margin-left:auto;font-family:'Courier Prime',monospace;font-size:0.65rem;color:rgba(255,255,255,0.22);"></span>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog" class="section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Working Journal</span>
+      <h2>Notes & Insights</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="blog-grid" id="blogGrid"></div>
+  </div>
+</section>
+
+<!-- POST MODAL -->
+<div class="modal-bg" id="postModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <span class="eyebrow" id="mTag"></span>
+      <h2 class="modal-title" id="mTitle"></h2>
+      <div class="modal-meta" id="mMeta"></div>
+    </div>
+    <div class="modal-body" id="mBody"></div>
+    <button class="modal-close" onclick="closePost()">✕</button>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Let's Talk</span>
+      <h2>Get in Touch</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <p style="margin-bottom:2rem;font-size:1rem;">Open to conversations with recruiters, hiring managers, and companies looking for structured, international project management expertise.</p>
+        <a href="mailto:andrea.aglietti99@gmail.com" class="c-link">
+          <span class="c-icon">@</span> andrea.aglietti99@gmail.com
+        </a>
+        <a href="tel:+393664572858" class="c-link">
+          <span class="c-icon">☎</span> +39 366 457 2858
+        </a>
+        <a href="https://www.linkedin.com/in/andrea-aglietti/" target="_blank" class="c-link">
+          <span class="c-icon">in</span> linkedin.com/in/andrea-aglietti
+        </a>
+        <a href="#" onclick="dlCV(event)" class="c-link">
+          <span class="c-icon">↓</span> Download CV
+        </a>
+      </div>
+      <div>
+        <form class="c-form" onsubmit="handleForm(event)">
+          <label>Name</label>
+          <input type="text" placeholder="Jane Smith" required>
+          <label>Email</label>
+          <input type="email" placeholder="jane@company.com" required>
+          <label>Message</label>
+          <textarea placeholder="I'd like to discuss..."></textarea>
+          <button type="submit" class="c-submit">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Andrea Aglietti · Hagen, Germany</p>
+  <div class="foot-links">
+    <a href="https://www.linkedin.com/in/andrea-aglietti/" target="_blank">LinkedIn</a>
+    <a href="#" onclick="dlCV(event)">CV Download</a>
+    <a href="#blog">Journal</a>
+  </div>
+</footer>
+
+<!-- Admin FAB -->
+<button class="adm-fab" onclick="openAdm()" title="Admin">⚙</button>
+
+<!-- MEDIA UPLOAD MODAL -->
+<div class="modal-bg" id="mediaModal">
+  <div class="modal-box" style="max-width:500px;">
+    <div class="modal-header">
+      <span class="eyebrow">Admin</span>
+      <h2 class="modal-title">Add Media / Article</h2>
+    </div>
+    <div class="modal-body">
+      <div class="fg">
+        <label>Type</label>
+        <select id="mediaType">
+          <option value="photo">Photo</option>
+          <option value="article">Link to Article / Post</option>
+        </select>
+      </div>
+      <div id="photoFields">
+        <div class="upload-zone" onclick="document.getElementById('photoFile').click()">
+          <div class="uz-icon">📷</div>
+          <p>Click to select image</p>
+          <input type="file" id="photoFile" accept="image/*" onchange="previewPhoto(event)">
+        </div>
+        <img id="photoPreview" style="display:none;width:100%;margin-bottom:0.75rem;max-height:200px;object-fit:cover;">
+        <div class="fg"><label>Caption</label><input type="text" id="photoCaption" placeholder="e.g. Plant visit, Morocco 2025"></div>
+      </div>
+      <div id="articleFields" style="display:none;">
+        <div class="fg"><label>Article Title</label><input type="text" id="artTitle" placeholder="Title of the article or post"></div>
+        <div class="fg"><label>URL (optional)</label><input type="text" id="artUrl" placeholder="https://..."></div>
+        <div class="fg"><label>Date</label><input type="text" id="artDate" placeholder="April 2025"></div>
+      </div>
+      <button class="f-submit" onclick="saveMedia()">Save →</button>
+      <div class="ok-msg" id="mediaOk">✓ Saved.</div>
+    </div>
+    <button class="modal-close" onclick="closeMediaModal()">✕</button>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="adm-panel" id="admPanel">
+  <div class="adm-backdrop" onclick="closeAdm()"></div>
+  <div class="adm-drawer">
+    <div class="adm-head">
+      <h3>Site Admin</h3>
+      <button onclick="closeAdm()">✕</button>
+    </div>
+
+    <!-- Login -->
+    <div class="adm-login" id="admLogin">
+      <h4>Sign In</h4>
+      <p>Access your dashboard to publish and edit content.</p>
+      <input class="adm-inp" type="text" id="admU" placeholder="Username">
+      <input class="adm-inp" type="password" id="admP" placeholder="Password">
+      <button class="adm-submit" onclick="doLogin()">Login →</button>
+      <div class="adm-err" id="admErr">Wrong credentials.</div>
+      <p class="adm-hint">Default: admin / aglietti2025</p>
+    </div>
+
+    <!-- Content -->
+    <div class="adm-content" id="admContent">
+      <div class="adm-tabs">
+        <button class="adm-tab act" onclick="swTab('articles')">Articles</button>
+        <button class="adm-tab" onclick="swTab('profile')">Profile</button>
+        <button class="adm-tab" onclick="swTab('projects')">Projects</button>
+        <button class="adm-tab" onclick="swTab('theme')">Theme</button>
+        <button class="adm-tab" onclick="swTab('media')">Media</button>
+      </div>
+
+      <!-- ARTICLES -->
+      <div class="adm-body" id="tab-articles">
+        <h4 style="font-family:var(--serif);font-size:1.2rem;margin-bottom:1rem;">New Article</h4>
+        <div class="fg"><label>Title</label><input type="text" id="nTitle" placeholder="Article title"></div>
+        <div class="fg">
+          <label>Category</label>
+          <select id="nTag">
+            <option>Launch Management</option>
+            <option>PMO</option>
+            <option>Lessons Learned</option>
+            <option>Automotive</option>
+            <option>Leadership</option>
+            <option>Strategy</option>
+            <option>Stakeholders</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Link this article to an Experience</label>
+          <select id="nExp" class="exp-sel">
+            <option value="">— None —</option>
+            <option value="exp1">Adler Pelzer Group</option>
+            <option value="exp2">Deloitte (BA)</option>
+            <option value="exp3">Deloitte (Jr PM)</option>
+            <option value="exp4">Vaia Innovations</option>
+            <option value="exp5">Coopservice</option>
+          </select>
+        </div>
+        <div class="fg"><label>Content</label><textarea id="nBody" placeholder="Write your article here..."></textarea></div>
+        <button class="f-submit" onclick="publishPost()">Publish →</button>
+        <div class="ok-msg" id="postOk">✓ Published.</div>
+        <div class="adm-plist" id="admPostList"></div>
+      </div>
+
+      <!-- PROFILE -->
+      <div class="adm-body" id="tab-profile" style="display:none;">
+        <h4 style="font-family:var(--serif);font-size:1.2rem;margin-bottom:1rem;">Edit Hero</h4>
+        <div class="fg"><label>Hero tagline</label><textarea id="eTagline">Managing complexity at scale — plant launches, CAPEX portfolios, and digital transformation across 68 facilities worldwide.</textarea></div>
+        <div class="fg"><label>KPI 1 — Value</label><input type="text" id="eK1" value="68"></div>
+        <div class="fg"><label>KPI 2 — Value</label><input type="text" id="eK2" value="3M€"></div>
+        <div class="fg"><label>KPI 3 — Value</label><input type="text" id="eK3" value="5+"></div>
+        <div class="fg"><label>KPI 4 — Value</label><input type="text" id="eK4" value="4"></div>
+        <button class="f-submit" onclick="saveProfile()">Save →</button>
+        <div class="ok-msg" id="profOk">✓ Saved.</div>
+      </div>
+
+      <!-- PROJECTS -->
+      <div class="adm-body" id="tab-projects" style="display:none;">
+        <h4 style="font-family:var(--serif);font-size:1.2rem;margin-bottom:1rem;">Add Project</h4>
+        <div class="fg"><label>Title</label><input type="text" id="pTitle" placeholder="Project name"></div>
+        <div class="fg"><label>Description</label><textarea id="pDesc" placeholder="What did you do?"></textarea></div>
+        <div class="fg"><label>Footer (Company · Year · Area)</label><input type="text" id="pFoot" placeholder="Company · Year · Area"></div>
+        <button class="f-submit" onclick="addProject()">Add →</button>
+        <div class="ok-msg" id="projOk">✓ Added.</div>
+      </div>
+
+
+      <!-- THEME -->
+      <div class="adm-body" id="tab-theme" style="display:none;">
+        <h4 style="font-family:var(--serif);font-size:1.2rem;margin-bottom:0.5rem;">Scegli lo stile del sito</h4>
+        <p style="font-size:0.8rem;color:var(--muted);margin-bottom:1.2rem;">3 temi professionali disponibili. Il cambio si applica immediatamente.</p>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;" id="themeList">
+          <div class="theme-opt" data-theme="navy" onclick="applyTheme('navy')" style="border:2px solid var(--gold);padding:0.9rem 1rem;cursor:pointer;display:flex;align-items:center;gap:0.9rem;">
+            <div style="display:flex;gap:4px;flex-shrink:0;">
+              <span style="width:16px;height:16px;background:#0B1F3A;border-radius:50%;"></span>
+              <span style="width:16px;height:16px;background:#C49A3C;border-radius:50%;"></span>
+              <span style="width:16px;height:16px;background:#FAFBFC;border-radius:50%;border:1px solid #ddd;"></span>
+            </div>
+            <div>
+              <div style="font-size:0.82rem;font-weight:500;color:var(--text);">Navy &amp; Gold <span style="font-size:0.65rem;color:var(--gold);margin-left:4px;">✦ ATTIVO</span></div>
+              <div style="font-size:0.72rem;color:var(--slate);">Executive · Automotive · Corporate</div>
+            </div>
+          </div>
+          <div class="theme-opt" data-theme="slate" onclick="applyTheme('slate')" style="border:1px solid var(--border);padding:0.9rem 1rem;cursor:pointer;display:flex;align-items:center;gap:0.9rem;">
+            <div style="display:flex;gap:4px;flex-shrink:0;">
+              <span style="width:16px;height:16px;background:#1E2D3D;border-radius:50%;"></span>
+              <span style="width:16px;height:16px;background:#4A9EBF;border-radius:50%;"></span>
+              <span style="width:16px;height:16px;background:#F5F7FA;border-radius:50%;border:1px solid #ddd;"></span>
+            </div>
+            <div>
+              <div style="font-size:0.82rem;font-weight:500;color:var(--text);">Slate &amp; Teal</div>
+              <div style="font-size:0.72rem;color:var(--slate);">Consulting · Digital · Modern</div>
+            </div>
+          </div>
+          <div class="theme-opt" data-theme="charcoal" onclick="applyTheme('charcoal')" style="border:1px solid var(--border);padding:0.9rem 1rem;cursor:pointer;display:flex;align-items:center;gap:0.9rem;">
+            <div style="display:flex;gap:4px;flex-shrink:0;">
+              <span style="width:16px;height:16px;background:#1A1A1A;border-radius:50%;"></span>
+              <span style="width:16px;height:16px;background:#C0392B;border-radius:50%;"></span>
+              <span style="width:16px;height:16px;background:#F8F6F2;border-radius:50%;border:1px solid #ddd;"></span>
+            </div>
+            <div>
+              <div style="font-size:0.82rem;font-weight:500;color:var(--text);">Charcoal &amp; Crimson</div>
+              <div style="font-size:0.72rem;color:var(--slate);">Bold · Strategic · Impactful</div>
+            </div>
+          </div>
+        </div>
+        <div class="ok-msg" id="themeOk" style="margin-top:0.75rem;">✓ Tema applicato.</div>
+      </div>
+
+      <!-- MEDIA OVERVIEW -->
+      <div class="adm-body" id="tab-media" style="display:none;">
+        <h4 style="font-family:var(--serif);font-size:1.2rem;margin-bottom:1rem;">Media Management</h4>
+        <p style="font-size:0.83rem;margin-bottom:1rem;">To add photos or articles to a specific experience, open that experience card and click <strong>+ Add</strong>.</p>
+        <div id="mediaOverview" style="font-size:0.82rem;color:var(--muted);line-height:2;"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════
+   DATA & STATE
+══════════════════════════════════════════ */
+const PWD = { u: 'admin', p: 'aglietti2025' };
+let isAdmin = false;
+let currentMediaExp = null;
+
+let posts       = JSON.parse(localStorage.getItem('aa2_posts')    || '[]');
+let extraProj   = JSON.parse(localStorage.getItem('aa2_proj')     || '[]');
+let profileData = JSON.parse(localStorage.getItem('aa2_profile')  || '{}');
+let mediaData   = JSON.parse(localStorage.getItem('aa2_media')    || '{}');
+// mediaData structure: { exp1: { photos: [{src,caption}], articles: [{title,url,date}] }, ... }
+
+/* default posts */
+const DEF_POSTS = [
+  {
+    id:1, title:"What 200 Football Matches Taught Me About Project Management",
+    tag:"Lessons Learned", date:"March 2025", expLink:"",
+    excerpt:"Decision-making under pressure, stakeholder management on the pitch, and why the best referees share the same instincts as the best PMs.",
+    body:`<p>I refereed more than 200 football matches over eight years. At the time, I didn't think of it as professional training — it was a passion. Looking back, it was one of the most intense laboratories for the skills I use every single day in project management.</p><h3>Decision-making in real time</h3><p>On the pitch, you have 0.5 seconds to make a call in front of hundreds of people. There's no committee to consult, no slide deck. You decide, you commit, and you move on. This muscle — the ability to make a confident decision with incomplete information — is exactly what separates good project managers from great ones.</p><h3>Stakeholder management under pressure</h3><p>When you blow a controversial whistle, twenty-two players and two coaching staffs react simultaneously. You learn quickly that the way you communicate a decision matters as much as the decision itself. Calm body language, clear signaling, authority — these are stakeholder management fundamentals.</p>`
+  },
+  {
+    id:2, title:"The First 90 Days in a Corporate Launch Role",
+    tag:"Launch Management", date:"January 2025", expLink:"exp1",
+    excerpt:"How I approached onboarding into a global automotive PMO — what I prioritised, what surprised me, and what I'd do differently.",
+    body:`<p>Starting a new role in a 68-plant global network is humbling. The complexity isn't abstract — it's immediate, it's in every meeting where you're still learning acronyms while others debate CAPEX line items.</p><h3>Week 1–4: Listen before you speak</h3><p>The temptation is to demonstrate value quickly. Resist it. Your most important job in the first month is to understand the system: informal power structures, the language people use, the projects that failed and why nobody talks about them.</p><h3>Week 4–8: Map your stakeholders</h3><p>In a corporate launch environment, stakeholders span multiple functions, geographies, and languages. Build a living stakeholder map — not a static document, but a real understanding of who influences what.</p><h3>Week 8–90: Deliver one visible thing</h3><p>By day 90, you need one tangible proof point. Not a transformation — just something that shows you can execute.</p>`
+  },
+  {
+    id:3, title:"On Managing Across Cultures in Industrial Projects",
+    tag:"Stakeholders", date:"November 2024", expLink:"",
+    excerpt:"From Buenos Aires to Hagen to Morocco — what working across cultural contexts taught me about managing complexity in international industrial environments.",
+    body:`<p>One of the underrated skills in corporate project management is working effectively across very different cultural contexts. Not just language — but assumptions, communication styles, decision hierarchies, and what "done" means to different people.</p><h3>The Buenos Aires semester</h3><p>My exchange at ITBA gave me first exposure to Latin American business culture. The relationship comes first. Trust is built before business is discussed. This felt slow at first — then I realized it was just a different kind of efficiency.</p><h3>The Morocco plant launch</h3><p>Co-leading a plant launch in Morocco required understanding governmental stakeholder relations and navigating between corporate HQ expectations and on-ground realities. Key insight: always have someone with deep local knowledge. Your job is to integrate, not impose.</p>`
+  }
+];
+
+/* ══════════════════════════════════════════
+   INIT
+══════════════════════════════════════════ */
+window.addEventListener('DOMContentLoaded', () => {
+  renderBlog();
+  applyProfile();
+  renderExpMedia();
+  renderExtraProj();
+  renderAdmList();
+});
+
+/* ══════════════════════════════════════════
+   NAV
+══════════════════════════════════════════ */
+function toggleMob() { document.getElementById('mobMenu').classList.toggle('open'); }
+function closeMob()  { document.getElementById('mobMenu').classList.remove('open'); }
+
+/* ══════════════════════════════════════════
+   EXPERIENCE ACCORDION
+══════════════════════════════════════════ */
+function toggleExp(id) {
+  const item = document.querySelector(`.exp-item[data-id="${id}"]`);
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.exp-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ══════════════════════════════════════════
+   BLOG
+══════════════════════════════════════════ */
+function allPosts() { return [...DEF_POSTS, ...posts]; }
+
+function renderBlog() {
+  const g = document.getElementById('blogGrid');
+  const all = allPosts();
+  if (!all.length) { g.innerHTML = '<p>No articles yet.</p>'; return; }
+  g.innerHTML = all.map(p => `
+    <div class="post-card" onclick="openPost(${p.id})">
+      <div class="post-card-top"></div>
+      <div class="post-card-body">
+        <div class="post-date">${p.date}</div>
+        <div class="post-title">${p.title}</div>
+        <p class="post-excerpt">${p.excerpt}</p>
+        <span class="post-cat">${p.tag}</span>
+      </div>
+    </div>`).join('');
+  // also update linked articles inside experiences
+  updateExpArticleLinks();
+}
+
+function openPost(id) {
+  const p = allPosts().find(x => x.id === id);
+  if (!p) return;
+  document.getElementById('mTag').textContent = p.tag;
+  document.getElementById('mTitle').textContent = p.title;
+  document.getElementById('mMeta').textContent = p.date;
+  document.getElementById('mBody').innerHTML = p.body;
+  document.getElementById('postModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closePost() {
+  document.getElementById('postModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('postModal').addEventListener('click', e => {
+  if (e.target === document.getElementById('postModal')) closePost();
+});
+
+/* ══════════════════════════════════════════
+   MEDIA PER EXPERIENCE
+══════════════════════════════════════════ */
+function getExpMedia(expId) {
+  return mediaData[expId] || { photos: [], articles: [] };
+}
+function saveExpMedia(expId, data) {
+  mediaData[expId] = data;
+  localStorage.setItem('aa2_media', JSON.stringify(mediaData));
+}
+
+function renderExpMedia() {
+  ['exp1','exp2','exp3','exp4','exp5'].forEach(id => renderSingleExpMedia(id));
+}
+
+function renderSingleExpMedia(expId) {
+  const d = getExpMedia(expId);
+  // photos
+  const mg = document.getElementById('mediagrid-' + expId);
+  if (mg) {
+    if (!d.photos.length) { mg.innerHTML = ''; }
+    else {
+      mg.innerHTML = d.photos.map((ph, i) => `
+        <div class="media-item">
+          <span class="media-type">PHOTO</span>
+          <img src="${ph.src}" alt="${ph.caption}" loading="lazy">
+          <div class="media-caption">${ph.caption}${isAdmin ? `<button onclick="deletePhoto('${expId}',${i})" style="float:right;background:none;border:none;color:#c0392b;cursor:pointer;font-size:0.7rem;">✕</button>` : ''}</div>
+        </div>`).join('');
+    }
+  }
+  // articles listed inside exp
+  updateExpArticleLinks();
+}
+
+function updateExpArticleLinks() {
+  ['exp1','exp2','exp3','exp4','exp5'].forEach(expId => {
+    const container = document.getElementById('articles-' + expId);
+    if (!container) return;
+    // linked blog posts
+    const linked = allPosts().filter(p => p.expLink === expId);
+    // media articles
+    const d = getExpMedia(expId);
+    const mArts = d.articles || [];
+
+    let html = '';
+    mArts.forEach((a, i) => {
+      html += `<div class="exp-article-item">
+        <span class="art-icon">◆</span>
+        <span class="art-title" onclick="${a.url ? `window.open('${a.url}','_blank')` : ''}">${a.title}</span>
+        <span class="art-date">${a.date}</span>
+        ${isAdmin ? `<button onclick="deleteArticle('${expId}',${i})" style="background:none;border:none;color:#c0392b;cursor:pointer;font-size:0.7rem;margin-left:0.5rem;">✕</button>` : ''}
+      </div>`;
+    });
+    linked.forEach(p => {
+      html += `<div class="exp-article-item">
+        <span class="art-icon">✎</span>
+        <span class="art-title" onclick="openPost(${p.id})">${p.title}</span>
+        <span class="art-date">${p.date}</span>
+      </div>`;
+    });
+    container.innerHTML = html;
+    // show/hide the media section header depending on content
+    const mediaSection = document.getElementById('media-' + expId);
+    if (mediaSection) {
+      const hasContent = (getExpMedia(expId).photos.length + mArts.length + linked.length) > 0;
+      mediaSection.style.display = (hasContent || isAdmin) ? 'block' : 'none';
+    }
+  });
+}
+
+/* media upload modal */
+function openMediaUpload(expId) {
+  currentMediaExp = expId;
+  document.getElementById('mediaModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('mediaOk').style.display = 'none';
+  document.getElementById('photoCaption').value = '';
+  document.getElementById('photoPreview').style.display = 'none';
+  document.getElementById('artTitle').value = '';
+  document.getElementById('artUrl').value = '';
+  document.getElementById('artDate').value = '';
+  document.getElementById('mediaType').value = 'photo';
+  showMediaFields();
+}
+function closeMediaModal() {
+  document.getElementById('mediaModal').classList.remove('open');
+  document.body.style.overflow = '';
+  currentMediaExp = null;
+}
+document.getElementById('mediaModal').addEventListener('click', e => {
+  if (e.target === document.getElementById('mediaModal')) closeMediaModal();
+});
+document.getElementById('mediaType').addEventListener('change', showMediaFields);
+function showMediaFields() {
+  const t = document.getElementById('mediaType').value;
+  document.getElementById('photoFields').style.display  = t === 'photo' ? 'block' : 'none';
+  document.getElementById('articleFields').style.display = t === 'article' ? 'block' : 'none';
+}
+
+let photoDataUrl = null;
+function previewPhoto(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    photoDataUrl = ev.target.result;
+    const prev = document.getElementById('photoPreview');
+    prev.src = photoDataUrl;
+    prev.style.display = 'block';
+  };
+  reader.readAsDataURL(file);
+}
+
+function saveMedia() {
+  if (!currentMediaExp) return;
+  const type = document.getElementById('mediaType').value;
+  const d = getExpMedia(currentMediaExp);
+  if (type === 'photo') {
+    if (!photoDataUrl) { alert('Please select an image.'); return; }
+    d.photos.push({ src: photoDataUrl, caption: document.getElementById('photoCaption').value || '' });
+    photoDataUrl = null;
+  } else {
+    const title = document.getElementById('artTitle').value.trim();
+    if (!title) { alert('Please enter a title.'); return; }
+    d.articles.push({
+      title,
+      url: document.getElementById('artUrl').value.trim(),
+      date: document.getElementById('artDate').value.trim()
+    });
+  }
+  saveExpMedia(currentMediaExp, d);
+  renderSingleExpMedia(currentMediaExp);
+  document.getElementById('mediaOk').style.display = 'block';
+  setTimeout(() => document.getElementById('mediaOk').style.display = 'none', 2500);
+  updateMediaOverview();
+}
+
+function deletePhoto(expId, idx) {
+  const d = getExpMedia(expId);
+  d.photos.splice(idx, 1);
+  saveExpMedia(expId, d);
+  renderSingleExpMedia(expId);
+}
+function deleteArticle(expId, idx) {
+  const d = getExpMedia(expId);
+  d.articles.splice(idx, 1);
+  saveExpMedia(expId, d);
+  renderSingleExpMedia(expId);
+}
+
+function updateMediaOverview() {
+  const el = document.getElementById('mediaOverview');
+  if (!el) return;
+  const names = { exp1:'Adler Pelzer', exp2:'Deloitte BA', exp3:'Deloitte Jr', exp4:'Vaia', exp5:'Coopservice' };
+  let html = '';
+  Object.keys(names).forEach(id => {
+    const d = getExpMedia(id);
+    html += `<div><strong>${names[id]}:</strong> ${d.photos.length} photo(s), ${(d.articles||[]).length} article(s)</div>`;
+  });
+  el.innerHTML = html;
+}
+
+/* ══════════════════════════════════════════
+   ADMIN
+══════════════════════════════════════════ */
+function openAdm() { document.getElementById('admPanel').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeAdm() { document.getElementById('admPanel').classList.remove('open'); document.body.style.overflow=''; }
+
+function doLogin() {
+  const u = document.getElementById('admU').value;
+  const p = document.getElementById('admP').value;
+  if (u === PWD.u && p === PWD.p) {
+    isAdmin = true;
+    document.body.classList.add('admin-active');
+    document.getElementById('admLogin').style.display = 'none';
+    document.getElementById('admContent').classList.add('vis');
+    renderAdmList();
+    renderExpMedia();
+    updateExpArticleLinks();
+    updateMediaOverview();
+    var mhint = document.getElementById('mapAdminHint');
+    if (mhint) mhint.style.display = 'inline';
+    renderMapPins(); // re-render to add admin interactivity
+  } else {
+    document.getElementById('admErr').style.display = 'block';
+  }
+}
+
+function swTab(name) {
+  ['articles','profile','projects','theme','media'].forEach(t => {
+    const el = document.getElementById('tab-' + t);
+    if (el) el.style.display = t === name ? 'block' : 'none';
+  });
+  document.querySelectorAll('.adm-tab').forEach((btn, i) => {
+    const names = ['articles','profile','projects','theme','media'];
+    btn.classList.toggle('act', names[i] === name);
+  });
+  if (name === 'media') updateMediaOverview();
+}
+
+function publishPost() {
+  const title = document.getElementById('nTitle').value.trim();
+  const body  = document.getElementById('nBody').value.trim();
+  if (!title || !body) return;
+  const id = Date.now();
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const now = new Date();
+  const post = {
+    id, title,
+    tag:     document.getElementById('nTag').value,
+    expLink: document.getElementById('nExp').value,
+    date:    months[now.getMonth()] + ' ' + now.getFullYear(),
+    excerpt: body.replace(/<[^>]+>/g,'').substring(0,140) + '…',
+    body:    '<p>' + body.replace(/\n\n/g,'</p><p>').replace(/\n/g,'<br>') + '</p>'
+  };
+  posts.unshift(post);
+  localStorage.setItem('aa2_posts', JSON.stringify(posts));
+  document.getElementById('nTitle').value = '';
+  document.getElementById('nBody').value  = '';
+  document.getElementById('postOk').style.display = 'block';
+  setTimeout(() => document.getElementById('postOk').style.display='none', 2500);
+  renderBlog();
+  renderAdmList();
+}
+
+function renderAdmList() {
+  const el = document.getElementById('admPostList');
+  if (!el) return;
+  if (!posts.length) { el.innerHTML = '<p style="font-size:0.78rem;color:var(--slate);margin-top:0.5rem;">No custom articles yet.</p>'; return; }
+  el.innerHTML = posts.map(p => `
+    <div class="adm-pi">
+      <div>
+        <div class="adm-pi-t">${p.title}</div>
+        <div class="adm-pi-d">${p.date} · ${p.tag}</div>
+      </div>
+      <button class="adm-del" onclick="deletePost(${p.id})">Delete</button>
+    </div>`).join('');
+}
+
+function deletePost(id) {
+  posts = posts.filter(p => p.id !== id);
+  localStorage.setItem('aa2_posts', JSON.stringify(posts));
+  renderBlog(); renderAdmList();
+}
+
+function saveProfile() {
+  profileData = {
+    tagline: document.getElementById('eTagline').value,
+    k1: document.getElementById('eK1').value,
+    k2: document.getElementById('eK2').value,
+    k3: document.getElementById('eK3').value,
+    k4: document.getElementById('eK4').value,
+  };
+  localStorage.setItem('aa2_profile', JSON.stringify(profileData));
+  applyProfile();
+  document.getElementById('profOk').style.display = 'block';
+  setTimeout(() => document.getElementById('profOk').style.display='none', 2500);
+}
+
+function applyProfile() {
+  if (profileData.tagline) document.querySelector('.hero-tagline').textContent = profileData.tagline;
+  if (profileData.k1) document.getElementById('k1').textContent = profileData.k1;
+  if (profileData.k2) document.getElementById('k2').textContent = profileData.k2;
+  if (profileData.k3) document.getElementById('k3').textContent = profileData.k3;
+  if (profileData.k4) document.getElementById('k4').textContent = profileData.k4;
+}
+
+function addProject() {
+  const title = document.getElementById('pTitle').value.trim();
+  if (!title) return;
+  extraProj.push({
+    title,
+    desc: document.getElementById('pDesc').value.trim(),
+    foot: document.getElementById('pFoot').value.trim()
+  });
+  localStorage.setItem('aa2_proj', JSON.stringify(extraProj));
+  renderExtraProj();
+  document.getElementById('pTitle').value='';
+  document.getElementById('pDesc').value='';
+  document.getElementById('pFoot').value='';
+  document.getElementById('projOk').style.display='block';
+  setTimeout(()=>document.getElementById('projOk').style.display='none',2500);
+}
+
+function renderExtraProj() {
+  document.querySelectorAll('.extra-proj').forEach(e=>e.remove());
+  const grid = document.getElementById('projGrid');
+  const base = grid.querySelectorAll('.proj-card:not(.extra-proj)').length;
+  extraProj.forEach((p,i) => {
+    const card = document.createElement('div');
+    card.className = 'proj-card extra-proj';
+    card.innerHTML = `<div class="proj-num">0${base+i+1}</div><div class="proj-title">${p.title}</div><p class="proj-desc">${p.desc}</p><div class="proj-foot">${p.foot}</div>`;
+    grid.appendChild(card);
+  });
+}
+
+/* ══════════════════════════════════════════
+   UTILS
+══════════════════════════════════════════ */
+function dlCV(e) {
+  e.preventDefault();
+  alert('Per attivare il download:\n1. Salva il tuo CV come "Andrea-Aglietti-CV.pdf" nella stessa cartella\n2. Sostituisci questa funzione con: window.open("Andrea-Aglietti-CV.pdf")');
+}
+function handleForm(e) {
+  e.preventDefault();
+  alert('Form statico. Per abilitare le email: registrati su formspree.io e aggiungi il tuo endpoint all\'attributo action del form.');
+}
+
+
+/* ══════════════════════════════════════════
+   WORLD MAP DATA & ENGINE
+══════════════════════════════════════════ */
+var MAP_PINS_DEFAULT = [
+  {id:'hk', type:'project', city:'Hong Kong', country:'China', x:820, y:215,
+   eye:'2022 · Startup Project', title:'Cosmos — Decentralised Web',
+   body:'Collaboration with Cosmos via Vaia Innovations: development of a decentralised blockchain-based website. Remote project and technical management with HK team.',
+   tags:['Blockchain','Web3','Startup'], photo:'', story:''},
+  {id:'plzen', type:'project', city:'Plzen', country:'Czech Republic', x:506, y:139,
+   eye:'2025 · Adler Pelzer Group', title:'OSM Plant — Plzen',
+   body:'Operational visit and support at APG Plzen plant as part of the launch management and production process optimisation program.',
+   tags:['Launch Management','Automotive','APG'], photo:'', story:''},
+  {id:'kadan', type:'client', city:'Kadan / Zatec', country:'Czech Republic', x:500, y:133,
+   eye:'2025 · Customer Visit', title:'Zoox — Customer Visit',
+   body:'Customer visit at Zoox facilities in Kadan and Zatec. Client relationship management and supply requirement verification.',
+   tags:['Customer Management','Zoox','APG'], photo:'', story:''},
+  {id:'mexico', type:'client', city:'Puebla', country:'Mexico', x:152, y:216,
+   eye:'2025 · Supplier Visit', title:'Toolmaker Visit — Puebla',
+   body:'Supplier visit to partner toolmaker in Mexico for equipment verification, mould qualification and technical alignment on new production processes.',
+   tags:['Supply Chain','Tooling','Mexico'], photo:'', story:''},
+  {id:'cassino', type:'project', city:'Cassino / Pignataro / Pozzilli', country:'Italy', x:504, y:164,
+   eye:'2025 · Strategic Support', title:'Italy Plants — Strategic Support',
+   body:'Strategic support across plants in Cassino, Pignataro Maggiore and Pozzilli. Machine optimisation, production process analysis and operational improvement implementation.',
+   tags:['Operations','Process Improvement','Italy'], photo:'', story:''},
+  {id:'villastellone', type:'client', city:'Villastellone', country:'Italy', x:490, y:151,
+   eye:'2025 · Lab & Client', title:'Acoustics Lab — Iveco',
+   body:'Access to APG acoustics laboratory for product testing and validation activities for Iveco. Technical coordination and client relationship management.',
+   tags:['Acoustics','Iveco','Lab Testing'], photo:'', story:''},
+  {id:'markolsheim', type:'project', city:'Markolsheim', country:'France', x:478, y:143,
+   eye:'2026 · Automation Study', title:'Line Automation Study',
+   body:'Feasibility study and machinery analysis for production line automation at Markolsheim plant. CAPEX evaluation and business case development.',
+   tags:['Automation','CAPEX','France','APG'], photo:'', story:''}
+];
+
+var mapPins = JSON.parse(localStorage.getItem('aa2_mapPins') || 'null') || JSON.parse(JSON.stringify(MAP_PINS_DEFAULT));
+var activePinId = null;
+
+function saveMapPins() {
+  localStorage.setItem('aa2_mapPins', JSON.stringify(mapPins));
+}
+
+function renderMapPins() {
+  var layer = document.getElementById('pinLayer');
+  if (!layer) return;
+  var pc = document.getElementById('pinCount');
+  if (pc) pc.textContent = mapPins.length + ' location' + (mapPins.length !== 1 ? 's' : '');
+  layer.innerHTML = '';
+
+  mapPins.forEach(function(pin) {
+    var g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('cursor', 'pointer');
+    g.setAttribute('data-pin-id', pin.id);
+
+    if (pin.type === 'project') {
+      var pulse = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      pulse.setAttribute('cx', pin.x); pulse.setAttribute('cy', pin.y); pulse.setAttribute('r', 10);
+      pulse.setAttribute('fill', '#C49A3C'); pulse.setAttribute('opacity', '0.15');
+      g.appendChild(pulse);
+      var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c.setAttribute('cx', pin.x); c.setAttribute('cy', pin.y); c.setAttribute('r', 5.5);
+      c.setAttribute('fill', '#C49A3C'); c.setAttribute('stroke', '#fff'); c.setAttribute('stroke-width', '1.2');
+      g.appendChild(c);
+    } else {
+      var ring = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      ring.setAttribute('cx', pin.x); ring.setAttribute('cy', pin.y); ring.setAttribute('r', 5.5);
+      ring.setAttribute('fill', 'none'); ring.setAttribute('stroke', '#C49A3C'); ring.setAttribute('stroke-width', '1.8');
+      g.appendChild(ring);
+      var dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      dot.setAttribute('cx', pin.x); dot.setAttribute('cy', pin.y); dot.setAttribute('r', 1.8);
+      dot.setAttribute('fill', '#C49A3C');
+      g.appendChild(dot);
+    }
+
+    g.addEventListener('click', (function(p) {
+      return function(e) { e.stopPropagation(); showMapTooltip(p, e); };
+    })(pin));
+
+    layer.appendChild(g);
+  });
+}
+
+function showMapTooltip(pin, evt) {
+  activePinId = pin.id;
+  var tt = document.getElementById('mapTooltip');
+  var wrap = document.getElementById('mapWrap');
+  if (!tt || !wrap) return;
+
+  document.getElementById('ttEye').textContent = pin.eye || '';
+  document.getElementById('ttTitle').textContent = pin.title || '';
+  document.getElementById('ttBody').textContent = pin.story || pin.body || '';
+
+  var imgWrap = document.getElementById('ttImgWrap');
+  var img = document.getElementById('ttImg');
+  if (pin.photo) {
+    img.src = pin.photo;
+    imgWrap.style.display = 'block';
+  } else {
+    imgWrap.style.display = 'none';
+    img.src = '';
+  }
+
+  var az = document.getElementById('ttAdminZone');
+  if (isAdmin) {
+    az.style.display = 'block';
+    var stVal = pin.story || '';
+    var azHtml = '<div style="font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:#C49A3C;margin-bottom:0.4rem;font-family:\'Courier Prime\',monospace;">Admin — Edit pin</div>';
+    azHtml += '<label style="cursor:pointer;display:flex;align-items:center;gap:0.4rem;font-size:0.7rem;color:rgba(255,255,255,0.5);border:1px dashed rgba(255,255,255,0.2);padding:0.35rem 0.6rem;margin-bottom:0.4rem;">';
+    azHtml += 'Upload photo <input type="file" accept="image/*" style="display:none;" onchange="mapUploadPhoto(event)"></label>';
+    azHtml += '<textarea id="mapStoryEdit" placeholder="Add a short story about this place..." style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:#fff;padding:0.4rem 0.5rem;font-size:0.72rem;font-family:\'Outfit\',sans-serif;resize:vertical;min-height:52px;">' + stVal + '</textarea>';
+    azHtml += '<button onclick="saveMapPinEdit()" style="margin-top:0.4rem;background:#C49A3C;color:#0B1F3A;border:none;padding:0.35rem 0.8rem;font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;width:100%;">Save story</button>';
+    az.innerHTML = azHtml;
+    az.style.pointerEvents = 'auto';
+  } else {
+    az.style.display = 'none';
+  }
+
+  tt.style.display = 'block';
+  tt.style.pointerEvents = isAdmin ? 'auto' : 'none';
+
+  var wRect = wrap.getBoundingClientRect();
+  var svgEl = document.getElementById('worldSvg');
+  var svgRect = svgEl.getBoundingClientRect();
+  var scaleX = svgRect.width / 1000;
+  var scaleY = svgRect.height / 520;
+  var px = pin.x * scaleX + (svgRect.left - wRect.left);
+  var py = pin.y * scaleY + (svgRect.top - wRect.top);
+
+  var ttW = 270;
+  var left = px + 14;
+  var top = py - 20;
+  if (left + ttW > wRect.width - 10) left = px - ttW - 14;
+  if (top < 5) top = 5;
+  tt.style.left = left + 'px';
+  tt.style.top = top + 'px';
+}
+
+function mapUploadPhoto(evt) {
+  var file = evt.target.files[0];
+  if (!file || !activePinId) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var pin = mapPins.find(function(p) { return p.id === activePinId; });
+    if (pin) {
+      pin.photo = e.target.result;
+      saveMapPins();
+      var img = document.getElementById('ttImg');
+      var imgWrap = document.getElementById('ttImgWrap');
+      if (img) { img.src = pin.photo; }
+      if (imgWrap) imgWrap.style.display = 'block';
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+function saveMapPinEdit() {
+  var pin = mapPins.find(function(p) { return p.id === activePinId; });
+  if (!pin) return;
+  var stEl = document.getElementById('mapStoryEdit');
+  if (stEl) pin.story = stEl.value;
+  saveMapPins();
+  document.getElementById('ttBody').textContent = pin.story || pin.body;
+}
+
+document.addEventListener('click', function(e) {
+  var tt = document.getElementById('mapTooltip');
+  var layer = document.getElementById('pinLayer');
+  if (tt && tt.style.display !== 'none') {
+    if (!tt.contains(e.target) && (!layer || !layer.contains(e.target))) {
+      tt.style.display = 'none';
+      activePinId = null;
+    }
+  }
+});
+
+window.addEventListener('DOMContentLoaded', function() {
+  renderMapPins();
+});
+
+/* ══════════════════════════════════════════
+   THEME ENGINE
+══════════════════════════════════════════ */
+const THEMES = {
+  navy: {
+    '--navy':'#0B1F3A','--navy-mid':'#122847','--navy-light':'#1A3558',
+    '--gold':'#C49A3C','--gold-pale':'#F4EDD8','--gold-dim':'rgba(196,154,60,0.18)',
+    '--white':'#FAFBFC','--off':'#F2F4F7','--slate':'#8A96A8',
+    '--text':'#0B1F3A','--muted':'#4A5568',
+    '--border':'rgba(11,31,58,0.10)','--border-w':'rgba(255,255,255,0.12)'
+  },
+  slate: {
+    '--navy':'#1E2D3D','--navy-mid':'#243648','--navy-light':'#2C4257',
+    '--gold':'#4A9EBF','--gold-pale':'#E8F4F8','--gold-dim':'rgba(74,158,191,0.15)',
+    '--white':'#F5F7FA','--off':'#EDF1F5','--slate':'#7A8FA0',
+    '--text':'#1E2D3D','--muted':'#4A6070',
+    '--border':'rgba(30,45,61,0.10)','--border-w':'rgba(255,255,255,0.12)'
+  },
+  charcoal: {
+    '--navy':'#1A1A1A','--navy-mid':'#222222','--navy-light':'#2A2A2A',
+    '--gold':'#C0392B','--gold-pale':'#FDF0EE','--gold-dim':'rgba(192,57,43,0.15)',
+    '--white':'#F8F6F2','--off':'#F0EDE8','--slate':'#888888',
+    '--text':'#1A1A1A','--muted':'#555555',
+    '--border':'rgba(26,26,26,0.12)','--border-w':'rgba(255,255,255,0.10)'
+  }
+};
+
+let currentTheme = localStorage.getItem('aa2_theme') || 'navy';
+
+function applyTheme(name) {
+  const t = THEMES[name];
+  if (!t) return;
+  const root = document.documentElement;
+  Object.entries(t).forEach(([k,v]) => root.style.setProperty(k, v));
+  currentTheme = name;
+  localStorage.setItem('aa2_theme', name);
+  // Update active indicator
+  document.querySelectorAll('.theme-opt').forEach(el => {
+    const isActive = el.getAttribute('data-theme') === name;
+    el.style.border = isActive ? '2px solid var(--gold)' : '1px solid var(--border)';
+    const label = el.querySelector('div > div:first-child');
+    if (label) {
+      const badge = label.querySelector('span');
+      if (isActive && !badge) label.innerHTML += ' <span style="font-size:0.6rem;color:var(--gold);margin-left:4px;">✦ ATTIVO</span>';
+      else if (!isActive && badge) badge.remove();
+    }
+  });
+  const ok = document.getElementById('themeOk');
+  if (ok) { ok.style.display='block'; setTimeout(()=>ok.style.display='none',2000); }
+}
+
+// Apply saved theme on load
+window.addEventListener('DOMContentLoaded', () => {
+  if (currentTheme !== 'navy') applyTheme(currentTheme);
+});
+
+/* extend doLogin to show map admin hint */
+const _origLogin = typeof doLogin === 'function' ? doLogin : null;
+/* init media section visibility */
+['exp1','exp2','exp3','exp4','exp5'].forEach(id => {
+  const ms = document.getElementById('media-' + id);
+  if (ms) ms.style.display = 'none';
+});
+</script>
+</body>
+</html>
