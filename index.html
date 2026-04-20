@@ -651,77 +651,9 @@ footer p { font-size: 0.72rem; color: rgba(255,255,255,0.22); font-family: var(-
 .foot-links a { font-size: 0.72rem; color: rgba(255,255,255,0.25); font-family: var(--mono); letter-spacing: 0.06em; transition: color 0.2s; }
 .foot-links a:hover { color: var(--gold); }
 
-/* ─── ADMIN ─── */
-.adm-fab {
-  position: fixed; bottom: 2rem; right: 2rem;
-  width: 42px; height: 42px;
-  background: var(--navy);
-  border: 1px solid var(--border-w);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  color: rgba(255,255,255,0.35); font-size: 0.9rem;
-  cursor: pointer; z-index: 300; transition: all 0.2s;
-}
-.adm-fab:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
 
-.adm-panel {
-  position: fixed; inset: 0; z-index: 500;
-  display: none; align-items: stretch; justify-content: flex-end;
-}
-.adm-panel.open { display: flex; }
-.adm-backdrop { position: absolute; inset: 0; background: rgba(11,31,58,0.6); backdrop-filter: blur(4px); }
-.adm-drawer {
-  position: relative; z-index: 1;
-  width: 400px; background: var(--white);
-  display: flex; flex-direction: column;
-  box-shadow: -8px 0 40px rgba(0,0,0,0.2);
-  overflow: hidden;
-}
-.adm-head {
-  background: var(--navy);
-  padding: 1.3rem 1.8rem;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.adm-head h3 { color: var(--white); font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; }
-.adm-head button { background: none; border: none; color: rgba(255,255,255,0.4); font-size: 1.1rem; cursor: pointer; }
-.adm-head button:hover { color: #fff; }
 
-.adm-login { padding: 2rem 1.8rem; }
-.adm-login h4 { font-family: var(--serif); font-size: 1.5rem; margin-bottom: 0.4rem; }
-.adm-login p { font-size: 0.83rem; margin-bottom: 1.5rem; }
-.adm-inp {
-  width: 100%; padding: 0.7rem 0.9rem;
-  border: 1px solid var(--border);
-  background: var(--off);
-  font-family: var(--sans); font-size: 0.88rem;
-  outline: none; margin-bottom: 0.7rem;
-  transition: border-color 0.2s;
-}
-.adm-inp:focus { border-color: var(--navy); }
-.adm-submit {
-  width: 100%; padding: 0.8rem;
-  background: var(--navy); color: #fff; border: none;
-  font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.08em;
-  text-transform: uppercase; cursor: pointer; transition: background 0.2s;
-}
-.adm-submit:hover { background: var(--gold); color: var(--navy); }
-.adm-err { color: #c0392b; font-size: 0.78rem; margin-top: 0.4rem; display: none; }
-.adm-hint { font-size: 0.72rem; color: var(--slate); margin-top: 0.8rem; }
 
-.adm-content { display: none; flex-direction: column; flex: 1; overflow: hidden; }
-.adm-content.vis { display: flex; }
-
-.adm-tabs { display: flex; background: var(--off); border-bottom: 1px solid var(--border); }
-.adm-tab {
-  flex: 1; padding: 0.75rem 0.5rem;
-  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em;
-  text-transform: uppercase; background: none; border: none;
-  color: var(--slate); border-bottom: 2px solid transparent;
-  cursor: pointer; transition: all 0.2s;
-}
-.adm-tab.act { color: var(--navy); border-bottom-color: var(--gold); background: var(--white); }
-
-.adm-body { padding: 1.5rem 1.8rem; overflow-y: auto; flex: 1; }
 
 .fg { margin-bottom: 1rem; }
 .fg label { display: block; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--slate); margin-bottom: 0.35rem; }
@@ -751,15 +683,6 @@ footer p { font-size: 0.72rem; color: rgba(255,255,255,0.22); font-family: var(-
 }
 
 /* post list in admin */
-.adm-plist { margin-top: 1.5rem; }
-.adm-pi {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 0.82rem;
-}
-.adm-pi-t { font-weight: 500; color: var(--text); }
-.adm-pi-d { font-family: var(--mono); font-size: 0.65rem; color: var(--slate); }
-.adm-del { background: none; border: none; color: #c0392b; cursor: pointer; font-size: 0.75rem; padding: 0.2rem 0.4rem; }
-.adm-del:hover { background: #fdf0ef; }
 
 /* exp link form inside admin */
 .exp-sel { font-size: 0.82rem; }
@@ -847,7 +770,7 @@ footer p { font-size: 0.72rem; color: rgba(255,255,255,0.22); font-family: var(-
 /* ─── PROFILE FLIP CARD ─── */
 .profile-flip {
   width: 96px; height: 96px;
-  perspective: 600px;
+  perspective: 700px;
   cursor: pointer;
   margin-bottom: 1.5rem;
 }
@@ -855,9 +778,25 @@ footer p { font-size: 0.72rem; color: rgba(255,255,255,0.22); font-family: var(-
   width: 100%; height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
+/* On load: show logo first (rotated 180), then flip back to photo */
+.profile-flip-inner.show-logo {
+  transform: rotateY(180deg);
+}
+.profile-flip-inner.flip-to-photo {
+  transform: rotateY(360deg);
+}
+/* On hover: flip to logo */
 .profile-flip:hover .profile-flip-inner {
+  transform: rotateY(180deg);
+}
+/* Keep hover working after intro animation */
+.profile-flip-inner.intro-done {
+  transform: rotateY(0deg);
+  transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+.profile-flip:hover .profile-flip-inner.intro-done {
   transform: rotateY(180deg);
 }
 .profile-flip-front,
@@ -898,11 +837,13 @@ footer p { font-size: 0.72rem; color: rgba(255,255,255,0.22); font-family: var(-
 .au:nth-child(4){animation-delay:0.46s}
 .au:nth-child(5){animation-delay:0.58s}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
+<nav id="mainNav">
   <a class="nav-logo" href="#home">Andrea <span>Aglietti</span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -944,7 +885,7 @@ footer p { font-size: 0.72rem; color: rgba(255,255,255,0.22); font-family: var(-
       <div class="hero-eyebrow au">
         <span class="eyebrow">Launch & Project Manager</span>
       </div>
-      <h1 class="hero-name au">Andrea<br><em>Aglietti.</em></h1>
+      <h1 class="hero-name au"><span id="heroFirstname"></span><br><em id="heroSurname" style="visibility:hidden;"></em></h1>
       <p class="hero-role au">Automotive · Manufacturing · Strategy · Global</p>
       <blockquote class="hero-tagline au">
         Managing complexity at scale — plant launches, CAPEX portfolios, and digital transformation across 68 facilities worldwide.
@@ -961,7 +902,6 @@ footer p { font-size: 0.72rem; color: rgba(255,255,255,0.22); font-family: var(-
       <div class="hero-btns au">
         <a href="#experience" class="btn btn-gold">View Experience</a>
         <a href="#contact" class="btn btn-ghost">Get in Touch</a>
-        <a href="#" onclick="dlCV(event)" class="btn btn-ghost">↓ CV</a>
       </div>
     </div>
     <div class="hero-right">
@@ -1106,12 +1046,12 @@ footer p { font-size: 0.72rem; color: rgba(255,255,255,0.22); font-family: var(-
 
         <!-- Fill area -->
         <path id="caFill"
-          d="M60,238 C95,226 130,210 170,196 C210,180 248,163 290,144 C330,128 364,114 400,97 C438,81 470,70 510,60 L510,238 Z"
+          d="M60,238 C100,232 140,218 170,204 C205,192 250,206 290,210 C330,196 365,158 400,138 C440,118 472,112 510,108 L510,238 Z"
           fill="url(#fillGrad)" opacity="0" style="transition:opacity 1.5s ease;"/>
 
         <!-- MAIN ARC — solid past to present -->
         <path id="caArc"
-          d="M60,238 C95,226 130,210 170,196 C210,180 248,163 290,144 C330,128 364,114 400,97 C438,81 470,70 510,60"
+          d="M60,238 C100,232 140,218 170,204 C205,192 250,206 290,210 C330,196 365,158 400,138 C440,118 472,112 510,108"
           fill="none" stroke="url(#arcGrad)" stroke-width="2.5" stroke-linecap="round"
           stroke-dasharray="1100" stroke-dashoffset="1100"/>
 
@@ -1119,27 +1059,27 @@ footer p { font-size: 0.72rem; color: rgba(255,255,255,0.22); font-family: var(-
         <line id="todayLine" x1="510" y1="56" x2="510" y2="244" stroke="#C49A3C" stroke-width="0.8" stroke-dasharray="4 4" opacity="0"/>
 
         <!-- FUTURE BRANCHES — fanning right from today -->
-        <path id="fut1" d="M510,60 C542,52 582,44 650,34"
+        <path id="fut1" d="M510,108 C542,96 582,82 650,68"
           fill="none" stroke="#C49A3C" stroke-width="1.5" stroke-dasharray="200" stroke-dashoffset="200" opacity="0"
           marker-end="url(#futureArrow)"/>
-        <path id="fut2" d="M510,60 C546,56 594,52 662,50"
+        <path id="fut2" d="M510,108 C546,102 594,96 662,92"
           fill="none" stroke="#C49A3C" stroke-width="1.5" stroke-dasharray="200" stroke-dashoffset="200" opacity="0"
           marker-end="url(#futureArrow)"/>
-        <path id="fut3" d="M510,60 C546,64 592,70 660,76"
+        <path id="fut3" d="M510,108 C546,112 592,118 660,124"
           fill="none" stroke="#C49A3C" stroke-width="1.3" stroke-dasharray="200" stroke-dashoffset="200" opacity="0"
           marker-end="url(#futureArrow)"/>
-        <path id="fut4" d="M510,60 C544,70 580,82 646,96"
+        <path id="fut4" d="M510,108 C544,118 580,130 646,144"
           fill="none" stroke="#C49A3C" stroke-width="1.2" stroke-dasharray="200" stroke-dashoffset="200" opacity="0"
           marker-end="url(#futureArrow)"/>
 
         <!-- Future labels -->
-        <text id="futLbl1" x="654" y="31"  font-size="8.5" fill="#C49A3C" font-family="Outfit,sans-serif" font-weight="500" opacity="0">Program / Portfolio Manager</text>
-        <text id="futLbl2" x="666" y="47"  font-size="8.5" fill="#C49A3C" font-family="Outfit,sans-serif" font-weight="500" opacity="0">Business Strategy</text>
-        <text id="futLbl3" x="664" y="78"  font-size="8.5" fill="#C49A3C" font-family="Outfit,sans-serif" font-weight="400" opacity="0">Controlling / Finance</text>
-        <text id="futLbl4" x="650" y="99"  font-size="8.5" fill="#C49A3C" font-family="Outfit,sans-serif" font-weight="400" opacity="0">Entrepreneurship</text>
+        <text id="futLbl1" x="654" y="79"  font-size="8.5" fill="#C49A3C" font-family="Outfit,sans-serif" font-weight="500" opacity="0">Program / Portfolio Manager</text>
+        <text id="futLbl2" x="666" y="95"  font-size="8.5" fill="#C49A3C" font-family="Outfit,sans-serif" font-weight="500" opacity="0">Business Strategy</text>
+        <text id="futLbl3" x="664" y="128"  font-size="8.5" fill="#C49A3C" font-family="Outfit,sans-serif" font-weight="400" opacity="0">Controlling / Finance</text>
+        <text id="futLbl4" x="650" y="147"  font-size="8.5" fill="#C49A3C" font-family="Outfit,sans-serif" font-weight="400" opacity="0">Entrepreneurship</text>
 
         <!-- Vision label -->
-        <text id="visionLbl" x="616" y="20" font-size="7" fill="rgba(196,154,60,0.6)" text-anchor="middle" font-family="Courier Prime,monospace" letter-spacing="0.18em" opacity="0">VISION</text>
+        <text id="visionLbl" x="616" y="62" font-size="7" fill="rgba(196,154,60,0.6)" text-anchor="middle" font-family="Courier Prime,monospace" letter-spacing="0.18em" opacity="0">VISION</text>
 
         <!-- MILESTONE DOTS — correct sequence -->
         <g id="caDot0" style="cursor:pointer;opacity:0;" onclick="arcSelect(0)">
@@ -1151,25 +1091,25 @@ footer p { font-size: 0.72rem; color: rgba(255,255,255,0.22); font-family: var(-
           <circle cx="170" cy="196" r="14" fill="transparent"/>
         </g>
         <g id="caDot2" style="cursor:pointer;opacity:0;" onclick="arcSelect(2)">
-          <circle cx="290" cy="144" r="6"  fill="#0B1F3A" stroke="#C49A3C" stroke-width="1.5"/>
-          <circle cx="290" cy="144" r="14" fill="transparent"/>
+          <circle cx="290" cy="210" r="6"  fill="#0B1F3A" stroke="#C49A3C" stroke-width="1.5"/>
+          <circle cx="290" cy="210" r="14" fill="transparent"/>
         </g>
         <g id="caDot3" style="cursor:pointer;opacity:0;" onclick="arcSelect(3)">
-          <circle cx="400" cy="97"  r="7"  fill="#122847" stroke="#C49A3C" stroke-width="2"/>
-          <circle cx="400" cy="97"  r="14" fill="transparent"/>
+          <circle cx="400" cy="138"  r="7"  fill="#122847" stroke="#C49A3C" stroke-width="2"/>
+          <circle cx="400" cy="138"  r="14" fill="transparent"/>
         </g>
         <g id="caDot4" style="cursor:pointer;opacity:0;" onclick="arcSelect(4)">
-          <circle cx="510" cy="60"  r="9"  fill="#C49A3C" stroke="#fff" stroke-width="1.5"/>
-          <circle id="caPulse" cx="510" cy="60" r="9" fill="none" stroke="#C49A3C" stroke-width="1.5" opacity="0.4"/>
-          <circle cx="510" cy="60"  r="18" fill="transparent"/>
+          <circle cx="510" cy="108"  r="9"  fill="#C49A3C" stroke="#fff" stroke-width="1.5"/>
+          <circle id="caPulse" cx="510" cy="108" r="9" fill="none" stroke="#C49A3C" stroke-width="1.5" opacity="0.4"/>
+          <circle cx="510" cy="108"  r="18" fill="transparent"/>
         </g>
 
         <!-- Dot labels -->
         <text id="caLbl0" x="60"  y="254" font-size="8.5" fill="#8A96A8" text-anchor="middle" font-family="Outfit,sans-serif" opacity="0">University</text>
         <text id="caLbl1" x="170" y="214" font-size="8.5" fill="#8A96A8" text-anchor="middle" font-family="Outfit,sans-serif" opacity="0">CEO · Startup</text>
-        <text id="caLbl2" x="290" y="132" font-size="8.5" fill="#8A96A8" text-anchor="middle" font-family="Outfit,sans-serif" opacity="0">Internship · Deloitte Jr</text>
-        <text id="caLbl3" x="400" y="114" font-size="8.5" fill="#8A96A8" text-anchor="middle" font-family="Outfit,sans-serif" opacity="0">Deloitte BA</text>
-        <text id="caLbl4" x="510" y="46"  font-size="8.5" fill="#C49A3C" text-anchor="middle" font-family="Courier Prime,monospace" font-weight="700" letter-spacing="0.10em" opacity="0">TODAY</text>
+        <text id="caLbl2" x="290" y="226" font-size="8.5" fill="#8A96A8" text-anchor="middle" font-family="Outfit,sans-serif" opacity="0">Internship · Deloitte Jr</text>
+        <text id="caLbl3" x="400" y="154" font-size="8.5" fill="#8A96A8" text-anchor="middle" font-family="Outfit,sans-serif" opacity="0">Deloitte BA</text>
+        <text id="caLbl4" x="510" y="94"  font-size="8.5" fill="#C49A3C" text-anchor="middle" font-family="Courier Prime,monospace" font-weight="700" letter-spacing="0.10em" opacity="0">TODAY</text>
       </svg>
     </div>
     <!-- Milestone detail panel -->
@@ -1411,15 +1351,7 @@ function arcSelect(idx) {
             <span class="exp-tag">Automotive</span>
             <span class="exp-tag">Digitalization</span>
             <span class="exp-tag">Morocco</span>
-          </div>
-          <div class="exp-media" id="media-exp1">
-            <div class="exp-media-head">
-              <h4>📎 Media & Articles</h4>
-              <button class="exp-upload-btn admin-only" onclick="openMediaUpload('exp1')">+ Add</button>
-            </div>
-            <div class="media-grid" id="mediagrid-exp1"></div>
-            <div class="exp-articles" id="articles-exp1"></div>
-          </div>
+          </div></div>
         </div>
       </div>
 
@@ -1449,15 +1381,7 @@ function arcSelect(idx) {
             <span class="exp-tag">Consulting</span>
             <span class="exp-tag">Board Reporting</span>
             <span class="exp-tag">Agile</span>
-          </div>
-          <div class="exp-media" id="media-exp2">
-            <div class="exp-media-head">
-              <h4>📎 Media & Articles</h4>
-              <button class="exp-upload-btn admin-only" onclick="openMediaUpload('exp2')">+ Add</button>
-            </div>
-            <div class="media-grid" id="mediagrid-exp2"></div>
-            <div class="exp-articles" id="articles-exp2"></div>
-          </div>
+          </div></div>
         </div>
       </div>
 
@@ -1483,15 +1407,7 @@ function arcSelect(idx) {
           <div class="exp-tags">
             <span class="exp-tag">Project Management</span>
             <span class="exp-tag">Consulting</span>
-          </div>
-          <div class="exp-media" id="media-exp3">
-            <div class="exp-media-head">
-              <h4>📎 Media & Articles</h4>
-              <button class="exp-upload-btn admin-only" onclick="openMediaUpload('exp3')">+ Add</button>
-            </div>
-            <div class="media-grid" id="mediagrid-exp3"></div>
-            <div class="exp-articles" id="articles-exp3"></div>
-          </div>
+          </div></div>
         </div>
       </div>
 
@@ -1521,15 +1437,7 @@ function arcSelect(idx) {
             <span class="exp-tag">Team Leadership</span>
             <span class="exp-tag">Blockchain</span>
             <span class="exp-tag">SaaS</span>
-          </div>
-          <div class="exp-media" id="media-exp4">
-            <div class="exp-media-head">
-              <h4>📎 Media & Articles</h4>
-              <button class="exp-upload-btn admin-only" onclick="openMediaUpload('exp4')">+ Add</button>
-            </div>
-            <div class="media-grid" id="mediagrid-exp4"></div>
-            <div class="exp-articles" id="articles-exp4"></div>
-          </div>
+          </div></div>
         </div>
       </div>
 
@@ -1558,15 +1466,7 @@ function arcSelect(idx) {
             <span class="exp-tag">Power BI</span>
             <span class="exp-tag">Tableau</span>
             <span class="exp-tag">Machine Learning</span>
-          </div>
-          <div class="exp-media" id="media-exp5">
-            <div class="exp-media-head">
-              <h4>📎 Media & Articles</h4>
-              <button class="exp-upload-btn admin-only" onclick="openMediaUpload('exp5')">+ Add</button>
-            </div>
-            <div class="media-grid" id="mediagrid-exp5"></div>
-            <div class="exp-articles" id="articles-exp5"></div>
-          </div>
+          </div></div>
         </div>
       </div>
 
@@ -1629,100 +1529,20 @@ function arcSelect(idx) {
     </div>
 
     <!-- FLIP CARDS GRID -->
-    <div id="flipGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5px;background:rgba(255,255,255,0.05);margin-bottom:3rem;"></div>
+    <div id="flipGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1.5px;background:rgba(255,255,255,0.05);margin-bottom:3rem;"></div>
 
-    <!-- WORLD MAP SVG -->
-    <div style="position:relative;width:100%;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);overflow:hidden;" id="mapWrap">
-      <svg id="worldSvg" width="100%" viewBox="0 0 960 480" style="display:block;" role="img" aria-label="World map of Andrea Aglietti professional experiences">
-        <title>Global field experience map</title>
-        <defs>
-          <style>
-            .land { fill: rgba(255,255,255,0.07); stroke: rgba(255,255,255,0.14); stroke-width: 0.5; }
-            .grid-line { stroke: rgba(255,255,255,0.04); stroke-width: 0.5; }
-            .pin-ring { transition: r 0.2s; }
-            .map-pin:hover .pin-ring { r: 12; }
-          </style>
-        </defs>
-
-        <!-- graticule -->
-        <line class="grid-line" x1="0" y1="120" x2="960" y2="120"/>
-        <line class="grid-line" x1="0" y1="240" x2="960" y2="240"/>
-        <line class="grid-line" x1="0" y1="360" x2="960" y2="360"/>
-        <line class="grid-line" x1="240" y1="0" x2="240" y2="480"/>
-        <line class="grid-line" x1="480" y1="0" x2="480" y2="480"/>
-        <line class="grid-line" x1="720" y1="0" x2="720" y2="480"/>
-
-        <!-- LANDMASSES — simplified but recognisable shapes -->
-        <!-- North America -->
-        <path class="land" d="M55,55 L170,48 L225,58 L250,80 L255,105 L240,130 L210,155 L185,168 L155,165 L120,155 L88,135 L62,108 L48,80 Z"/>
-        <!-- Greenland -->
-        <path class="land" d="M192,28 L228,22 L248,32 L244,52 L218,58 L196,48 Z"/>
-        <!-- Mexico + Central America -->
-        <path class="land" d="M110,170 L158,162 L178,175 L172,195 L148,208 L122,202 L105,188 Z"/>
-        <!-- Caribbean -->
-        <path class="land" d="M188,178 L200,175 L206,182 L198,190 L186,186 Z"/>
-        <!-- South America -->
-        <path class="land" d="M158,205 L212,188 L240,205 L248,245 L242,295 L225,338 L200,360 L174,355 L155,320 L148,275 L152,235 Z"/>
-        <!-- Europe -->
-        <path class="land" d="M430,80 L448,68 L470,65 L495,70 L512,62 L525,68 L530,80 L535,94 L522,104 L508,112 L490,116 L472,112 L453,108 L436,96 Z"/>
-        <!-- UK -->
-        <path class="land" d="M418,78 L426,68 L434,74 L430,86 L420,90 Z"/>
-        <!-- Scandinavia -->
-        <path class="land" d="M436,52 L448,40 L464,38 L476,46 L470,62 L454,68 L438,64 Z"/>
-        <!-- Iceland -->
-        <path class="land" d="M358,44 L376,38 L388,44 L384,56 L366,60 L355,52 Z"/>
-        <!-- Italy -->
-        <path class="land" d="M466,100 L476,94 L484,102 L482,114 L474,122 L465,116 L462,108 Z"/>
-        <!-- Iberian Peninsula -->
-        <path class="land" d="M408,92 L432,86 L442,96 L436,112 L418,118 L404,108 Z"/>
-        <!-- North Africa -->
-        <path class="land" d="M420,122 L530,116 L560,128 L565,152 L550,172 L500,178 L450,172 L418,158 L412,138 Z"/>
-        <!-- Sub-Saharan Africa -->
-        <path class="land" d="M435,175 L530,170 L562,185 L575,225 L568,268 L548,305 L520,328 L492,335 L466,318 L448,282 L442,240 L438,205 Z"/>
-        <!-- Middle East -->
-        <path class="land" d="M536,108 L578,102 L595,112 L592,132 L572,140 L542,135 L530,122 Z"/>
-        <!-- Russia / North Asia -->
-        <path class="land" d="M488,44 L600,32 L700,36 L780,44 L820,58 L800,76 L740,82 L672,78 L605,74 L545,70 L498,62 Z"/>
-        <!-- China / East Asia -->
-        <path class="land" d="M648,80 L722,68 L768,74 L788,92 L778,114 L748,124 L714,120 L680,112 L648,98 Z"/>
-        <!-- Japan -->
-        <path class="land" d="M782,80 L796,74 L806,82 L800,94 L786,98 Z"/>
-        <!-- South Asia / India -->
-        <path class="land" d="M594,112 L642,106 L662,120 L656,148 L636,164 L608,162 L590,148 L587,128 Z"/>
-        <!-- SE Asia -->
-        <path class="land" d="M698,128 L738,122 L752,138 L740,156 L715,162 L699,148 Z"/>
-        <!-- South Korea / Taiwan area -->
-        <path class="land" d="M762,90 L776,86 L782,93 L775,100 L763,98 Z"/>
-        <!-- Australia -->
-        <path class="land" d="M718,290 L792,278 L835,296 L840,336 L820,368 L782,380 L748,366 L726,338 L718,308 Z"/>
-        <!-- New Zealand -->
-        <path class="land" d="M862,330 L872,320 L878,332 L870,346 L858,342 Z"/>
-        <!-- Morocco -->
-        <path class="land" d="M420,122 L450,118 L460,130 L450,144 L430,142 L416,132 Z"/>
-        <!-- Czech Republic highlight area -->
-        <path class="land" d="M476,78 L494,73 L502,80 L498,90 L482,93 L472,86 Z" style="fill:rgba(196,154,60,0.15);stroke:#C49A3C;stroke-width:0.8;"/>
-
-        <!-- PIN LAYER -->
-        <g id="pinLayer"></g>
-
-        <!-- Equator label -->
-        <text x="8" y="243" font-size="7" fill="rgba(255,255,255,0.18)" font-family="Courier Prime,monospace" letter-spacing="0.06em">EQ</text>
-        <!-- Region labels -->
-        <text x="125" y="110" font-size="8" fill="rgba(255,255,255,0.15)" font-family="Courier Prime,monospace">N. AMERICA</text>
-        <text x="455" y="88" font-size="8" fill="rgba(255,255,255,0.15)" font-family="Courier Prime,monospace">EUROPE</text>
-        <text x="640" y="95" font-size="8" fill="rgba(255,255,255,0.15)" font-family="Courier Prime,monospace">ASIA</text>
-        <text x="468" y="250" font-size="8" fill="rgba(255,255,255,0.15)" font-family="Courier Prime,monospace">AFRICA</text>
-      </svg>
-
-      <!-- MAP TOOLTIP -->
-      <div id="mapTooltip" style="display:none;position:absolute;z-index:10;background:#0d2440;border:1px solid #C49A3C;width:200px;pointer-events:none;">
-        <div style="padding:0.85rem 1rem;">
-          <div id="ttEye" style="font-family:'Courier Prime',monospace;font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:#C49A3C;margin-bottom:0.2rem;"></div>
-          <div id="ttTitle" style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;color:#fff;line-height:1.2;"></div>
+    <!-- WORLD MAP with D3 + Natural Earth -->
+    <div id="mapWrap" style="position:relative;width:100%;background:#060E1A;border:1px solid rgba(255,255,255,0.08);overflow:hidden;">
+      <svg id="worldSvg" width="100%" viewBox="0 0 960 500" style="display:block;"></svg>
+      <div id="mapTip" style="display:none;position:absolute;z-index:10;background:#0d2440;border:1px solid #C49A3C;max-width:240px;pointer-events:none;">
+        <div style="padding:0.9rem 1rem;">
+          <div id="tipEye" style="font-family:'Courier Prime',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:#C49A3C;margin-bottom:0.2rem;"></div>
+          <div id="tipTitle" style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:#fff;line-height:1.2;margin-bottom:0.35rem;"></div>
+          <div id="tipBody" style="font-size:0.73rem;color:rgba(255,255,255,0.52);line-height:1.55;"></div>
+          <div id="tipTags" style="display:flex;flex-wrap:wrap;gap:3px;margin-top:0.5rem;"></div>
         </div>
       </div>
     </div>
-
     <!-- Legend -->
     <div style="display:flex;align-items:center;gap:2rem;margin-top:1rem;flex-wrap:wrap;">
       <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.7rem;color:rgba(255,255,255,0.35);">
@@ -1854,16 +1674,10 @@ body.admin-active .fcard-upload-btn { display: block; }
         <a href="mailto:andrea.aglietti99@gmail.com" class="c-link">
           <span class="c-icon">@</span> andrea.aglietti99@gmail.com
         </a>
-        <a href="tel:+393664572858" class="c-link">
-          <span class="c-icon">☎</span> +39 366 457 2858
-        </a>
         <a href="https://www.linkedin.com/in/andrea-aglietti/" target="_blank" class="c-link">
           <span class="c-icon">in</span> linkedin.com/in/andrea-aglietti
         </a>
-        <a href="#" onclick="dlCV(event)" class="c-link">
-          <span class="c-icon">↓</span> Download CV
-        </a>
-      </div>
+        </div>
       <div>
         <form class="c-form" onsubmit="handleForm(event)">
           <label>Name</label>
@@ -1884,279 +1698,26 @@ body.admin-active .fcard-upload-btn { display: block; }
   <p>© 2025 Andrea Aglietti · Dortmund, Germany</p>
   <div class="foot-links">
     <a href="https://www.linkedin.com/in/andrea-aglietti/" target="_blank">LinkedIn</a>
-    <a href="#" onclick="dlCV(event)">CV Download</a>
     <a href="#blog">Journal</a>
   </div>
 </footer>
 
-<!-- Admin FAB -->
-<button class="adm-fab" onclick="openAdm()" title="Admin">⚙</button>
-
-<!-- MEDIA UPLOAD MODAL -->
-<div class="modal-bg" id="mediaModal">
-  <div class="modal-box" style="max-width:500px;">
-    <div class="modal-header">
-      <span class="eyebrow">Admin</span>
-      <h2 class="modal-title">Add Media / Article</h2>
-    </div>
-    <div class="modal-body">
-      <div class="fg">
-        <label>Type</label>
-        <select id="mediaType">
-          <option value="photo">Photo</option>
-          <option value="article">Link to Article / Post</option>
-        </select>
-      </div>
-      <div id="photoFields">
-        <div class="upload-zone" onclick="document.getElementById('photoFile').click()">
-          <div class="uz-icon">📷</div>
-          <p>Click to select image</p>
-          <input type="file" id="photoFile" accept="image/*" onchange="previewPhoto(event)">
-        </div>
-        <img id="photoPreview" style="display:none;width:100%;margin-bottom:0.75rem;max-height:200px;object-fit:cover;">
-        <div class="fg"><label>Caption</label><input type="text" id="photoCaption" placeholder="e.g. Plant visit, Morocco 2025"></div>
-      </div>
-      <div id="articleFields" style="display:none;">
-        <div class="fg"><label>Article Title</label><input type="text" id="artTitle" placeholder="Title of the article or post"></div>
-        <div class="fg"><label>URL (optional)</label><input type="text" id="artUrl" placeholder="https://..."></div>
-        <div class="fg"><label>Date</label><input type="text" id="artDate" placeholder="April 2025"></div>
-      </div>
-      <button class="f-submit" onclick="saveMedia()">Save →</button>
-      <div class="ok-msg" id="mediaOk">✓ Saved.</div>
-    </div>
-    <button class="modal-close" onclick="closeMediaModal()">✕</button>
-  </div>
-</div>
-
-<!-- ADMIN PANEL -->
-<div class="adm-panel" id="admPanel">
-  <div class="adm-backdrop" onclick="closeAdm()"></div>
-  <div class="adm-drawer">
-    <div class="adm-head">
-      <h3>Site Admin</h3>
-      <button onclick="closeAdm()">✕</button>
-    </div>
-
-    <!-- Login -->
-    <!-- LOGIN SCREEN -->
-    <div class="adm-login" id="admLogin">
-      <h4>Sign In</h4>
-      <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.2rem;">Admin access to your personal site.</p>
-      <input class="adm-inp" type="text" id="admU" placeholder="Username" onkeydown="if(event.key==='Enter')doLogin()">
-      <input class="adm-inp" type="password" id="admP" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()">
-      <button class="adm-submit" onclick="doLogin()">Login →</button>
-      <div class="adm-err" id="admErr">Wrong credentials. Try again.</div>
-      <div style="margin-top:1rem;display:flex;justify-content:space-between;align-items:center;">
-        <span class="adm-hint" style="font-size:0.7rem;color:var(--slate);">admin / (your password)</span>
-        <button onclick="showRecovery()" style="background:none;border:none;font-size:0.72rem;color:var(--gold);cursor:pointer;font-family:var(--mono);letter-spacing:0.06em;text-decoration:underline;">Forgot password?</button>
-      </div>
-    </div>
-
-    <!-- RECOVERY SCREEN -->
-    <div class="adm-login" id="admRecovery" style="display:none;">
-      <h4>Password Recovery</h4>
-      <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.2rem;">Answer your security question to reveal your password.</p>
-      <div style="background:var(--off);border-left:3px solid var(--gold);padding:0.9rem 1rem;margin-bottom:1rem;font-size:0.82rem;">
-        <div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--slate);margin-bottom:0.4rem;">Security question</div>
-        <div id="recoveryQuestion" style="color:var(--text);font-weight:500;"></div>
-      </div>
-      <input class="adm-inp" type="text" id="recoveryAnswer" placeholder="Your answer..." onkeydown="if(event.key==='Enter')checkRecovery()">
-      <button class="adm-submit" onclick="checkRecovery()">Verify →</button>
-      <div class="adm-err" id="recoveryErr">Wrong answer. Try again.</div>
-      <div id="recoverySuccess" style="display:none;margin-top:1rem;background:#E8F5E9;border-left:3px solid #2e7d32;padding:0.9rem 1rem;">
-        <div style="font-size:0.68rem;font-family:var(--mono);letter-spacing:0.12em;text-transform:uppercase;color:#2e7d32;margin-bottom:0.3rem;">Your credentials</div>
-        <div style="font-family:var(--mono);font-size:0.9rem;color:var(--text);">
-          <span style="color:var(--slate);">User:</span> <strong id="revealUser"></strong><br>
-          <span style="color:var(--slate);">Pass:</span> <strong id="revealPass"></strong>
-        </div>
-        <button onclick="copyCredentials()" style="margin-top:0.6rem;background:var(--navy);color:#fff;border:none;padding:0.35rem 0.8rem;font-size:0.7rem;font-family:var(--mono);cursor:pointer;">Copy to clipboard</button>
-      </div>
-      <div style="margin-top:1rem;">
-        <button onclick="showLogin()" style="background:none;border:none;font-size:0.72rem;color:var(--slate);cursor:pointer;font-family:var(--mono);">← Back to login</button>
-      </div>
-    </div>
-
-    <!-- Content -->
-    <div class="adm-content" id="admContent">
-      <div class="adm-tabs">
-        <button class="adm-tab act" onclick="swTab('articles')">Articles</button>
-        <button class="adm-tab" onclick="swTab('profile')">Profile</button>
-        <button class="adm-tab" onclick="swTab('projects')">Projects</button>
-        <button class="adm-tab" onclick="swTab('theme')">Theme</button>
-        <button class="adm-tab" onclick="swTab('media')">Media</button>
-        <button class="adm-tab" onclick="swTab('ai')" style="color:var(--gold);font-weight:500;">AI ✦</button>
-      </div>
-
-      <!-- ARTICLES -->
-      <div class="adm-body" id="tab-articles">
-        <h4 style="font-family:var(--serif);font-size:1.2rem;margin-bottom:1rem;">New Article</h4>
-        <div class="fg"><label>Title</label><input type="text" id="nTitle" placeholder="Article title"></div>
-        <div class="fg">
-          <label>Category</label>
-          <select id="nTag">
-            <option>Launch Management</option>
-            <option>PMO</option>
-            <option>Lessons Learned</option>
-            <option>Automotive</option>
-            <option>Leadership</option>
-            <option>Strategy</option>
-            <option>Stakeholders</option>
-          </select>
-        </div>
-        <div class="fg">
-          <label>Link this article to an Experience</label>
-          <select id="nExp" class="exp-sel">
-            <option value="">— None —</option>
-            <option value="exp1">Adler Pelzer Group</option>
-            <option value="exp2">Deloitte (BA)</option>
-            <option value="exp3">Deloitte (Jr PM)</option>
-            <option value="exp4">Vaia Innovations</option>
-            <option value="exp5">Coopservice</option>
-          </select>
-        </div>
-        <div class="fg"><label>Content</label><textarea id="nBody" placeholder="Write your article here..."></textarea></div>
-        <button class="f-submit" onclick="publishPost()">Publish →</button>
-        <div class="ok-msg" id="postOk">✓ Published.</div>
-        <div class="adm-plist" id="admPostList"></div>
-      </div>
-
-      <!-- PROFILE -->
-      <div class="adm-body" id="tab-profile" style="display:none;">
-        <h4 style="font-family:var(--serif);font-size:1.2rem;margin-bottom:1rem;">Edit Hero</h4>
-        <div class="fg"><label>Hero tagline</label><textarea id="eTagline">Managing complexity at scale — plant launches, CAPEX portfolios, and digital transformation across 68 facilities worldwide.</textarea></div>
-        <div class="fg"><label>KPI 1 — Value</label><input type="text" id="eK1" value="68"></div>
-        <div class="fg"><label>KPI 2 — Value</label><input type="text" id="eK2" value="3M€"></div>
-        <div class="fg"><label>KPI 3 — Value</label><input type="text" id="eK3" value="5+"></div>
-        <div class="fg"><label>KPI 4 — Value</label><input type="text" id="eK4" value="4"></div>
-        <button class="f-submit" onclick="saveProfile()">Save →</button>
-        <div class="ok-msg" id="profOk">✓ Saved.</div>
-
-        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);">
-          <h4 style="font-family:var(--serif);font-size:1.1rem;margin-bottom:0.8rem;">Security</h4>
-          <div class="fg"><label>New Password</label><input type="password" id="newPwd1" placeholder="New password"></div>
-          <div class="fg"><label>Confirm Password</label><input type="password" id="newPwd2" placeholder="Repeat new password"></div>
-          <div class="fg"><label>Recovery email (shown on forgot password)</label><input type="email" id="recovEmail" placeholder="andrea.aglietti99@gmail.com"></div>
-          <button class="f-submit" onclick="changePassword()">Update credentials →</button>
-          <div class="ok-msg" id="pwdOk">✓ Credentials updated.</div>
-          <div class="adm-err" id="pwdErr" style="display:none;margin-top:0.5rem;">Passwords do not match.</div>
-        </div>
-      </div>
-
-      <!-- PROJECTS -->
-      <div class="adm-body" id="tab-projects" style="display:none;">
-        <h4 style="font-family:var(--serif);font-size:1.2rem;margin-bottom:1rem;">Add Project</h4>
-        <div class="fg"><label>Title</label><input type="text" id="pTitle" placeholder="Project name"></div>
-        <div class="fg"><label>Description</label><textarea id="pDesc" placeholder="What did you do?"></textarea></div>
-        <div class="fg"><label>Footer (Company · Year · Area)</label><input type="text" id="pFoot" placeholder="Company · Year · Area"></div>
-        <button class="f-submit" onclick="addProject()">Add →</button>
-        <div class="ok-msg" id="projOk">✓ Added.</div>
-      </div>
-
-
-      <!-- THEME -->
-      <div class="adm-body" id="tab-theme" style="display:none;">
-        <h4 style="font-family:var(--serif);font-size:1.2rem;margin-bottom:0.5rem;">Choose your site style</h4>
-        <p style="font-size:0.8rem;color:var(--muted);margin-bottom:1.2rem;">3 professional themes. Changes apply instantly.</p>
-        <div style="display:flex;flex-direction:column;gap:0.75rem;" id="themeList">
-          <div class="theme-opt" data-theme="navy" onclick="applyTheme('navy')" style="border:2px solid var(--gold);padding:0.9rem 1rem;cursor:pointer;display:flex;align-items:center;gap:0.9rem;">
-            <div style="display:flex;gap:4px;flex-shrink:0;">
-              <span style="width:16px;height:16px;background:#0B1F3A;border-radius:50%;"></span>
-              <span style="width:16px;height:16px;background:#C49A3C;border-radius:50%;"></span>
-              <span style="width:16px;height:16px;background:#FAFBFC;border-radius:50%;border:1px solid #ddd;"></span>
-            </div>
-            <div>
-              <div style="font-size:0.82rem;font-weight:500;color:var(--text);">Navy &amp; Gold <span style="font-size:0.65rem;color:var(--gold);margin-left:4px;">✦ ATTIVO</span></div>
-              <div style="font-size:0.72rem;color:var(--slate);">Executive · Automotive · Corporate</div>
-            </div>
-          </div>
-          <div class="theme-opt" data-theme="slate" onclick="applyTheme('slate')" style="border:1px solid var(--border);padding:0.9rem 1rem;cursor:pointer;display:flex;align-items:center;gap:0.9rem;">
-            <div style="display:flex;gap:4px;flex-shrink:0;">
-              <span style="width:16px;height:16px;background:#1E2D3D;border-radius:50%;"></span>
-              <span style="width:16px;height:16px;background:#4A9EBF;border-radius:50%;"></span>
-              <span style="width:16px;height:16px;background:#F5F7FA;border-radius:50%;border:1px solid #ddd;"></span>
-            </div>
-            <div>
-              <div style="font-size:0.82rem;font-weight:500;color:var(--text);">Slate &amp; Teal</div>
-              <div style="font-size:0.72rem;color:var(--slate);">Consulting · Digital · Modern</div>
-            </div>
-          </div>
-          <div class="theme-opt" data-theme="charcoal" onclick="applyTheme('charcoal')" style="border:1px solid var(--border);padding:0.9rem 1rem;cursor:pointer;display:flex;align-items:center;gap:0.9rem;">
-            <div style="display:flex;gap:4px;flex-shrink:0;">
-              <span style="width:16px;height:16px;background:#1A1A1A;border-radius:50%;"></span>
-              <span style="width:16px;height:16px;background:#C0392B;border-radius:50%;"></span>
-              <span style="width:16px;height:16px;background:#F8F6F2;border-radius:50%;border:1px solid #ddd;"></span>
-            </div>
-            <div>
-              <div style="font-size:0.82rem;font-weight:500;color:var(--text);">Charcoal &amp; Crimson</div>
-              <div style="font-size:0.72rem;color:var(--slate);">Bold · Strategic · Impactful</div>
-            </div>
-          </div>
-        </div>
-        <div class="ok-msg" id="themeOk" style="margin-top:0.75rem;">✓ Theme applied.</div>
-      </div>
-
-      <!-- AI AGENT TAB -->
-      <div class="adm-body" id="tab-ai" style="display:none;padding:0;display:none;flex-direction:column;height:calc(100vh - 120px);">
-
-        <!-- API Key setup -->
-        <div id="aiSetup" style="padding:1.5rem 1.8rem;border-bottom:1px solid var(--border);">
-          <div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--slate);margin-bottom:0.5rem;">Anthropic API Key</div>
-          <div style="display:flex;gap:0.5rem;">
-            <input type="password" id="aiApiKey" placeholder="sk-ant-..." style="flex:1;padding:0.55rem 0.8rem;border:1px solid var(--border);background:var(--off);font-family:var(--mono);font-size:0.75rem;outline:none;">
-            <button onclick="saveApiKey()" style="background:var(--navy);color:#fff;border:none;padding:0.55rem 0.9rem;font-size:0.72rem;font-family:var(--mono);letter-spacing:0.06em;cursor:pointer;white-space:nowrap;">Save</button>
-          </div>
-          <div id="aiKeyStatus" style="font-size:0.68rem;color:var(--slate);margin-top:0.4rem;font-family:var(--mono);"></div>
-        </div>
-
-        <!-- Chat messages -->
-        <div id="aiMessages" style="flex:1;overflow-y:auto;padding:1.2rem 1.8rem;display:flex;flex-direction:column;gap:1rem;min-height:0;"></div>
-
-        <!-- Suggested actions -->
-        <div id="aiSuggestions" style="padding:0.75rem 1.8rem;border-top:1px solid var(--border);display:flex;gap:0.4rem;flex-wrap:wrap;">
-          <button class="ai-suggest" onclick="aiSuggest('Update my hero tagline to be more impactful')">✏️ Edit tagline</button>
-          <button class="ai-suggest" onclick="aiSuggest('Write a new blog article about my experience at Adler Pelzer')">📝 New article</button>
-          <button class="ai-suggest" onclick="aiSuggest('Add a new project to the projects section')">＋ Add project</button>
-          <button class="ai-suggest" onclick="aiSuggest('What content on my site could be improved?')">💡 Review site</button>
-        </div>
-
-        <!-- Input -->
-        <div style="padding:1rem 1.8rem;border-top:1px solid var(--border);display:flex;gap:0.6rem;align-items:flex-end;">
-          <textarea id="aiInput" placeholder="Ask the AI to update your site, write content, add articles..." style="flex:1;background:var(--off);border:1px solid var(--border);padding:0.65rem 0.85rem;font-family:var(--sans);font-size:0.83rem;resize:none;height:64px;outline:none;line-height:1.5;transition:border-color 0.2s;" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendAiMsg();}"></textarea>
-          <button onclick="sendAiMsg()" id="aiSendBtn" style="background:var(--navy);color:#fff;border:none;padding:0.65rem 1rem;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.08em;cursor:pointer;height:64px;min-width:56px;transition:background 0.2s;">→</button>
-        </div>
-      </div>
-
-      <!-- MEDIA OVERVIEW -->
-      <div class="adm-body" id="tab-media" style="display:none;">
-        <h4 style="font-family:var(--serif);font-size:1.2rem;margin-bottom:1rem;">Media Management</h4>
-        <p style="font-size:0.83rem;margin-bottom:1rem;">To add photos or articles to a specific experience, open that experience card and click <strong>+ Add</strong>.</p>
-        <div id="mediaOverview" style="font-size:0.82rem;color:var(--muted);line-height:2;"></div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
 <script>
-/* ══════════════════════════════════════════
-   DATA & STATE
-══════════════════════════════════════════ */
-// Credentials — stored in localStorage so they survive changes
-var _savedCreds = JSON.parse(localStorage.getItem('aa2_creds') || 'null');
-var PWD = _savedCreds || { u: 'admin', p: 'aglietti2025', email: 'andrea.aglietti99@gmail.com' };
-// Security question is fixed — only answer can be guessed by Andrea
-var SECURITY_Q = 'What is the name of your startup?';
-var SECURITY_A = 'vaia'; // lowercase, trimmed
-let isAdmin = false;
-let currentMediaExp = null;
 
-let posts       = JSON.parse(localStorage.getItem('aa2_posts')    || '[]');
-let extraProj   = JSON.parse(localStorage.getItem('aa2_proj')     || '[]');
-let profileData = JSON.parse(localStorage.getItem('aa2_profile')  || '{}');
-let mediaData   = JSON.parse(localStorage.getItem('aa2_media')    || '{}');
-// mediaData structure: { exp1: { photos: [{src,caption}], articles: [{title,url,date}] }, ... }
+function handleForm(e) {
+  e.preventDefault();
+  alert('Static form. To enable email delivery: sign up at formspree.io and add your endpoint to the form action attribute.');
+}
+function toggleMob() { document.getElementById('mobMenu').classList.toggle('open'); }
+function closeMob()  { document.getElementById('mobMenu').classList.remove('open'); }
+function toggleExp(id) {
+  var item = document.querySelector('.exp-item[data-id="' + id + '"]');
+  var isOpen = item.classList.contains('open');
+  document.querySelectorAll('.exp-item.open').forEach(function(el){ el.classList.remove('open'); });
+  if (!isOpen) item.classList.add('open');
+}
 
-/* default posts */
+var posts = [];
 const DEF_POSTS = [
   {
     id:1, title:"What 200 Football Matches Taught Me About Project Management",
@@ -2178,58 +1739,26 @@ const DEF_POSTS = [
   }
 ];
 
-/* ══════════════════════════════════════════
-   INIT
-══════════════════════════════════════════ */
-window.addEventListener('DOMContentLoaded', () => {
-  renderBlog();
-  applyProfile();
-  renderExpMedia();
-  renderExtraProj();
-  renderAdmList();
-});
-
-/* ══════════════════════════════════════════
-   NAV
-══════════════════════════════════════════ */
-function toggleMob() { document.getElementById('mobMenu').classList.toggle('open'); }
-function closeMob()  { document.getElementById('mobMenu').classList.remove('open'); }
-
-/* ══════════════════════════════════════════
-   EXPERIENCE ACCORDION
-══════════════════════════════════════════ */
-function toggleExp(id) {
-  const item = document.querySelector(`.exp-item[data-id="${id}"]`);
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.exp-item.open').forEach(el => el.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
-}
-
-/* ══════════════════════════════════════════
-   BLOG
-══════════════════════════════════════════ */
-function allPosts() { return [...DEF_POSTS, ...posts]; }
+function allPosts() { return DEF_POSTS.slice(); }
 
 function renderBlog() {
-  const g = document.getElementById('blogGrid');
-  const all = allPosts();
+  var g = document.getElementById('blogGrid');
+  var all = allPosts();
   if (!all.length) { g.innerHTML = '<p>No articles yet.</p>'; return; }
-  g.innerHTML = all.map(p => `
-    <div class="post-card" onclick="openPost(${p.id})">
-      <div class="post-card-top"></div>
-      <div class="post-card-body">
-        <div class="post-date">${p.date}</div>
-        <div class="post-title">${p.title}</div>
-        <p class="post-excerpt">${p.excerpt}</p>
-        <span class="post-cat">${p.tag}</span>
-      </div>
-    </div>`).join('');
-  // also update linked articles inside experiences
-  updateExpArticleLinks();
+  g.innerHTML = all.map(function(p) {
+    return '<div class="post-card" onclick="openPost(' + p.id + ')">' +
+      '<div class="post-card-top"></div>' +
+      '<div class="post-card-body">' +
+        '<div class="post-date">' + p.date + '</div>' +
+        '<div class="post-title">' + p.title + '</div>' +
+        '<p class="post-excerpt">' + p.excerpt + '</p>' +
+        '<span class="post-cat">' + p.tag + '</span>' +
+      '</div></div>';
+  }).join('');
 }
 
 function openPost(id) {
-  const p = allPosts().find(x => x.id === id);
+  var p = allPosts().find(function(x){ return x.id === id; });
   if (!p) return;
   document.getElementById('mTag').textContent = p.tag;
   document.getElementById('mTitle').textContent = p.title;
@@ -2242,965 +1771,347 @@ function closePost() {
   document.getElementById('postModal').classList.remove('open');
   document.body.style.overflow = '';
 }
-document.getElementById('postModal').addEventListener('click', e => {
-  if (e.target === document.getElementById('postModal')) closePost();
-});
-
-/* ══════════════════════════════════════════
-   MEDIA PER EXPERIENCE
-══════════════════════════════════════════ */
-function getExpMedia(expId) {
-  return mediaData[expId] || { photos: [], articles: [] };
-}
-function saveExpMedia(expId, data) {
-  mediaData[expId] = data;
-  localStorage.setItem('aa2_media', JSON.stringify(mediaData));
-}
-
-function renderExpMedia() {
-  ['exp1','exp2','exp3','exp4','exp5'].forEach(id => renderSingleExpMedia(id));
-}
-
-function renderSingleExpMedia(expId) {
-  const d = getExpMedia(expId);
-  // photos
-  const mg = document.getElementById('mediagrid-' + expId);
-  if (mg) {
-    if (!d.photos.length) { mg.innerHTML = ''; }
-    else {
-      mg.innerHTML = d.photos.map((ph, i) => `
-        <div class="media-item">
-          <span class="media-type">PHOTO</span>
-          <img src="${ph.src}" alt="${ph.caption}" loading="lazy">
-          <div class="media-caption">${ph.caption}${isAdmin ? `<button onclick="deletePhoto('${expId}',${i})" style="float:right;background:none;border:none;color:#c0392b;cursor:pointer;font-size:0.7rem;">✕</button>` : ''}</div>
-        </div>`).join('');
-    }
-  }
-  // articles listed inside exp
-  updateExpArticleLinks();
-}
-
-function updateExpArticleLinks() {
-  ['exp1','exp2','exp3','exp4','exp5'].forEach(expId => {
-    const container = document.getElementById('articles-' + expId);
-    if (!container) return;
-    // linked blog posts
-    const linked = allPosts().filter(p => p.expLink === expId);
-    // media articles
-    const d = getExpMedia(expId);
-    const mArts = d.articles || [];
-
-    let html = '';
-    mArts.forEach((a, i) => {
-      html += `<div class="exp-article-item">
-        <span class="art-icon">◆</span>
-        <span class="art-title" onclick="${a.url ? `window.open('${a.url}','_blank')` : ''}">${a.title}</span>
-        <span class="art-date">${a.date}</span>
-        ${isAdmin ? `<button onclick="deleteArticle('${expId}',${i})" style="background:none;border:none;color:#c0392b;cursor:pointer;font-size:0.7rem;margin-left:0.5rem;">✕</button>` : ''}
-      </div>`;
-    });
-    linked.forEach(p => {
-      html += `<div class="exp-article-item">
-        <span class="art-icon">✎</span>
-        <span class="art-title" onclick="openPost(${p.id})">${p.title}</span>
-        <span class="art-date">${p.date}</span>
-      </div>`;
-    });
-    container.innerHTML = html;
-    // show/hide the media section header depending on content
-    const mediaSection = document.getElementById('media-' + expId);
-    if (mediaSection) {
-      const hasContent = (getExpMedia(expId).photos.length + mArts.length + linked.length) > 0;
-      mediaSection.style.display = (hasContent || isAdmin) ? 'block' : 'none';
-    }
-  });
-}
-
-/* media upload modal */
-function openMediaUpload(expId) {
-  currentMediaExp = expId;
-  document.getElementById('mediaModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  document.getElementById('mediaOk').style.display = 'none';
-  document.getElementById('photoCaption').value = '';
-  document.getElementById('photoPreview').style.display = 'none';
-  document.getElementById('artTitle').value = '';
-  document.getElementById('artUrl').value = '';
-  document.getElementById('artDate').value = '';
-  document.getElementById('mediaType').value = 'photo';
-  showMediaFields();
-}
-function closeMediaModal() {
-  document.getElementById('mediaModal').classList.remove('open');
-  document.body.style.overflow = '';
-  currentMediaExp = null;
-}
-document.getElementById('mediaModal').addEventListener('click', e => {
-  if (e.target === document.getElementById('mediaModal')) closeMediaModal();
-});
-document.getElementById('mediaType').addEventListener('change', showMediaFields);
-function showMediaFields() {
-  const t = document.getElementById('mediaType').value;
-  document.getElementById('photoFields').style.display  = t === 'photo' ? 'block' : 'none';
-  document.getElementById('articleFields').style.display = t === 'article' ? 'block' : 'none';
-}
-
-let photoDataUrl = null;
-function previewPhoto(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = ev => {
-    photoDataUrl = ev.target.result;
-    const prev = document.getElementById('photoPreview');
-    prev.src = photoDataUrl;
-    prev.style.display = 'block';
-  };
-  reader.readAsDataURL(file);
-}
-
-function saveMedia() {
-  if (!currentMediaExp) return;
-  const type = document.getElementById('mediaType').value;
-  const d = getExpMedia(currentMediaExp);
-  if (type === 'photo') {
-    if (!photoDataUrl) { alert('Please select an image.'); return; }
-    d.photos.push({ src: photoDataUrl, caption: document.getElementById('photoCaption').value || '' });
-    photoDataUrl = null;
-  } else {
-    const title = document.getElementById('artTitle').value.trim();
-    if (!title) { alert('Please enter a title.'); return; }
-    d.articles.push({
-      title,
-      url: document.getElementById('artUrl').value.trim(),
-      date: document.getElementById('artDate').value.trim()
-    });
-  }
-  saveExpMedia(currentMediaExp, d);
-  renderSingleExpMedia(currentMediaExp);
-  document.getElementById('mediaOk').style.display = 'block';
-  setTimeout(() => document.getElementById('mediaOk').style.display = 'none', 2500);
-  updateMediaOverview();
-}
-
-function deletePhoto(expId, idx) {
-  const d = getExpMedia(expId);
-  d.photos.splice(idx, 1);
-  saveExpMedia(expId, d);
-  renderSingleExpMedia(expId);
-}
-function deleteArticle(expId, idx) {
-  const d = getExpMedia(expId);
-  d.articles.splice(idx, 1);
-  saveExpMedia(expId, d);
-  renderSingleExpMedia(expId);
-}
-
-function updateMediaOverview() {
-  const el = document.getElementById('mediaOverview');
-  if (!el) return;
-  const names = { exp1:'Adler Pelzer', exp2:'Deloitte BA', exp3:'Deloitte Jr', exp4:'Vaia', exp5:'Coopservice' };
-  let html = '';
-  Object.keys(names).forEach(id => {
-    const d = getExpMedia(id);
-    html += `<div><strong>${names[id]}:</strong> ${d.photos.length} photo(s), ${(d.articles||[]).length} article(s)</div>`;
-  });
-  el.innerHTML = html;
-}
-
-/* ══════════════════════════════════════════
-   ADMIN
-══════════════════════════════════════════ */
-function openAdm() { document.getElementById('admPanel').classList.add('open'); document.body.style.overflow='hidden'; }
-function closeAdm() { document.getElementById('admPanel').classList.remove('open'); document.body.style.overflow=''; }
-
-function doLogin() {
-  var u = document.getElementById('admU').value.trim();
-  var p = document.getElementById('admP').value;
-  if (u === PWD.u && p === PWD.p) {
-    isAdmin = true;
-    document.body.classList.add('admin-active');
-    document.getElementById('admLogin').style.display = 'none';
-    document.getElementById('admContent').classList.add('vis');
-    renderAdmList();
-    renderExpMedia();
-    updateExpArticleLinks();
-    updateMediaOverview();
-    var mhint = document.getElementById('mapAdminHint');
-    if (mhint) mhint.style.display = 'inline';
-    renderFlipCards();
-    renderMapPins();
-    // Pre-fill security settings
-    var re = document.getElementById('recovEmail');
-    if (re && PWD.email) re.value = PWD.email;
-  } else {
-    var err = document.getElementById('admErr');
-    err.style.display = 'block';
-    setTimeout(function() { err.style.display = 'none'; }, 3000);
-  }
-}
-
-function showRecovery() {
-  document.getElementById('admLogin').style.display = 'none';
-  var rec = document.getElementById('admRecovery');
-  rec.style.display = 'block';
-  document.getElementById('recoveryQuestion').textContent = SECURITY_Q;
-  document.getElementById('recoveryAnswer').value = '';
-  document.getElementById('recoveryErr').style.display = 'none';
-  document.getElementById('recoverySuccess').style.display = 'none';
-}
-
-function showLogin() {
-  document.getElementById('admRecovery').style.display = 'none';
-  document.getElementById('admLogin').style.display = 'block';
-}
-
-function checkRecovery() {
-  var ans = document.getElementById('recoveryAnswer').value.trim().toLowerCase();
-  if (ans === SECURITY_A) {
-    document.getElementById('recoveryErr').style.display = 'none';
-    var succ = document.getElementById('recoverySuccess');
-    succ.style.display = 'block';
-    document.getElementById('revealUser').textContent = PWD.u;
-    document.getElementById('revealPass').textContent = PWD.p;
-  } else {
-    document.getElementById('recoveryErr').style.display = 'block';
-    setTimeout(function() { document.getElementById('recoveryErr').style.display = 'none'; }, 3000);
-  }
-}
-
-function copyCredentials() {
-  var text = 'Username: ' + PWD.u + '\nPassword: ' + PWD.p;
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(text).then(function() {
-      var btn = event.target;
-      btn.textContent = 'Copied!';
-      setTimeout(function() { btn.textContent = 'Copy to clipboard'; }, 2000);
-    });
-  }
-}
-
-function changePassword() {
-  var p1 = document.getElementById('newPwd1').value;
-  var p2 = document.getElementById('newPwd2').value;
-  var em = document.getElementById('recovEmail').value.trim();
-  var errEl = document.getElementById('pwdErr');
-  var okEl  = document.getElementById('pwdOk');
-
-  if (p1 && p1 !== p2) {
-    errEl.style.display = 'block';
-    okEl.style.display = 'none';
-    setTimeout(function() { errEl.style.display = 'none'; }, 3000);
-    return;
-  }
-  errEl.style.display = 'none';
-  if (p1) PWD.p = p1;
-  if (em) PWD.email = em;
-  localStorage.setItem('aa2_creds', JSON.stringify(PWD));
-  document.getElementById('newPwd1').value = '';
-  document.getElementById('newPwd2').value = '';
-  okEl.style.display = 'block';
-  setTimeout(function() { okEl.style.display = 'none'; }, 3000);
-}
-
-function swTab(name) {
-  ['articles','profile','projects','theme','media','ai'].forEach(t => {
-    const el = document.getElementById('tab-' + t);
-    if (!el) return;
-    if (t === 'ai') {
-      el.classList.toggle('visible', t === name);
-    } else {
-      el.style.display = t === name ? 'block' : 'none';
-    }
-  });
-  document.querySelectorAll('.adm-tab').forEach((btn, i) => {
-    const names = ['articles','profile','projects','theme','media','ai'];
-    btn.classList.toggle('act', names[i] === name);
-  });
-  if (name === 'media') updateMediaOverview();
-  if (name === 'ai') initAiTab();
-}
-
-function publishPost() {
-  const title = document.getElementById('nTitle').value.trim();
-  const body  = document.getElementById('nBody').value.trim();
-  if (!title || !body) return;
-  const id = Date.now();
-  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  const now = new Date();
-  const post = {
-    id, title,
-    tag:     document.getElementById('nTag').value,
-    expLink: document.getElementById('nExp').value,
-    date:    months[now.getMonth()] + ' ' + now.getFullYear(),
-    excerpt: body.replace(/<[^>]+>/g,'').substring(0,140) + '…',
-    body:    '<p>' + body.replace(/\n\n/g,'</p><p>').replace(/\n/g,'<br>') + '</p>'
-  };
-  posts.unshift(post);
-  localStorage.setItem('aa2_posts', JSON.stringify(posts));
-  document.getElementById('nTitle').value = '';
-  document.getElementById('nBody').value  = '';
-  document.getElementById('postOk').style.display = 'block';
-  setTimeout(() => document.getElementById('postOk').style.display='none', 2500);
+document.addEventListener('DOMContentLoaded', function() {
   renderBlog();
-  renderAdmList();
-}
+  renderFlipCards();
+});
+window.addEventListener('scroll', function() {
+  var nav = document.getElementById('mainNav');
+  if (nav) nav.classList.toggle('scrolled', window.scrollY > 20);
+});
 
-function renderAdmList() {
-  const el = document.getElementById('admPostList');
-  if (!el) return;
-  if (!posts.length) { el.innerHTML = '<p style="font-size:0.78rem;color:var(--slate);margin-top:0.5rem;">No custom articles yet.</p>'; return; }
-  el.innerHTML = posts.map(p => `
-    <div class="adm-pi">
-      <div>
-        <div class="adm-pi-t">${p.title}</div>
-        <div class="adm-pi-d">${p.date} · ${p.tag}</div>
-      </div>
-      <button class="adm-del" onclick="deletePost(${p.id})">Delete</button>
-    </div>`).join('');
-}
+var _modal = document.getElementById('postModal');
+if (_modal) _modal.addEventListener('click', function(e) {
+  if (e.target === _modal) closePost();
+});
 
-function deletePost(id) {
-  posts = posts.filter(p => p.id !== id);
-  localStorage.setItem('aa2_posts', JSON.stringify(posts));
-  renderBlog(); renderAdmList();
-}
-
-function saveProfile() {
-  profileData = {
-    tagline: document.getElementById('eTagline').value,
-    k1: document.getElementById('eK1').value,
-    k2: document.getElementById('eK2').value,
-    k3: document.getElementById('eK3').value,
-    k4: document.getElementById('eK4').value,
-  };
-  localStorage.setItem('aa2_profile', JSON.stringify(profileData));
-  applyProfile();
-  document.getElementById('profOk').style.display = 'block';
-  setTimeout(() => document.getElementById('profOk').style.display='none', 2500);
-}
-
-function applyProfile() {
-  if (profileData.tagline) document.querySelector('.hero-tagline').textContent = profileData.tagline;
-  if (profileData.k1) document.getElementById('k1').textContent = profileData.k1;
-  if (profileData.k2) document.getElementById('k2').textContent = profileData.k2;
-  if (profileData.k3) document.getElementById('k3').textContent = profileData.k3;
-  if (profileData.k4) document.getElementById('k4').textContent = profileData.k4;
-}
-
-function addProject() {
-  const title = document.getElementById('pTitle').value.trim();
-  if (!title) return;
-  extraProj.push({
-    title,
-    desc: document.getElementById('pDesc').value.trim(),
-    foot: document.getElementById('pFoot').value.trim()
-  });
-  localStorage.setItem('aa2_proj', JSON.stringify(extraProj));
-  renderExtraProj();
-  document.getElementById('pTitle').value='';
-  document.getElementById('pDesc').value='';
-  document.getElementById('pFoot').value='';
-  document.getElementById('projOk').style.display='block';
-  setTimeout(()=>document.getElementById('projOk').style.display='none',2500);
-}
-
-function renderExtraProj() {
-  document.querySelectorAll('.extra-proj').forEach(e=>e.remove());
-  const grid = document.getElementById('projGrid');
-  const base = grid.querySelectorAll('.proj-card:not(.extra-proj)').length;
-  extraProj.forEach((p,i) => {
-    const card = document.createElement('div');
-    card.className = 'proj-card extra-proj';
-    card.innerHTML = `<div class="proj-num">0${base+i+1}</div><div class="proj-title">${p.title}</div><p class="proj-desc">${p.desc}</p><div class="proj-foot">${p.foot}</div>`;
-    grid.appendChild(card);
-  });
-}
-
-/* ══════════════════════════════════════════
-   UTILS
-══════════════════════════════════════════ */
-function dlCV(e) {
-  e.preventDefault();
-  alert('To enable CV download:\n1. Save your CV as "Andrea-Aglietti-CV.pdf" in the same folder\n2. Replace this function with: window.open("Andrea-Aglietti-CV.pdf")');
-}
-function handleForm(e) {
-  e.preventDefault();
-  alert('Static form. To enable email delivery: sign up at formspree.io and add your endpoint to the form action attribute.');
-}
-
-
-/* ══════════════════════════════════════════
-   WORLD MAP DATA & ENGINE
-══════════════════════════════════════════ */
-
-/* SVG icon generators — no emoji, pure SVG paths */
-function iconFactory(type) {
-  var icons = {
-    blockchain: '<svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="12" y="4" width="12" height="8" rx="2" stroke="#C49A3C" stroke-width="1.5"/><rect x="2" y="18" width="12" height="8" rx="2" stroke="#C49A3C" stroke-width="1.5"/><rect x="22" y="18" width="12" height="8" rx="2" stroke="#C49A3C" stroke-width="1.5"/><line x1="18" y1="12" x2="8" y2="18" stroke="#C49A3C" stroke-width="1" stroke-dasharray="2 2"/><line x1="18" y1="12" x2="28" y2="18" stroke="#C49A3C" stroke-width="1" stroke-dasharray="2 2"/></svg>',
-    factory:    '<svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="3" y="18" width="30" height="14" rx="1" stroke="#C49A3C" stroke-width="1.5"/><rect x="6" y="22" width="5" height="5" stroke="#C49A3C" stroke-width="1"/><rect x="15" y="22" width="5" height="5" stroke="#C49A3C" stroke-width="1"/><rect x="24" y="22" width="5" height="5" stroke="#C49A3C" stroke-width="1"/><path d="M3 18 L3 10 L12 18" stroke="#C49A3C" stroke-width="1.5" fill="none"/><path d="M14 18 L14 10 L23 18" stroke="#C49A3C" stroke-width="1.5" fill="none"/><rect x="25" y="8" width="8" height="10" stroke="#C49A3C" stroke-width="1.5"/></svg>',
-    handshake:  '<svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M4 20 C4 20 8 16 12 18 L18 21 L24 18 C28 16 32 20 32 20" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/><path d="M4 20 L4 26 C4 26 8 30 14 28 L18 26 L22 28 C28 30 32 26 32 26 L32 20" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="12" cy="12" r="4" stroke="#C49A3C" stroke-width="1.5"/><circle cx="24" cy="12" r="4" stroke="#C49A3C" stroke-width="1.5"/></svg>',
-    tools:      '<svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M8 28 L22 14" stroke="#C49A3C" stroke-width="2" stroke-linecap="round"/><path d="M22 14 C22 14 26 8 30 10 C28 14 24 14 24 14 L28 18 C28 18 24 22 20 18" stroke="#C49A3C" stroke-width="1.5" stroke-linejoin="round" fill="none"/><circle cx="8" cy="28" r="3" stroke="#C49A3C" stroke-width="1.5"/></svg>',
-    gear:       '<svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="5" stroke="#C49A3C" stroke-width="1.5"/><path d="M18 4 L19.5 9 L22 7.5 L21 12.5" stroke="#C49A3C" stroke-width="1" stroke-linecap="round"/><path d="M18 32 L16.5 27 L14 28.5 L15 23.5" stroke="#C49A3C" stroke-width="1" stroke-linecap="round"/><path d="M4 18 L9 16.5 L7.5 14 L12.5 15" stroke="#C49A3C" stroke-width="1" stroke-linecap="round"/><path d="M32 18 L27 19.5 L28.5 22 L23.5 21" stroke="#C49A3C" stroke-width="1" stroke-linecap="round"/><path d="M7.5 7.5 L11 11.5 L8.5 13 L12.5 15" stroke="#C49A3C" stroke-width="1" stroke-linecap="round"/><path d="M28.5 28.5 L25 24.5 L27.5 23 L23.5 21" stroke="#C49A3C" stroke-width="1" stroke-linecap="round"/></svg>',
-    wave:       '<svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M3 22 C7 14 11 26 15 18 C19 10 23 26 27 18 C29 14 31 16 33 14" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M3 28 C7 20 11 32 15 24 C19 16 23 32 27 24 C29 20 31 22 33 20" stroke="#C49A3C" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.5"/><rect x="3" y="8" width="30" height="2" rx="1" fill="#C49A3C" opacity="0.3"/></svg>',
-    automation: '<svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="4" y="12" width="10" height="14" rx="1" stroke="#C49A3C" stroke-width="1.5"/><rect x="22" y="12" width="10" height="14" rx="1" stroke="#C49A3C" stroke-width="1.5"/><path d="M14 19 L22 19" stroke="#C49A3C" stroke-width="1.5" stroke-dasharray="2 2"/><circle cx="9" cy="19" r="2" fill="#C49A3C" opacity="0.6"/><circle cx="27" cy="19" r="2" fill="#C49A3C" opacity="0.6"/><path d="M9 8 L9 12" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/><path d="M27 8 L27 12" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/><path d="M9 26 L9 30" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/><path d="M27 26 L27 30" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/></svg>'
-  };
-  return icons[type] || icons.factory;
-}
-
-var MAP_PINS_DEFAULT = [
-  {id:'hk',           type:'project', city:'Hong Kong',                  country:'China',          x:800, y:210,
-   eye:'2022 · Startup Project',          title:'Cosmos — Decentralised Web',
+var MAP_PINS = [
+  {id:'hk',          type:'project', lat:22.3193,  lng:114.1694, city:'Hong Kong',                    country:'China',
+   eye:'2022 · Startup Project',       title:'Cosmos — Decentralised Web',
    body:'Collaboration with Cosmos via Vaia Innovations: development of a decentralised blockchain website. Remote project and technical management with Hong Kong team.',
-   tags:['Blockchain','Web3','Startup'],          icon:'blockchain', photo:'', story:''},
-  {id:'plzen',        type:'project', city:'Plzen',                       country:'Czech Republic', x:484, y:84,
-   eye:'2025 · Adler Pelzer Group',        title:'OSM Plant — Plzen',
+   tags:['Blockchain','Web3','Startup'], icon:'blockchain'},
+  {id:'plzen',       type:'project', lat:49.7384,  lng:13.3736,  city:'Plzen',                        country:'Czech Republic',
+   eye:'2025 · Adler Pelzer Group',     title:'OSM Plant — Plzen',
    body:'Operational visit and support at APG Plzen plant as part of the global launch management and production process optimisation program.',
-   tags:['Launch Management','Automotive','APG'], icon:'factory',    photo:'', story:''},
-  {id:'kadan',        type:'client',  city:'Kadan / Zatec',               country:'Czech Republic', x:478, y:80,
-   eye:'2025 · Customer Visit',            title:'Zoox — Customer Visit',
-   body:'Customer visit at Zoox facilities in Kadan and Zatec. Client relationship management and supply requirement verification for automotive components.',
-   tags:['Customer Mgmt','Zoox','APG'],           icon:'handshake',  photo:'', story:''},
-  {id:'mexico',       type:'client',  city:'Puebla',                      country:'Mexico',         x:128, y:205,
-   eye:'2025 · Supplier Visit',            title:'Toolmaker Visit — Puebla',
+   tags:['Launch Management','Automotive','APG'], icon:'factory'},
+  {id:'kadan',       type:'client',  lat:50.3791,  lng:13.2717,  city:'Kadan / Zatec',                country:'Czech Republic',
+   eye:'2025 · Customer Visit',         title:'Zoox — Customer Visit',
+   body:'Customer visit at Zoox facilities in Kadan and Zatec. Client relationship management and supply requirement verification.',
+   tags:['Customer Mgmt','Zoox','APG'], icon:'handshake'},
+  {id:'mexico',      type:'client',  lat:19.0414,  lng:-98.2063, city:'Puebla',                       country:'Mexico',
+   eye:'2025 · Supplier Visit',         title:'Toolmaker Visit — Puebla',
    body:'Supplier visit to partner toolmaker in Mexico for equipment verification, mould qualification and technical alignment on new production processes.',
-   tags:['Supply Chain','Tooling','Mexico'],       icon:'tools',      photo:'', story:''},
-  {id:'cassino',      type:'project', city:'Cassino / Pignataro / Pozzilli', country:'Italy',       x:466, y:108,
-   eye:'2025 · Strategic Support',         title:'Italy Plants — Strategic Support',
+   tags:['Supply Chain','Tooling','Mexico'], icon:'tools'},
+  {id:'cassino',     type:'project', lat:41.4900,  lng:13.8300,  city:'Cassino / Pignataro / Pozzilli', country:'Italy',
+   eye:'2025 · Strategic Support',      title:'Italy Plants — Strategic Support',
    body:'Strategic support across three plants in southern Italy. Machine optimisation, production process analysis and operational improvement implementation.',
-   tags:['Operations','Process Improvement','Italy'], icon:'gear',   photo:'', story:''},
-  {id:'villastellone', type:'client', city:'Villastellone',               country:'Italy',          x:460, y:100,
-   eye:'2025 · Lab & Client',              title:'Acoustics Lab — Iveco',
+   tags:['Operations','Process Improvement','Italy'], icon:'gear'},
+  {id:'villa',       type:'client',  lat:44.8969,  lng:7.7956,   city:'Villastellone',                country:'Italy',
+   eye:'2025 · Lab & Client',           title:'Acoustics Lab — Iveco',
    body:'Access to APG acoustics laboratory for product testing and validation activities for Iveco. Technical coordination and client relationship management.',
-   tags:['Acoustics','Iveco','Lab Testing'],       icon:'wave',      photo:'', story:''},
-  {id:'markolsheim',  type:'project', city:'Markolsheim',                 country:'France',         x:456, y:90,
-   eye:'2026 · Automation Study',          title:'Line Automation Study',
-   body:'Feasibility study and machinery analysis for production line automation at the Markolsheim plant. CAPEX evaluation and business case development.',
-   tags:['Automation','CAPEX','France','APG'],     icon:'automation', photo:'', story:''}
+   tags:['Acoustics','Iveco','Lab Testing'], icon:'wave'},
+  {id:'mark',        type:'project', lat:48.1634,  lng:7.5025,   city:'Markolsheim',                  country:'France',
+   eye:'2026 · Automation Study',       title:'Line Automation Study',
+   body:'Feasibility study and machinery analysis for production line automation at Markolsheim plant. CAPEX evaluation and business case development.',
+   tags:['Automation','CAPEX','France','APG'], icon:'automation'}
 ];
 
-var mapPins = JSON.parse(localStorage.getItem('aa2_mapPins') || 'null') || JSON.parse(JSON.stringify(MAP_PINS_DEFAULT));
-var activePinId = null;
-
-function saveMapPins() {
-  localStorage.setItem('aa2_mapPins', JSON.stringify(mapPins));
+function iconSvg(type) {
+  var m = {
+    blockchain: '<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><rect x="12" y="4" width="12" height="8" rx="2" stroke="#C49A3C" stroke-width="1.5"/><rect x="2" y="18" width="12" height="8" rx="2" stroke="#C49A3C" stroke-width="1.5"/><rect x="22" y="18" width="12" height="8" rx="2" stroke="#C49A3C" stroke-width="1.5"/><line x1="18" y1="12" x2="8" y2="18" stroke="#C49A3C" stroke-width="1" stroke-dasharray="2 2"/><line x1="18" y1="12" x2="28" y2="18" stroke="#C49A3C" stroke-width="1" stroke-dasharray="2 2"/></svg>',
+    factory:    '<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><rect x="3" y="18" width="30" height="14" rx="1" stroke="#C49A3C" stroke-width="1.5"/><rect x="6" y="22" width="5" height="5" stroke="#C49A3C" stroke-width="1"/><rect x="15" y="22" width="5" height="5" stroke="#C49A3C" stroke-width="1"/><rect x="24" y="22" width="5" height="5" stroke="#C49A3C" stroke-width="1"/><path d="M3 18 L3 10 L12 18" stroke="#C49A3C" stroke-width="1.5" fill="none"/><path d="M14 18 L14 10 L23 18" stroke="#C49A3C" stroke-width="1.5" fill="none"/><rect x="25" y="8" width="8" height="10" stroke="#C49A3C" stroke-width="1.5"/></svg>',
+    handshake:  '<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><path d="M4 20 C8 16 12 18 18 21 C24 18 28 16 32 20" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/><path d="M4 20 L4 26 C8 30 14 28 18 26 C22 28 28 30 32 26 L32 20" stroke="#C49A3C" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="4" stroke="#C49A3C" stroke-width="1.5"/><circle cx="24" cy="12" r="4" stroke="#C49A3C" stroke-width="1.5"/></svg>',
+    tools:      '<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><path d="M8 28 L22 14" stroke="#C49A3C" stroke-width="2" stroke-linecap="round"/><path d="M22 14 C22 14 26 8 30 10 C28 14 24 14 24 14 L28 18 C24 22 20 18 20 18" stroke="#C49A3C" stroke-width="1.5" fill="none"/><circle cx="8" cy="28" r="3" stroke="#C49A3C" stroke-width="1.5"/></svg>',
+    gear:       '<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="5" stroke="#C49A3C" stroke-width="1.5"/><path d="M18 4 L20 9 L23 7 L22 13" stroke="#C49A3C" stroke-width="1" stroke-linecap="round"/><path d="M18 32 L16 27 L13 29 L14 23" stroke="#C49A3C" stroke-width="1" stroke-linecap="round"/><path d="M4 18 L9 16 L7 13 L13 14" stroke="#C49A3C" stroke-width="1" stroke-linecap="round"/><path d="M32 18 L27 20 L29 23 L23 22" stroke="#C49A3C" stroke-width="1" stroke-linecap="round"/></svg>',
+    wave:       '<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><path d="M3 22 C7 14 11 26 15 18 C19 10 23 26 27 18 C29 14 31 16 33 14" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/><path d="M3 28 C7 20 11 32 15 24 C19 16 23 32 27 24 C29 20 31 22 33 20" stroke="#C49A3C" stroke-width="1" stroke-linecap="round" opacity="0.5"/></svg>',
+    automation: '<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><rect x="4" y="12" width="10" height="14" rx="1" stroke="#C49A3C" stroke-width="1.5"/><rect x="22" y="12" width="10" height="14" rx="1" stroke="#C49A3C" stroke-width="1.5"/><path d="M14 19 L22 19" stroke="#C49A3C" stroke-width="1.5" stroke-dasharray="2 2"/><circle cx="9" cy="19" r="2" fill="#C49A3C" opacity="0.6"/><circle cx="27" cy="19" r="2" fill="#C49A3C" opacity="0.6"/><path d="M9 8 L9 12" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/><path d="M27 8 L27 12" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/><path d="M9 26 L9 30" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/><path d="M27 26 L27 30" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/></svg>'
+  };
+  return m[type] || m.factory;
 }
 
-/* ── FLIP CARDS ── */
 function renderFlipCards() {
   var grid = document.getElementById('flipGrid');
   if (!grid) return;
   grid.innerHTML = '';
-  mapPins.forEach(function(pin) {
+  MAP_PINS.forEach(function(pin) {
     var div = document.createElement('div');
     div.className = 'fcard-wrap';
     div.setAttribute('data-pin-id', pin.id);
-    div.setAttribute('title', pin.city + ' — ' + pin.title);
-
-    var frontImg = pin.photo
-      ? '<img class="fcard-photo" src="' + pin.photo + '" alt="' + pin.city + '">'
-      : '';
-    var frontOverlay = pin.photo ? '<div class="fcard-overlay"></div>' : '';
-
     div.innerHTML =
       '<div class="fcard-inner">' +
         '<div class="fcard-front">' +
-          frontImg + frontOverlay +
-          '<div class="fcard-icon">' + iconFactory(pin.icon) + '</div>' +
+          '<div class="fcard-icon">' + iconSvg(pin.icon) + '</div>' +
           '<div class="fcard-city">' + pin.city + '</div>' +
           '<div class="fcard-country">' + pin.country + '</div>' +
-          (isAdmin ? '<button class="fcard-upload-btn" data-pinid="' + pin.id + '">+ Photo</button>' : '') +
         '</div>' +
         '<div class="fcard-back">' +
-          '<div>' +
-            '<div class="fcard-back-eye">' + pin.eye + '</div>' +
-            '<div class="fcard-back-title">' + pin.title + '</div>' +
-            '<div class="fcard-back-body">' + (pin.story || pin.body) + '</div>' +
-          '</div>' +
-          '<div class="fcard-tags">' +
-            pin.tags.map(function(t) { return '<span class="fcard-tag">' + t + '</span>'; }).join('') +
-          '</div>' +
+          '<div class="fcard-back-eye">' + pin.eye + '</div>' +
+          '<div class="fcard-back-title">' + pin.title + '</div>' +
+          '<div class="fcard-back-body">' + pin.body + '</div>' +
+          '<div class="fcard-tags">' + pin.tags.map(function(t){return '<span class="fcard-tag">'+t+'</span>';}).join('') + '</div>' +
         '</div>' +
       '</div>';
-
-    // Highlight map pin on hover
-    div.addEventListener('mouseenter', function() { highlightPin(pin.id, true); });
-    div.addEventListener('mouseleave', function() { highlightPin(pin.id, false); });
-    // Wire up upload button via event listener (avoids inline onclick quoting issues)
-    div.addEventListener('click', function(e) {
-      var btn = e.target.closest('.fcard-upload-btn');
-      if (btn) { e.stopPropagation(); fcardUpload(e, btn.getAttribute('data-pinid')); }
-    });
+    div.addEventListener('mouseenter', (function(p){ return function(){
+      highlightCard(p.id, true);
+      // highlight D3 pin on map
+      d3.select('#pinLayer').selectAll('g').filter(function(d,i){ return this.getAttribute('data-pin-id')===p.id; }).select('circle').attr('opacity', 0.5);
+    }; })(pin));
+    div.addEventListener('mouseleave', (function(p){ return function(){
+      highlightCard(p.id, false);
+      var tip = document.getElementById('mapTip');
+      if (tip) tip.style.display = 'none';
+    }; })(pin));
     grid.appendChild(div);
   });
 }
 
-function fcardUpload(evt, pinId) {
-  evt.stopPropagation();
-  var input = document.createElement('input');
-  input.type = 'file'; input.accept = 'image/*';
-  input.onchange = function(e) {
-    var file = e.target.files[0];
-    if (!file) return;
-    var reader = new FileReader();
-    reader.onload = function(ev) {
-      var pin = mapPins.find(function(p) { return p.id === pinId; });
-      if (pin) { pin.photo = ev.target.result; saveMapPins(); renderFlipCards(); renderMapPins(); }
-    };
-    reader.readAsDataURL(file);
-  };
-  input.click();
+/* WORLD MAP — D3 + Natural Earth 110m */
+var MAP_PINS = [
+  {id:'hk',     type:'project', lon:114.2,  lat:22.3,
+   eye:'2022 · Startup Project',       title:'Cosmos — Decentralised Web',
+   body:'Collaboration with Cosmos via Vaia Innovations: decentralised blockchain website. Remote project management with Hong Kong team.',
+   tags:['Blockchain','Web3','Startup']},
+  {id:'plzen',  type:'project', lon:13.4,   lat:49.7,
+   eye:'2025 · Adler Pelzer Group',    title:'OSM Plant — Plzen',
+   body:'Operational visit and support at APG Plzen plant within the global launch management program.',
+   tags:['Launch Management','Automotive','APG']},
+  {id:'kadan',  type:'client',  lon:13.3,   lat:50.4,
+   eye:'2025 · Customer Visit',        title:'Zoox — Customer Visit',
+   body:'Customer visit at Zoox facilities in Kadan and Zatec. Client relationship management.',
+   tags:['Customer Mgmt','Zoox','APG']},
+  {id:'mexico', type:'client',  lon:-98.2,  lat:19.0,
+   eye:'2025 · Supplier Visit',        title:'Toolmaker Visit — Puebla',
+   body:'Supplier visit to partner toolmaker in Mexico for equipment verification and technical alignment.',
+   tags:['Supply Chain','Tooling','Mexico']},
+  {id:'cassino',type:'project', lon:13.8,   lat:41.5,
+   eye:'2025 · Strategic Support',     title:'Italy Plants — Strategic Support',
+   body:'Strategic support across plants in Cassino, Pignataro Maggiore and Pozzilli. Machine optimisation.',
+   tags:['Operations','Process Improvement','Italy']},
+  {id:'villa',  type:'client',  lon:7.8,    lat:44.9,
+   eye:'2025 · Lab & Client',          title:'Acoustics Lab — Iveco',
+   body:'APG acoustics laboratory for product testing for Iveco. Technical coordination and client management.',
+   tags:['Acoustics','Iveco','Lab Testing']},
+  {id:'mark',   type:'project', lon:7.5,    lat:48.2,
+   eye:'2026 · Automation Study',      title:'Line Automation — Markolsheim',
+   body:'Feasibility study and machinery analysis for production line automation. CAPEX evaluation.',
+   tags:['Automation','CAPEX','France','APG']}
+];
+
+function showTip(pin, svgX, svgY) {
+  var tip  = document.getElementById('mapTip');
+  var wrap = document.getElementById('mapWrap');
+  if (!tip || !wrap) return;
+  document.getElementById('tipEye').textContent   = pin.eye;
+  document.getElementById('tipTitle').textContent = pin.title;
+  document.getElementById('tipBody').textContent  = pin.body;
+  document.getElementById('tipTags').innerHTML    = pin.tags.map(function(t){
+    return '<span style="font-size:9px;background:#0B1F3A;color:rgba(255,255,255,0.7);padding:2px 6px;font-family:Courier Prime,monospace;">'+t+'</span>';
+  }).join('');
+  tip.style.display = 'block';
+  var wRect   = wrap.getBoundingClientRect();
+  var svgEl   = document.getElementById('worldSvg');
+  var svgRect = svgEl.getBoundingClientRect();
+  var scaleX  = svgRect.width  / 960;
+  var scaleY  = svgRect.height / 500;
+  var px = svgX * scaleX + (svgRect.left - wRect.left);
+  var py = svgY * scaleY + (svgRect.top  - wRect.top);
+  var left = px + 14;
+  if (left + 248 > wRect.width - 8) left = px - 252;
+  tip.style.left = left + 'px';
+  tip.style.top  = Math.max(4, py - 20) + 'px';
 }
 
-/* ── MAP PINS ── */
-function renderMapPins() {
-  var layer = document.getElementById('pinLayer');
-  if (!layer) return;
-  var pc = document.getElementById('pinCount');
-  if (pc) pc.textContent = mapPins.length + ' locations';
-  layer.innerHTML = '';
-
-  mapPins.forEach(function(pin) {
-    var g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-    g.setAttribute('class', 'map-pin');
-    g.setAttribute('cursor', 'pointer');
-    g.setAttribute('data-pin-id', pin.id);
-
-    /* pulse ring */
-    var pulse = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-    pulse.setAttribute('class', 'pin-ring');
-    pulse.setAttribute('cx', pin.x); pulse.setAttribute('cy', pin.y); pulse.setAttribute('r', 8);
-    pulse.setAttribute('fill', '#C49A3C'); pulse.setAttribute('opacity', '0.12');
-    g.appendChild(pulse);
-
-    if (pin.type === 'project') {
-      var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      c.setAttribute('cx', pin.x); c.setAttribute('cy', pin.y); c.setAttribute('r', 4.5);
-      c.setAttribute('fill', '#C49A3C'); c.setAttribute('stroke', '#fff'); c.setAttribute('stroke-width', '1.2');
-      g.appendChild(c);
-    } else {
-      var ring = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      ring.setAttribute('cx', pin.x); ring.setAttribute('cy', pin.y); ring.setAttribute('r', 4.5);
-      ring.setAttribute('fill', 'none'); ring.setAttribute('stroke', '#C49A3C'); ring.setAttribute('stroke-width', '1.8');
-      g.appendChild(ring);
-      var dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      dot.setAttribute('cx', pin.x); dot.setAttribute('cy', pin.y); dot.setAttribute('r', 1.5);
-      dot.setAttribute('fill', '#C49A3C');
-      g.appendChild(dot);
-    }
-
-    g.addEventListener('click', (function(p) {
-      return function(e) { e.stopPropagation(); showMapTip(p, e); };
-    })(pin));
-    g.addEventListener('mouseenter', function() { highlightCard(pin.id, true); });
-    g.addEventListener('mouseleave', function() { highlightCard(pin.id, false); });
-    layer.appendChild(g);
-  });
-}
-
-function highlightPin(id, on) {
-  var g = document.querySelector('#pinLayer [data-pin-id="' + id + '"]');
-  if (!g) return;
-  var pulse = g.querySelector('circle');
-  if (pulse) pulse.setAttribute('opacity', on ? '0.35' : '0.12');
-}
 function highlightCard(id, on) {
   var card = document.querySelector('#flipGrid [data-pin-id="' + id + '"]');
   if (card) card.style.outline = on ? '1px solid #C49A3C' : 'none';
 }
 
-function showMapTip(pin, evt) {
-  activePinId = pin.id;
-  var tt = document.getElementById('mapTooltip');
-  var wrap = document.getElementById('mapWrap');
-  if (!tt || !wrap) return;
-  document.getElementById('ttEye').textContent = pin.eye || '';
-  document.getElementById('ttTitle').textContent = pin.title || '';
-  tt.style.display = 'block';
-  var wRect = wrap.getBoundingClientRect();
-  var svgEl = document.getElementById('worldSvg');
-  var svgRect = svgEl.getBoundingClientRect();
-  var scaleX = svgRect.width / 960;
-  var scaleY = svgRect.height / 480;
-  var px = pin.x * scaleX + (svgRect.left - wRect.left);
-  var py = pin.y * scaleY + (svgRect.top - wRect.top);
-  var ttW = 200;
-  var left = px + 12;
-  if (left + ttW > wRect.width - 8) left = px - ttW - 12;
-  var top = py - 20;
-  if (top < 4) top = 4;
-  tt.style.left = left + 'px';
-  tt.style.top  = top + 'px';
+function initD3Map() {
+  var svg = d3.select('#worldSvg');
+  var W = 960, H = 500;
+
+  var projection = d3.geoNaturalEarth1()
+    .scale(153)
+    .translate([W / 2, H / 2]);
+
+  var path = d3.geoPath().projection(projection);
+
+  // Add graticule
+  var graticule = d3.geoGraticule()();
+  svg.append('path')
+    .datum(graticule)
+    .attr('d', path)
+    .attr('fill', 'none')
+    .attr('stroke', 'rgba(255,255,255,0.05)')
+    .attr('stroke-width', 0.4);
+
+  // Load world topology from CDN
+  d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(function(world) {
+    var countries = topojson.feature(world, world.objects.countries);
+
+    svg.append('g')
+      .selectAll('path')
+      .data(countries.features)
+      .enter()
+      .append('path')
+      .attr('d', path)
+      .attr('fill', 'rgba(255,255,255,0.09)')
+      .attr('stroke', 'rgba(255,255,255,0.20)')
+      .attr('stroke-width', 0.5);
+
+    // Equator line
+    svg.append('path')
+      .datum({type:'LineString', coordinates:[[-180,0],[180,0]]})
+      .attr('d', path)
+      .attr('fill', 'none')
+      .attr('stroke', 'rgba(196,154,60,0.3)')
+      .attr('stroke-width', 0.8)
+      .attr('stroke-dasharray', '5,4');
+
+    // Region labels
+    var labels = [
+      {lon:-100, lat:50,  txt:'N. AMERICA'},
+      {lon:-58,  lat:-20, txt:'S. AMERICA'},
+      {lon:15,   lat:52,  txt:'EUROPE'},
+      {lon:90,   lat:45,  txt:'ASIA'},
+      {lon:20,   lat:5,   txt:'AFRICA'},
+      {lon:135,  lat:-27, txt:'AUSTRALIA'}
+    ];
+    labels.forEach(function(l) {
+      var xy = projection([l.lon, l.lat]);
+      if (!xy) return;
+      svg.append('text')
+        .attr('x', xy[0]).attr('y', xy[1])
+        .attr('text-anchor', 'middle')
+        .attr('font-size', '8')
+        .attr('fill', 'rgba(255,255,255,0.14)')
+        .attr('font-family', 'monospace')
+        .attr('letter-spacing', '0.05em')
+        .text(l.txt);
+    });
+
+    // Draw pins
+    var pinGroup = svg.append('g').attr('id', 'pinLayer');
+    MAP_PINS.forEach(function(pin) {
+      var xy = projection([pin.lon, pin.lat]);
+      if (!xy) return;
+      var g = pinGroup.append('g')
+        .attr('data-pin-id', pin.id)
+        .style('cursor', 'pointer')
+        .on('click', function(event) {
+          event.stopPropagation();
+          showTip(pin, xy[0], xy[1]);
+        })
+        .on('mouseenter', function() { highlightCard(pin.id, true); })
+        .on('mouseleave', function() { highlightCard(pin.id, false); });
+
+      if (pin.type === 'project') {
+        g.append('circle').attr('cx', xy[0]).attr('cy', xy[1]).attr('r', 9)
+          .attr('fill', '#C49A3C').attr('opacity', 0.15);
+        g.append('circle').attr('cx', xy[0]).attr('cy', xy[1]).attr('r', 5)
+          .attr('fill', '#C49A3C').attr('stroke', '#fff').attr('stroke-width', 1.2);
+      } else {
+        g.append('circle').attr('cx', xy[0]).attr('cy', xy[1]).attr('r', 5)
+          .attr('fill', 'none').attr('stroke', '#C49A3C').attr('stroke-width', 1.8);
+        g.append('circle').attr('cx', xy[0]).attr('cy', xy[1]).attr('r', 1.8)
+          .attr('fill', '#C49A3C');
+      }
+    });
+
+  }).catch(function(err) {
+    console.error('Map load error:', err);
+    // Fallback: show error message in map area
+    svg.append('text')
+      .attr('x', 480).attr('y', 250)
+      .attr('text-anchor', 'middle')
+      .attr('fill', 'rgba(255,255,255,0.3)')
+      .attr('font-size', 14)
+      .text('Map requires internet connection');
+  });
 }
 
-document.addEventListener('click', function(e) {
-  var tt = document.getElementById('mapTooltip');
-  if (tt && tt.style.display !== 'none') {
-    tt.style.display = 'none';
-    activePinId = null;
+document.addEventListener('click', function() {
+  var tip = document.getElementById('mapTip');
+  if (tip) tip.style.display = 'none';
+});
+
+/* ── TYPEWRITER NAME EFFECT ── */
+(function() {
+  var first    = 'Andrea';
+  var surname  = 'Aglietti';
+  var speed    = 85;   // ms per character
+  var logoFlip = 900;  // logo shows for 900ms
+  var flipDur  = 900;  // flip animation duration
+
+  function typeText(el, text, onDone) {
+    var i = 0;
+    el.textContent = '';
+    var t = setInterval(function() {
+      el.textContent += text[i];
+      i++;
+      if (i >= text.length) {
+        clearInterval(t);
+        if (onDone) onDone();
+      }
+    }, speed);
   }
+
+  window.addEventListener('DOMContentLoaded', function() {
+    var fnEl = document.getElementById('heroFirstname');
+    var snEl = document.getElementById('heroSurname');
+    if (!fnEl || !snEl) return;
+
+    // Wait for logo flip to finish, then start typing
+    var delay = logoFlip + flipDur + 150;
+
+    setTimeout(function() {
+      // Type first name
+      typeText(fnEl, first, function() {
+        // Small pause, then reveal surname with typewriter
+        setTimeout(function() {
+          snEl.style.visibility = 'visible';
+          snEl.textContent = '';
+          typeText(snEl, surname, null);
+        }, 200);
+      });
+    }, delay);
+  });
+})();
+
+/* ── PROFILE FLIP INTRO ANIMATION ── */
+window.addEventListener('DOMContentLoaded', function() {
+  var inner = document.querySelector('.profile-flip-inner');
+  if (!inner) return;
+
+  // Step 1: immediately show logo (flip to back)
+  inner.style.transition = 'none';
+  inner.style.transform  = 'rotateY(180deg)';
+
+  // Step 2: after 900ms, flip back to photo with animation
+  setTimeout(function() {
+    inner.style.transition = 'transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1)';
+    inner.style.transform  = 'rotateY(0deg)';
+
+    // Step 3: after flip completes, hand control back to CSS hover
+    setTimeout(function() {
+      inner.style.transition = '';
+      inner.style.transform  = '';
+      inner.classList.add('intro-done');
+    }, 900);
+  }, 900);
 });
 
 window.addEventListener('DOMContentLoaded', function() {
-  renderFlipCards();
-  renderMapPins();
+  var mapEl = document.getElementById('worldSvg');
+  if (!mapEl) return;
+  var obs = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) { obs.disconnect(); initD3Map(); }
+  }, { threshold: 0.1 });
+  obs.observe(mapEl);
 });
 
-/* ══════════════════════════════════════════
-   THEME ENGINE
-══════════════════════════════════════════ */
-const THEMES = {
-  navy: {
-    '--navy':'#0B1F3A','--navy-mid':'#122847','--navy-light':'#1A3558',
-    '--gold':'#C49A3C','--gold-pale':'#F4EDD8','--gold-dim':'rgba(196,154,60,0.18)',
-    '--white':'#FAFBFC','--off':'#F2F4F7','--slate':'#8A96A8',
-    '--text':'#0B1F3A','--muted':'#4A5568',
-    '--border':'rgba(11,31,58,0.10)','--border-w':'rgba(255,255,255,0.12)'
-  },
-  slate: {
-    '--navy':'#1E2D3D','--navy-mid':'#243648','--navy-light':'#2C4257',
-    '--gold':'#4A9EBF','--gold-pale':'#E8F4F8','--gold-dim':'rgba(74,158,191,0.15)',
-    '--white':'#F5F7FA','--off':'#EDF1F5','--slate':'#7A8FA0',
-    '--text':'#1E2D3D','--muted':'#4A6070',
-    '--border':'rgba(30,45,61,0.10)','--border-w':'rgba(255,255,255,0.12)'
-  },
-  charcoal: {
-    '--navy':'#1A1A1A','--navy-mid':'#222222','--navy-light':'#2A2A2A',
-    '--gold':'#C0392B','--gold-pale':'#FDF0EE','--gold-dim':'rgba(192,57,43,0.15)',
-    '--white':'#F8F6F2','--off':'#F0EDE8','--slate':'#888888',
-    '--text':'#1A1A1A','--muted':'#555555',
-    '--border':'rgba(26,26,26,0.12)','--border-w':'rgba(255,255,255,0.10)'
-  }
-};
 
-let currentTheme = localStorage.getItem('aa2_theme') || 'navy';
 
-function applyTheme(name) {
-  const t = THEMES[name];
-  if (!t) return;
-  const root = document.documentElement;
-  Object.entries(t).forEach(([k,v]) => root.style.setProperty(k, v));
-  currentTheme = name;
-  localStorage.setItem('aa2_theme', name);
-  // Update active indicator
-  document.querySelectorAll('.theme-opt').forEach(el => {
-    const isActive = el.getAttribute('data-theme') === name;
-    el.style.border = isActive ? '2px solid var(--gold)' : '1px solid var(--border)';
-    const label = el.querySelector('div > div:first-child');
-    if (label) {
-      const badge = label.querySelector('span');
-      if (isActive && !badge) label.innerHTML += ' <span style="font-size:0.6rem;color:var(--gold);margin-left:4px;">✦ ATTIVO</span>';
-      else if (!isActive && badge) badge.remove();
-    }
-  });
-  const ok = document.getElementById('themeOk');
-  if (ok) { ok.style.display='block'; setTimeout(()=>ok.style.display='none',2000); }
-}
-
-// Apply saved theme on load
-window.addEventListener('DOMContentLoaded', () => {
-  if (currentTheme !== 'navy') applyTheme(currentTheme);
-});
-
-/* extend doLogin to show map admin hint */
-const _origLogin = typeof doLogin === 'function' ? doLogin : null;
-
-/* ══════════════════════════════════════════
-   AI SITE AGENT
-══════════════════════════════════════════ */
-var aiHistory = [];
-var aiInitialized = false;
-var aiApiKey = localStorage.getItem('aa2_aikey') || '';
-
-function saveApiKey() {
-  var k = document.getElementById('aiApiKey').value.trim();
-  if (!k) return;
-  aiApiKey = k;
-  localStorage.setItem('aa2_aikey', k);
-  var st = document.getElementById('aiKeyStatus');
-  if (st) { st.textContent = 'Key saved.'; st.style.color = 'var(--gold)'; }
-}
-
-function initAiTab() {
-  if (aiInitialized) return;
-  aiInitialized = true;
-  var keyEl = document.getElementById('aiApiKey');
-  if (keyEl && aiApiKey) keyEl.value = aiApiKey;
-  if (aiHistory.length === 0) aiWelcome();
-}
-
-function aiWelcome() {
-  var welcome = 'Hi Andrea! I am your site agent. I can help you:\n\n' +
-    '• Write and publish new blog articles\n' +
-    '• Update your hero tagline, KPIs, and profile text\n' +
-    '• Add projects to your portfolio\n' +
-    '• Draft content for any section\n' +
-    '• Review and suggest improvements\n\n' +
-    'Just tell me what you want to change or create. You can also use the shortcuts below.';
-  appendAiMsg('ai', welcome);
-}
-
-function aiSuggest(text) {
-  document.getElementById('aiInput').value = text;
-  sendAiMsg();
-}
-
-function appendAiMsg(role, text, actions) {
-  var container = document.getElementById('aiMessages');
-  if (!container) return;
-  var wrap = document.createElement('div');
-  wrap.className = 'ai-msg ai-msg-' + role;
-  var label = document.createElement('div');
-  label.className = 'ai-label' + (role === 'ai' ? ' ai-label-gold' : '');
-  label.textContent = role === 'ai' ? 'AI Agent ✦' : 'You';
-  var bubble = document.createElement('div');
-  bubble.className = 'ai-bubble ai-bubble-' + role;
-  // Convert newlines and markdown-ish to HTML
-  bubble.innerHTML = text
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')
-    .replace(/`([^`]+)`/g,'<code>$1</code>')
-    .replace(/\n/g,'<br>');
-  wrap.appendChild(label);
-  wrap.appendChild(bubble);
-  if (actions && actions.length) {
-    var actWrap = document.createElement('div');
-    actions.forEach(function(a) {
-      var btn = document.createElement('button');
-      btn.className = 'ai-action-btn';
-      btn.textContent = a.label;
-      btn.onclick = a.fn;
-      actWrap.appendChild(btn);
-    });
-    wrap.appendChild(actWrap);
-  }
-  container.appendChild(wrap);
-  container.scrollTop = container.scrollHeight;
-}
-
-function showTyping() {
-  var container = document.getElementById('aiMessages');
-  var div = document.createElement('div');
-  div.className = 'ai-msg ai-msg-ai';
-  div.id = 'aiTyping';
-  var label = document.createElement('div');
-  label.className = 'ai-label ai-label-gold';
-  label.textContent = 'AI Agent ✦';
-  var typing = document.createElement('div');
-  typing.className = 'ai-bubble ai-bubble-ai ai-typing';
-  typing.innerHTML = '<span></span><span></span><span></span>';
-  div.appendChild(label);
-  div.appendChild(typing);
-  container.appendChild(div);
-  container.scrollTop = container.scrollHeight;
-}
-
-function removeTyping() {
-  var t = document.getElementById('aiTyping');
-  if (t) t.remove();
-}
-
-function getSiteContext() {
-  // Collect current site state to give AI full context
-  var ctx = 'CURRENT SITE STATE:\n\n';
-  ctx += 'Name: Andrea Aglietti\n';
-  ctx += 'Role: Corporate Launches & Projects Manager\n';
-  ctx += 'Location: Dortmund, Germany\n';
-  ctx += 'Company: Adler Pelzer Group\n\n';
-
-  var tagline = document.querySelector('.hero-tagline');
-  if (tagline) ctx += 'Hero tagline: ' + tagline.textContent.trim() + '\n';
-
-  var kpis = ['k1','k2','k3','k4'];
-  var kpiLabels = ['Plants network','CAPEX','Years exp','Countries'];
-  ctx += 'KPIs: ';
-  kpis.forEach(function(id, i) {
-    var el = document.getElementById(id);
-    if (el) ctx += kpiLabels[i] + '=' + el.textContent + ' ';
-  });
-  ctx += '\n\n';
-
-  var allPosts = (typeof DEF_POSTS !== 'undefined' ? DEF_POSTS : []).concat(posts || []);
-  ctx += 'Published articles (' + allPosts.length + '):\n';
-  allPosts.forEach(function(p) {
-    ctx += '  - [' + p.tag + '] ' + p.title + ' (' + p.date + ')\n';
-  });
-
-  ctx += '\nProjects: Greenfield Plant Morocco, 3M CAPEX Automation, Cloud PMO Deloitte, Legacy Cloud Migration, Vaia 0-to-1 Startup\n';
-  ctx += '\nMap pins: Hong Kong (Cosmos blockchain), Plzen (APG plant), Kadan/Zatec (Zoox visit), Puebla Mexico (toolmaker), Cassino/Pignataro/Pozzilli (Italy strategic support), Villastellone (Iveco acoustics lab), Markolsheim (automation study)\n';
-
-  return ctx;
-}
-
-function buildSystemPrompt() {
-  return 'You are an AI site agent for Andrea Aglietti, a Corporate Launch & Project Manager in the automotive industry. ' +
-    'Your job is to help Andrea update, improve, and manage his personal branding website. ' +
-    'You can help with: writing blog articles, improving profile copy, suggesting content improvements, drafting project descriptions, and editing any text on the site. ' +
-    'When you want to perform an action (like publishing an article or updating the tagline), include a special JSON block at the END of your response in this exact format:\n' +
-    '```action\n{"type": "...", "data": {...}}\n```\n\n' +
-    'Available action types:\n' +
-    '- publish_article: {title, tag, body, expLink} — publishes a blog article. tag must be one of: Launch Management, PMO, Lessons Learned, Automotive, Leadership, Strategy, Stakeholders\n' +
-    '- update_tagline: {text} — updates hero tagline\n' +
-    '- update_kpi: {k1, k2, k3, k4} — updates hero KPIs (omit any you do not want to change)\n' +
-    '- add_project: {title, desc, foot} — adds a project card. foot format: "Company · Year · Area"\n' +
-    '- update_about: {text} — updates the about section first paragraph\n\n' +
-    'Keep your responses concise and professional. When writing articles, write full, high-quality content. ' +
-    'Always explain what action you took or will take. ' +
-    '\n\n' + getSiteContext();
-}
-
-async function sendAiMsg() {
-  var input = document.getElementById('aiInput');
-  var sendBtn = document.getElementById('aiSendBtn');
-  var msg = input.value.trim();
-  if (!msg) return;
-
-  if (!aiApiKey) {
-    appendAiMsg('ai', 'Please enter your Anthropic API key at the top of this panel first.');
-    return;
-  }
-
-  input.value = '';
-  input.style.height = '64px';
-  appendAiMsg('user', msg);
-  aiHistory.push({ role: 'user', content: msg });
-
-  sendBtn.disabled = true;
-  sendBtn.textContent = '...';
-  showTyping();
-
-  try {
-    var response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': aiApiKey,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true'
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 2000,
-        system: buildSystemPrompt(),
-        messages: aiHistory
-      })
-    });
-
-    var data = await response.json();
-
-    if (!response.ok) {
-      removeTyping();
-      var errMsg = (data.error && data.error.message) ? data.error.message : 'API error ' + response.status;
-      appendAiMsg('ai', 'API error: ' + errMsg);
-      aiHistory.push({ role: 'assistant', content: 'Error: ' + errMsg });
-      return;
-    }
-
-    var replyText = data.content && data.content[0] ? data.content[0].text : '';
-    aiHistory.push({ role: 'assistant', content: replyText });
-
-    // Parse action blocks
-    var actionMatch = replyText.match(/```action\n([\s\S]*?)\n```/);
-    var displayText = replyText.replace(/```action[\s\S]*?```/g, '').trim();
-
-    removeTyping();
-
-    var actions = [];
-    if (actionMatch) {
-      try {
-        var actionData = JSON.parse(actionMatch[1]);
-        var actionResult = executeAiAction(actionData);
-        if (actionResult) {
-          actions.push({ label: actionResult.label, fn: actionResult.fn });
-        }
-      } catch(e) {
-        console.warn('Action parse error:', e);
-      }
-    }
-
-    appendAiMsg('ai', displayText || 'Done.', actions.length ? actions : undefined);
-
-  } catch(err) {
-    removeTyping();
-    appendAiMsg('ai', 'Network error: ' + err.message + '. Check your API key and internet connection.');
-  } finally {
-    sendBtn.disabled = false;
-    sendBtn.textContent = '→';
-  }
-}
-
-function executeAiAction(action) {
-  var type = action.type;
-  var d = action.data || {};
-
-  if (type === 'publish_article') {
-    var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-    var now = new Date();
-    var post = {
-      id: Date.now(),
-      title: d.title || 'Untitled',
-      tag: d.tag || 'Strategy',
-      expLink: d.expLink || '',
-      date: months[now.getMonth()] + ' ' + now.getFullYear(),
-      excerpt: (d.body || '').replace(/<[^>]+>/g,'').substring(0,150) + '...',
-      body: '<p>' + (d.body || '').replace(/\n\n/g,'</p><p>').replace(/\n/g,'<br>') + '</p>'
-    };
-    if (typeof posts !== 'undefined') {
-      posts.unshift(post);
-      localStorage.setItem('aa2_posts', JSON.stringify(posts));
-      if (typeof renderBlog === 'function') renderBlog();
-      if (typeof renderAdmList === 'function') renderAdmList();
-    }
-    return { label: 'View article on site', fn: function() { document.getElementById('blog').scrollIntoView({behavior:'smooth'}); closeAdm(); }};
-  }
-
-  if (type === 'update_tagline') {
-    var taglineEl = document.querySelector('.hero-tagline');
-    if (taglineEl && d.text) {
-      taglineEl.textContent = d.text;
-      if (typeof profileData !== 'undefined') {
-        profileData.tagline = d.text;
-        localStorage.setItem('aa2_profile', JSON.stringify(profileData));
-      }
-    }
-    return { label: 'View hero section', fn: function() { document.getElementById('home').scrollIntoView({behavior:'smooth'}); closeAdm(); }};
-  }
-
-  if (type === 'update_kpi') {
-    ['k1','k2','k3','k4'].forEach(function(k) {
-      if (d[k]) {
-        var el = document.getElementById(k);
-        if (el) el.textContent = d[k];
-        if (typeof profileData !== 'undefined') { profileData[k] = d[k]; }
-      }
-    });
-    if (typeof profileData !== 'undefined') localStorage.setItem('aa2_profile', JSON.stringify(profileData));
-    return { label: 'View KPIs', fn: function() { document.getElementById('home').scrollIntoView({behavior:'smooth'}); closeAdm(); }};
-  }
-
-  if (type === 'add_project') {
-    if (typeof extraProj !== 'undefined') {
-      extraProj.push({ title: d.title || '', desc: d.desc || '', foot: d.foot || '' });
-      localStorage.setItem('aa2_proj', JSON.stringify(extraProj));
-      if (typeof renderExtraProj === 'function') renderExtraProj();
-    }
-    return { label: 'View projects', fn: function() { document.getElementById('projects').scrollIntoView({behavior:'smooth'}); closeAdm(); }};
-  }
-
-  if (type === 'update_about') {
-    var aboutEl = document.querySelector('#about .about-lead');
-    if (aboutEl && d.text) aboutEl.textContent = d.text;
-    return { label: 'View about section', fn: function() { document.getElementById('about').scrollIntoView({behavior:'smooth'}); closeAdm(); }};
-  }
-
-  return null;
-}
-
-/* init media section visibility */
-['exp1','exp2','exp3','exp4','exp5'].forEach(id => {
-  const ms = document.getElementById('media-' + id);
-  if (ms) ms.style.display = 'none';
-});
 </script>
 </body>
 </html>
